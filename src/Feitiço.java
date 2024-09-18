@@ -1,8 +1,8 @@
 public class Feitiço extends Carta
 {
-    public String efeito;
-    public int cura;
-    public int dano;
+    private String efeito;
+    private int cura;
+    private int dano;
 
     public Feitiço(String nome, int custoMana, String efeito, int dano, int cura)
     {
@@ -12,7 +12,7 @@ public class Feitiço extends Carta
         this.cura = cura;
     }
 
-    public void lançarFeitiçoDano(Jogador alvo)
+    public void lancarFeiticoDano(Jogador alvo)
     {
         if(dano>0)
         {
@@ -21,21 +21,21 @@ public class Feitiço extends Carta
         }
     }
 
-    public void lancarFeitiçoCura(Jogador alvo)
+    public void lancarFeiticoCura(Jogador alvo)
     {
         System.out.println(getNome() + " foi lançado e curou " + cura + " pontos de vida de " + alvo.getNome());
         alvo.receberCura(cura);
     }
 
-    public void lançarFeitiço(Jogador alvo)
+    public void lancarFeitico(Jogador alvo)
     {
         if (dano > 0)
         {
-            lançarFeitiçoDano(alvo);
+            lancarFeiticoDano(alvo);
         }
         else if (cura > 0)
         {
-            lancarFeitiçoCura(alvo);
+            lancarFeiticoCura(alvo);
         }
     }
 }
