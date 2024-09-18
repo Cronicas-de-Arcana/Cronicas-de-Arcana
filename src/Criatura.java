@@ -3,10 +3,10 @@ public class Criatura extends Carta
     private int hp;
     private int resistencia;
     private String habilidadeEspecial;
-    private int poder;
-    private int forca;
+    private double poder;
+    private double forca;
 
-    public Criatura(int hp, String nome, int custoMana, int poder, int resistencia, String habilidadeEspecial)
+    public Criatura(int hp, String nome, int custoMana, double poder, double forca, int resistencia, String habilidadeEspecial)
     {
         super(nome, custoMana);
         this.hp = hp;
@@ -31,12 +31,12 @@ public class Criatura extends Carta
         return habilidadeEspecial;
     }
 
-    public int getPoder()
+    public double getPoder()
     {
         return poder;
     }
 
-    public int getForca()
+    public double getForca()
     {
         return forca;
     }
@@ -54,7 +54,7 @@ public class Criatura extends Carta
     public void atacar(Criatura alvo)
     {
         System.out.println(getNome() + " ataca " + alvo.getNome() + " causando " + poder*forca + " de dano");
-        alvo.receberDano(poder*forca);
+        alvo.receberDano((int) (poder*forca));
     }
 
     public void receberDano(int dano)

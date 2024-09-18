@@ -44,41 +44,16 @@ public class Encantamento extends Carta
         return dano;
     }
 
-    public void lancarFeiticoDanoEncantamento(Jogador alvo)
+    public void lancarFeitico(Jogador alvo)
     {
-        int i;
-        for(i = 0 ; i < quantidadeRodadas; i++)
-        {
-            if (dano > 0)
-            {
-                System.out.println(getNome() + " foi lançado e causou " + dano + " de dano a " + alvo.getNome());
+        for (int i = 0; i < quantidadeRodadas; i++) {
+            if (dano > 0) {
+                System.out.println(getNome() + " causou " + dano + " de dano a " + alvo.getNome());
                 alvo.receberDano(dano);
-            }
-        }
-    }
-
-    public void lancarFeiticoCuraEncantamento(Jogador alvo)
-    {
-        int i;
-        for(i = 0 ; i < quantidadeRodadas; i++)
-        {
-            if (cura > 0)
-            {
-                System.out.println(getNome() + " foi lançado e curou " + cura + " pontos de vida de " + alvo.getNome());
+            } else if (cura > 0) {
+                System.out.println(getNome() + " curou " + cura + " pontos de vida de " + alvo.getNome());
                 alvo.receberCura(cura);
             }
-        }
-    }
-
-    public void lancarFeitiço(Jogador alvo)
-    {
-        if (dano > 0)
-        {
-            lancarFeiticoDanoEncantamento(alvo);
-        }
-        else if (cura > 0)
-        {
-            lancarFeiticoCuraEncantamento(alvo);
         }
     }
 }

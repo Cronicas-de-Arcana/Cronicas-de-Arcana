@@ -17,7 +17,7 @@ public class Jogador {
         this.campoDeBatalha = new CampodeBatalha(mao, cemiterio, deck);
         this.hp = hp;
         this.mana = mana;
-        this.manaAtual = 3;
+        this.manaAtual = manaAtual;
 
         for (int i = 0; i < 5; i++)
         {
@@ -113,12 +113,6 @@ public class Jogador {
     {
         this.hp += cura;
         System.out.println(nome + " foi curado em " + cura + " pontos de vida. Vida atual: " + this.hp);
-    }
-
-
-    public void reiniciarMana()
-    {
-        this.manaAtual = mana;
     }
 
     public void adicionarMana()
