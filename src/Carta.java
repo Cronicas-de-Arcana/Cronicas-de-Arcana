@@ -1,4 +1,4 @@
-public class Carta
+public abstract class Carta
 {
     private String nome;
     private int custoMana;
@@ -18,4 +18,8 @@ public class Carta
     {
         return custoMana;
     }
+
+    public abstract void efeito();
+
+    public abstract void jogar();
 }

@@ -36,20 +36,25 @@ public class Criatura extends Carta
         return poder;
     }
 
-    public int gepForça()
+    public int getForca()
     {
         return forca;
     }
 
-    public void usarHabilidadeEspecial()
+    public void jogar()
+    {
+        System.out.println(getNome() + " foi sumonada no campo de batalha!");
+    }
+
+    public void efeito()
     {
         System.out.println("Habilidade especial de " + getNome() + ": " + habilidadeEspecial);
     }
 
     public void atacar(Criatura alvo)
     {
-        System.out.println(getNome() + " ataca " + alvo.getNome() + " causando " + poder + " de dano");
-        alvo.receberDano(forca);
+        System.out.println(getNome() + " ataca " + alvo.getNome() + " causando " + poder*forca + " de dano");
+        alvo.receberDano(poder*forca);
     }
 
     public void receberDano(int dano)
@@ -57,10 +62,10 @@ public class Criatura extends Carta
         resistencia -= dano;
         if (resistencia <= 0)
         {
-            hp += (resistencia -= dano);
+            hp += resistencia;
             if (hp <= 0)
             {
-                System.out.println(getNome() + "foi abatido!");
+                System.out.println(getNome() + " foi abatido!");
             }
         }
     }

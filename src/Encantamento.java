@@ -14,6 +14,16 @@ public class Encantamento extends Carta
         this.dano = dano;
     }
 
+    public void jogar()
+    {
+        System.out.println(getNome() + " foi sumonada no campo de batalha!");
+    }
+
+    public void efeito()
+    {
+        System.out.println("Habilidade especial de " + getNome() + ": " + efeitoContinuo);
+    }
+
     public String getEfeitoContinuo()
     {
         return efeitoContinuo;
@@ -34,7 +44,7 @@ public class Encantamento extends Carta
         return dano;
     }
 
-    public void lancarFeiticoDano(Jogador alvo)
+    public void lancarFeiticoDanoEncantamento(Jogador alvo)
     {
         int i;
         for(i = 0 ; i < quantidadeRodadas; i++)
@@ -47,7 +57,7 @@ public class Encantamento extends Carta
         }
     }
 
-    public void lancarFeiticoCura(Jogador alvo)
+    public void lancarFeiticoCuraEncantamento(Jogador alvo)
     {
         int i;
         for(i = 0 ; i < quantidadeRodadas; i++)
@@ -60,15 +70,15 @@ public class Encantamento extends Carta
         }
     }
 
-    public void lançarFeitiço(Jogador alvo)
+    public void lancarFeitiço(Jogador alvo)
     {
         if (dano > 0)
         {
-            lancarFeiticoDano(alvo);
+            lancarFeiticoDanoEncantamento(alvo);
         }
         else if (cura > 0)
         {
-            lancarFeiticoCura(alvo);
+            lancarFeiticoCuraEncantamento(alvo);
         }
     }
 }
