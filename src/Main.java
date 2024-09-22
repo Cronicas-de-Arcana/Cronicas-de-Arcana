@@ -3,8 +3,7 @@ import view.*;
 public class Main {
     public static void main(String[] args)
     {
-        new Janela();
-        /*
+
         Deck deckJogador1 = new Deck();
         deckJogador1.adicionarCarta(new Criatura(35,"Goblin",3, 10,2.5,25,"Ataques rápidos"));
 
@@ -33,6 +32,6 @@ public class Main {
 
         Jogo jogo = new Jogo(jogador1, jogador2);
         jogo.iniciar();
-        */
+
     }
 }

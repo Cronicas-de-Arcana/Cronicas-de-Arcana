@@ -21,7 +21,7 @@ public class Janela extends JFrame {
 
         // Adiciona as telas ao painel principal
         painelPrincipal.add(gerarPainelInicial(), "TelaInicial");
-        painelPrincipal.add(gerarTelaPrincipal(), "TelaPrincipal");
+        painelPrincipal.add(gerarPainelBatalha(), "TelaBatalha");
 
         // Adiciona o painel principal à janela
         add(painelPrincipal);
@@ -39,15 +39,15 @@ public class Janela extends JFrame {
         titulo.setForeground(new Color(255, 255, 255));
 
         // Criar botão de Iniciar
-        JButton botaoIniciar = new JButton("Iniciar");
-        botaoIniciar.setPreferredSize(new Dimension(200, 50));
+        JButton botaoIniciar = new JButton("Iniciar partida");
+        botaoIniciar.setPreferredSize(new Dimension(280, 50));
         botaoIniciar.setForeground(new Color(255, 255, 255));
         botaoIniciar.setBackground(Color.BLACK);
         botaoIniciar.setFont(fonteInicio);
         botaoIniciar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Muda para a Tela Principal quando o botão "Iniciar" é clicado
-                layout.show(painelPrincipal, "TelaPrincipal");
+                // Muda para a Tela de Batalha quando o botão "Iniciar" é clicado
+                layout.show(painelPrincipal, "TelaBatalha");
             }
         });
 
@@ -70,30 +70,39 @@ public class Janela extends JFrame {
         return painelInicial;
     }
 
-    private JPanel gerarTelaPrincipal() {
-        JPanel painelPrincipal = new JPanel(new BorderLayout()); // Usando BorderLayout para melhor organização
-        painelPrincipal.setBackground(new Color(255, 255, 255)); // Cor de fundo da tela principal
+    private JPanel gerarPainelBatalha() {
+        JPanel painelBatalha = new JPanel(new BorderLayout()); // Usando BorderLayout para melhor organização
 
-        // Texto na tela principal
-        JLabel label = new JLabel("Bem-vindo à Tela Principal", JLabel.CENTER);
-        label.setFont(new Font("Arial", Font.PLAIN, 24));
-        painelPrincipal.add(label, BorderLayout.NORTH); // Coloca o texto na parte superior
+        // Criando botões para cada região
+        JPanel Norte = new JPanel();
+        JPanel Sul = new JPanel();
+        JButton Leste = new JButton("Leste");
+        JButton Oeste = new JButton("Oeste");
+        JButton Centro = new JButton("Centro");
 
-        // Criar botão "Voltar"
-        JButton botaoVoltar = new JButton("Voltar");
-        botaoVoltar.setPreferredSize(new Dimension(200, 50));
-        botaoVoltar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Volta para a Tela Inicial
-                layout.show(Janela.this.painelPrincipal, "TelaInicial");
-            }
-        });
+        // Configurando tamanhos para que os botões ocupem a área total
+        Norte.setPreferredSize(new Dimension(0, 190));  // Ocupar toda a largura, altura ajustada
+        Sul.setPreferredSize(new Dimension(0, 190));    // Ocupar toda a largura, altura ajustada
+        Leste.setPreferredSize(new Dimension(150, 0));  // Ocupar toda a altura, largura ajustada
+        Oeste.setPreferredSize(new Dimension(150, 0));  // Ocupar toda a altura, largura ajustada
 
-        // Painel para centralizar o botão "Voltar"
-        JPanel botaoPanel = new JPanel();
-        botaoPanel.add(botaoVoltar);
-        painelPrincipal.add(botaoPanel, BorderLayout.CENTER); // Coloca o botão no centro
+        ModeloCarta exemplo1 = new ModeloCarta(150, 180);
+        ModeloCarta exemplo2 = new ModeloCarta(150, 180);
+        Norte.add(exemplo1);
+        Sul.add(exemplo2);
 
-        return painelPrincipal;
+        // Adicionando botões a cada região do BorderLayout
+        painelBatalha.add(Norte, BorderLayout.NORTH);
+        painelBatalha.add(Sul, BorderLayout.SOUTH);
+        painelBatalha.add(Leste, BorderLayout.EAST);
+        painelBatalha.add(Oeste, BorderLayout.WEST);
+        painelBatalha.add(Centro, BorderLayout.CENTER);
+
+        return painelBatalha;
+    }
+
+    //Main pra teste e visualização
+    public static void main(String[] args) {
+        new Janela();
     }
 }
