@@ -1,5 +1,3 @@
-import view.*;
-
 public class Main {
     public static void main(String[] args)
     {
@@ -32,6 +30,5 @@ public class Main {
 
         Jogo jogo = new Jogo(jogador1, jogador2);
         jogo.iniciar();
-
     }
 }

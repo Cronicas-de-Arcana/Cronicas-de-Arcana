@@ -1,4 +1,3 @@
-package view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -76,20 +75,22 @@ public class Janela extends JFrame {
         // Criando botões para cada região
         JPanel Norte = new JPanel();
         JPanel Sul = new JPanel();
-        JButton Leste = new JButton("Leste");
-        JButton Oeste = new JButton("Oeste");
-        JButton Centro = new JButton("Centro");
+        JButton Leste = new JButton("Contador de Rodada e Timer");
+        JButton Oeste = new JButton("Cemitério");
+        JButton Centro = new JButton("Area de batalha");
 
         // Configurando tamanhos para que os botões ocupem a área total
         Norte.setPreferredSize(new Dimension(0, 190));  // Ocupar toda a largura, altura ajustada
+        Norte.setBackground(new Color(55, 118, 255));
         Sul.setPreferredSize(new Dimension(0, 190));    // Ocupar toda a largura, altura ajustada
-        Leste.setPreferredSize(new Dimension(150, 0));  // Ocupar toda a altura, largura ajustada
-        Oeste.setPreferredSize(new Dimension(150, 0));  // Ocupar toda a altura, largura ajustada
+        Sul.setBackground(new Color(251, 75, 75));
+        Leste.setPreferredSize(new Dimension(210, 0));  // Ocupar toda a altura, largura ajustada
+        Oeste.setPreferredSize(new Dimension(210, 0));  // Ocupar toda a altura, largura ajustada
 
-        ModeloCarta exemplo1 = new ModeloCarta(150, 180);
-        ModeloCarta exemplo2 = new ModeloCarta(150, 180);
-        Norte.add(exemplo1);
-        Sul.add(exemplo2);
+        ModeloMaoJogador modelo1 = new ModeloMaoJogador();
+        ModeloMaoJogador modelo2 = new ModeloMaoJogador();
+        Norte.add(modelo1);
+        Sul.add(modelo2);
 
         // Adicionando botões a cada região do BorderLayout
         painelBatalha.add(Norte, BorderLayout.NORTH);
