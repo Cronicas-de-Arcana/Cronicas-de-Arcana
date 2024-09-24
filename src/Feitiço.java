@@ -1,4 +1,4 @@
-/*public class Feitiço extends Carta
+public abstract class Feitiço extends Carta
 {
     private String efeito;
     private int cura;
@@ -38,4 +38,4 @@
             lancarFeiticoCura(alvo);
         }
     }
-}*/
+}

@@ -1,0 +1,21 @@
+Notas para quem estiver corrigindo/avaliando:
+
+Hoje (23/09) o programa está começando ainda a tomar forma, tendo as classes definidas e o ínicio do front desenvolvido;
+A aplicação dos conceitos de OO estão sendo aplicados mas - em especial no frontend - a noção de uso de classes e a ins-
+tnciação de objetos ainda está sendo estudada para otimizar o código;
+
+No ponto de vista do backend, criamos as classes e algumas cartas para poder simular uma pequena batalha
+(tudo no terminal) e retorno da ação dos jogadores agora nesse primeiro momento, então no  arquivo Main que vai estar
+esse ponto do programa;
+
+Já olhando para o front end, estamos desenvolvendo os elementos que irão compor as telas e ainda nos familizarizando com
+o Swing para essa parte, os arquivos quem lidam com o frontend são:
+
+1. ModeloCarta - Modelo da carta do jogo criado de forma muito simples e passará por alterações
+2. ModeloMaoJogador - Modelo da mão dos jogadores que ficarão dispostas na area onde o jogo acontece
+3. Janela - Arquivo que inicia a janela inicial do jogo com um design extremamente básico e altera entre as diferentes
+telas - ao apertar o botão iniciar partida é apresentada como será a tela de batalha, com botões e paineis apenas para
+exibição e apresentar um esboço de como dividiremos a tela de acordo com que o projeto pede
+
+Cada arquivo de FrontEnd possui um Main próprio para análise do elemento de forma isolada, foi uma forma de testarmos o
+visual conforme faziamos modificações e implementavamos o código desses modelos, com exceção do arquivo ModeloMaoJogador.
