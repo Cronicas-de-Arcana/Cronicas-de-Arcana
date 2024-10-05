@@ -1,3 +1,9 @@
+package Controle;
+
+import Cartas.Carta;
+import Cartas.Criatura;
+import Espaço.CampodeBatalha;
+
 import java.util.Random;
 
 public class Jogo {

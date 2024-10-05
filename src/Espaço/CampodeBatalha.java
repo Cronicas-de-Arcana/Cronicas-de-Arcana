@@ -1,3 +1,9 @@
+package Espaço;
+
+import Baralhos.Deck;
+import Baralhos.Mao;
+import Cartas.Carta;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +48,7 @@ public class CampodeBatalha
         if (cartaComprada != null)
         {
             mao.adicionarCartas(cartaComprada);
-            System.out.println("Carta comprada do deck: " + cartaComprada.getNome());
+            System.out.println("Cartas.Carta comprada do deck: " + cartaComprada.getNome());
         }
     }
 

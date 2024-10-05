@@ -1,10 +1,12 @@
+package Cartas;
+
 public class Criatura extends Carta
 {
-    private int hp;
-    private int resistencia;
-    private String habilidadeEspecial;
-    private double poder;
-    private double forca;
+    protected int hp;
+    protected int resistencia;
+    protected String habilidadeEspecial;
+    protected double poder;
+    protected double forca;
 
     public Criatura(int hp, String nome, int custoMana, double poder, double forca, int resistencia, String habilidadeEspecial)
     {

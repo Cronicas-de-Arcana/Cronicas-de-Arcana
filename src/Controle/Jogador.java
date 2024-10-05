@@ -1,3 +1,11 @@
+package Controle;
+
+import Baralhos.Deck;
+import Baralhos.Mao;
+import Cartas.Carta;
+import Espaço.CampodeBatalha;
+import Espaço.Cemiterio;
+
 public class Jogador {
     private String nome;
     private int hp;

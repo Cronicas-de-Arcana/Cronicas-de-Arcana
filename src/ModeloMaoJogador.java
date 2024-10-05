@@ -1,3 +1,6 @@
+import Cartas.Criatura;
+import Cartas.ModeloCarta;
+
 import javax.swing.*;
 import java.awt.*;
 

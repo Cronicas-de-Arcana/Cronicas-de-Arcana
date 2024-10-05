@@ -1,3 +1,6 @@
+package Cartas;
+import Controle.*;
+
 public abstract class Feitiço extends Carta
 {
     private String efeito;

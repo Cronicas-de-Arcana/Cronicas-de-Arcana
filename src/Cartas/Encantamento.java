@@ -1,9 +1,12 @@
+package Cartas;
+import Controle.*;
+
 public class Encantamento extends Carta
 {
-    private String efeitoContinuo;
-    private int quantidadeRodadas;
-    private int cura;
-    private int dano;
+    protected String efeitoContinuo;
+    protected int quantidadeRodadas;
+    protected int cura;
+    protected int dano;
 
     public Encantamento(String nome, int custoMana, String efeitoContinuo, int quantidadeRodadas ,int dano, int cura)
     {

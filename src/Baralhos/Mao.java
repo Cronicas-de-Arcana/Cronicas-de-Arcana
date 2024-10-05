@@ -1,3 +1,7 @@
+package Baralhos;
+
+import Cartas.Carta;
+
 import java.util.ArrayList;
 import java.util.List;
 

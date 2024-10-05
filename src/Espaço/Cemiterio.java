@@ -1,5 +1,9 @@
+package Espaço;
+
+import Cartas.Carta;
+
 import java.util.ArrayList;
-import  java.util.List;
+import java.util.List;
 
 public class Cemiterio
 {

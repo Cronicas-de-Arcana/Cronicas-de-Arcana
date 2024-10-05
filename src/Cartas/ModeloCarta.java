@@ -1,6 +1,7 @@
+package Cartas;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class ModeloCarta extends JPanel {
     private int largura, altura;
@@ -53,7 +54,7 @@ public class ModeloCarta extends JPanel {
 
     //Main pra teste e vizualização
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Cartas Jogador");
+        JFrame frame = new JFrame("Cartas Controle.Jogador");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(240, 420);
 

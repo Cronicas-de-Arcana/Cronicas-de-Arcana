@@ -1,9 +1,12 @@
+package Cartas;
+import Controle.*;
+
 public class Feitico extends Carta
 {
-    private String efeito;
-    private int cura;
-    private int dano;
-    private String habilidadeEspecial;
+    protected String efeito;
+    protected int cura;
+    protected int dano;
+    protected String habilidadeEspecial;
 
     public Feitico(String nome, int custoMana, String habilidadeEspecial, int dano, int cura)
     {
