@@ -77,4 +77,10 @@ public class Criatura extends Carta
         this.hp += cura;
         System.out.println(getNome() + " se curou em " + cura + " pontos de vida. Vida atual: " + this.hp);
     }
+
+    public void criaturasPadrao(){
+        Criatura goblin = new Criatura(120, "Goblin", 2, 90, 45, 9, "Ataques sucessivos");
+        Criatura mago = new Criatura(200, "Mago", 3, 130, 100, 10, "Ataques de bola de fogo");
+        Criatura arqueiro = new Criatura (95, "Arqueiro", 2, 200, 120, 8, "Ataques a longa distância com dano e penetração altos.");
+    }
 }

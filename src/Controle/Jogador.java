@@ -6,15 +6,20 @@ import Cartas.Carta;
 import Espaço.CampodeBatalha;
 import Espaço.Cemiterio;
 
+import java.util.ArrayList;
+
 public class Jogador {
     private String nome;
     private int hp;
-    private Deck deck;
-    private Mao mao;
-    private Cemiterio cemiterio;
+    protected Deck deck;
+    protected Mao mao;
+    protected Cemiterio cemiterio;
     private CampodeBatalha campoDeBatalha;
     private int mana;
     private int manaAtual;
+    protected int nivel;
+    protected double experiencia;
+    private ArrayList<Carta> inventario;
 
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual)
     {
@@ -102,6 +107,18 @@ public class Jogador {
     public int getManaAtual()
     {
         return manaAtual;
+    }
+
+    public int getNivel(){
+        return nivel;
+    }
+
+    public void setNivel(int nivel){
+        this.nivel = nivel;
+    }
+
+    public double getExperiencia(){
+        return experiencia;
     }
 
     public void receberDano(int dano)

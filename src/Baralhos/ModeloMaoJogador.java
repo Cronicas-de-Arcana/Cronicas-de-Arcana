@@ -1,3 +1,5 @@
+package Baralhos;
+
 import Cartas.Criatura;
 import Cartas.ModeloCarta;
 
