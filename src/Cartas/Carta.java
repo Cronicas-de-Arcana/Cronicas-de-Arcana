@@ -1,7 +1,11 @@
+package Cartas;
+
+import Espaço.Cemiterio;
+
 public abstract class Carta
 {
-    private String nome;
-    private int custoMana;
+    protected String nome;
+    protected int custoMana;
 
     public Carta(String nome, int custoMana)
     {

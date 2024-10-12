@@ -1,12 +1,26 @@
-public class Jogador {
+package Controle;
+
+import Baralhos.Deck;
+import Baralhos.Mao;
+import Cartas.Carta;
+import Espaço.CampodeBatalha;
+import Espaço.Cemiterio;
+
+import java.util.ArrayList;
+
+public class Jogador
+{
     private String nome;
     private int hp;
-    private Deck deck;
-    private Mao mao;
-    private Cemiterio cemiterio;
+    protected Deck deck;
+    protected Mao mao;
+    protected Cemiterio cemiterio;
     private CampodeBatalha campoDeBatalha;
     private int mana;
     private int manaAtual;
+    protected Nivel nivel;
+    protected double experiencia;
+    private ArrayList<Carta> inventario;
 
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual)
     {
@@ -26,39 +40,38 @@ public class Jogador {
         }
     }
 
-    public void jogarCartaNoCampo(Carta carta)
+    public void jogarCarta(Carta carta)
     {
         if (mao.temCarta(carta))
         {
             campoDeBatalha.adicionarCartasAoCampo(carta);
+            mao.removerCarta(carta);
+            System.out.println(nome + " jogou a carta: " + carta.getNome());
         }
         else
         {
-            System.out.println("A carta " + carta.getNome() + " não está na mão.");
+            System.out.println("A carta " + carta.getNome() + " não está na mão de " + nome + ".");
         }
     }
 
-
     public void comprarCartas()
     {
+        if (deck.verificarDeckVazio())
+        {
+            System.out.println("Não há mais cartas no deck para " + nome + "!");
+            return;
+        }
         Carta cartaComprada = deck.comprarCarta();
+
         if (cartaComprada != null)
         {
             mao.adicionarCartas(cartaComprada);
             System.out.println(nome + " comprou a carta: " + cartaComprada.getNome());
         }
-    }
-
-    public void jogarCarta(Carta carta)
-    {
-        mao.removerCarta(carta);
-        System.out.println(nome + " jogou a carta: " + carta.getNome());
-    }
-
-    public void enviarAoCemiterio(Carta carta)
-    {
-        cemiterio.adicionarCartasNoCemiterio(carta);
-        System.out.println(carta.getNome() + " foi enviada ao cemitério.");
+        else
+        {
+            System.out.println("Não foi possível comprar esta carta.");
+        }
     }
 
     public String getNome()
@@ -96,6 +109,28 @@ public class Jogador {
         return manaAtual;
     }
 
+    public void subirNivel(){
+        nivel.ganharNivel();
+    }
+
+    public int getNivel(){
+        return nivel.getNivelAtual();
+    }
+
+    public void mostrarNivel(){
+        nivel.mostrarNivel();
+    }
+
+    public double getExperiencia()
+    {
+        return experiencia;
+    }
+
+    public CampodeBatalha getCampoDeBatalha()
+    {
+        return  campoDeBatalha;
+    }
+
     public void receberDano(int dano)
     {
         this.hp -= dano;
@@ -124,5 +159,4 @@ public class Jogador {
     {
         this.manaAtual -= custoMana;
     }
-
 }

@@ -1,5 +1,9 @@
+package Espaço;
+
+import Cartas.Carta;
+
 import java.util.ArrayList;
-import  java.util.List;
+import java.util.List;
 
 public class Cemiterio
 {
@@ -13,7 +17,6 @@ public class Cemiterio
     public void adicionarCartasNoCemiterio(Carta carta)
     {
         cartasNoCemiterio.add(carta);
-
     }
 
     public  List<Carta> getCartasNoCemiterio()

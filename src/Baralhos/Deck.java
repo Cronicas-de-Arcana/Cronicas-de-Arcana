@@ -1,3 +1,7 @@
+package Baralhos;
+
+import Cartas.Carta;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,7 +17,6 @@ public class Deck
             throw new IllegalArgumentException("O deck deve ter no mínimo 30 cartas");
         }
         this.cartas = new ArrayList<>(cartas);
-        Collections.shuffle(this.cartas);
     }
 
     public Deck()
@@ -31,8 +34,11 @@ public class Deck
         if (verificarDeckVazio())
         {
             System.out.println("O deck está vazio");
+            return null;
         }
-        return cartas.remove(0);
+        Carta carta = cartas.remove(cartas.size() - 1);
+        System.out.println("Carta comprada: " + carta.getNome());
+        return carta;
     }
 
     public int getTamanho() {

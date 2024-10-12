@@ -1,3 +1,7 @@
+package Baralhos;
+
+import Cartas.Carta;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +21,21 @@ public class Mao
 
     public void adicionarCartas(Carta carta)
     {
-        cartas.add(carta);
-        System.out.println(carta.getNome() + " foi adicionada à mão.");
+        if (carta != null)
+        {
+            cartas.add(carta);
+            System.out.println(carta.getNome() + " foi adicionada à mão.");
+        }
+        else
+        {
+            System.out.println("Esta carta é nula e não pode ser adicionada.");
+        }
     }
 
     public void removerCarta(Carta carta)
     {
-        if (cartas.remove(carta)) {
+        if (cartas.remove(carta))
+        {
             System.out.println(carta.getNome() + " foi removida da mão.");
         } else {
             System.out.println("A carta " + carta.getNome() + " não está na mão.");
@@ -42,9 +54,17 @@ public class Mao
 
     public void mostrarCartas()
     {
-        System.out.println("Cartas na mão:");
-        for (Carta carta : cartas) {
-            System.out.println("- " + carta.getNome());
+        if (cartas.isEmpty())
+        {
+            System.out.println("Nenhuma carta na mão.");
+        } else
+        {
+            System.out.println("Cartas na mão:");
+            for (int i = 0; i < cartas.size(); i++)
+            {
+                Carta carta = cartas.get(i);
+                System.out.println((i + 1) + ": " + carta.getNome() + " - Custo de Mana: " + carta.getCustoMana());
+            }
         }
     }
 }
