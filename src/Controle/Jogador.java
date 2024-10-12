@@ -8,8 +8,7 @@ import Espaço.Cemiterio;
 
 import java.util.ArrayList;
 
-public class Jogador
-{
+public class Jogador {
     private String nome;
     private int hp;
     protected Deck deck;
@@ -18,7 +17,7 @@ public class Jogador
     private CampodeBatalha campoDeBatalha;
     private int mana;
     private int manaAtual;
-    protected Nivel nivel;
+    protected int nivel;
     protected double experiencia;
     private ArrayList<Carta> inventario;
 
@@ -40,38 +39,39 @@ public class Jogador
         }
     }
 
-    public void jogarCarta(Carta carta)
+    public void jogarCartaNoCampo(Carta carta)
     {
         if (mao.temCarta(carta))
         {
             campoDeBatalha.adicionarCartasAoCampo(carta);
-            mao.removerCarta(carta);
-            System.out.println(nome + " jogou a carta: " + carta.getNome());
         }
         else
         {
-            System.out.println("A carta " + carta.getNome() + " não está na mão de " + nome + ".");
+            System.out.println("A carta " + carta.getNome() + " não está na mão.");
         }
     }
 
+
     public void comprarCartas()
     {
-        if (deck.verificarDeckVazio())
-        {
-            System.out.println("Não há mais cartas no deck para " + nome + "!");
-            return;
-        }
         Carta cartaComprada = deck.comprarCarta();
-
         if (cartaComprada != null)
         {
             mao.adicionarCartas(cartaComprada);
             System.out.println(nome + " comprou a carta: " + cartaComprada.getNome());
         }
-        else
-        {
-            System.out.println("Não foi possível comprar esta carta.");
-        }
+    }
+
+    public void jogarCarta(Carta carta)
+    {
+        mao.removerCarta(carta);
+        System.out.println(nome + " jogou a carta: " + carta.getNome());
+    }
+
+    public void enviarAoCemiterio(Carta carta)
+    {
+        cemiterio.adicionarCartasNoCemiterio(carta);
+        System.out.println(carta.getNome() + " foi enviada ao cemitério.");
     }
 
     public String getNome()
@@ -109,26 +109,16 @@ public class Jogador
         return manaAtual;
     }
 
-    public void subirNivel(){
-        nivel.ganharNivel();
-    }
-
     public int getNivel(){
-        return nivel.getNivelAtual();
+        return nivel;
     }
 
-    public void mostrarNivel(){
-        nivel.mostrarNivel();
+    public void setNivel(int nivel){
+        this.nivel = nivel;
     }
 
-    public double getExperiencia()
-    {
+    public double getExperiencia(){
         return experiencia;
-    }
-
-    public CampodeBatalha getCampoDeBatalha()
-    {
-        return  campoDeBatalha;
     }
 
     public void receberDano(int dano)
@@ -159,4 +149,5 @@ public class Jogador
     {
         this.manaAtual -= custoMana;
     }
+
 }
