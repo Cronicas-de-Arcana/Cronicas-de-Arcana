@@ -8,7 +8,8 @@ import Espaço.Cemiterio;
 
 import java.util.ArrayList;
 
-public class Jogador {
+public class Jogador
+{
     private String nome;
     private int hp;
     protected Deck deck;
@@ -17,8 +18,7 @@ public class Jogador {
     private CampodeBatalha campoDeBatalha;
     private int mana;
     private int manaAtual;
-    protected int nivel;
-    protected double experiencia;
+    protected Nivel nivel;
     private ArrayList<Carta> inventario;
 
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual)
@@ -31,7 +31,9 @@ public class Jogador {
         this.hp = hp;
         this.mana = mana;
         this.manaAtual = manaAtual;
+        this.nivel = new Nivel();
 
+        System.out.println("Comprando cartas iniciais...");
         for (int i = 0; i < 5; i++)
         {
             Carta cartaComprada = deck.comprarCarta();
@@ -55,17 +57,34 @@ public class Jogador {
     public void comprarCartas()
     {
         Carta cartaComprada = deck.comprarCarta();
+        if (deck.verificarDeckVazio())
+        {
+            System.out.println("Não existem mais cartas no deck para " + nome + "!");
+            return;
+        }
         if (cartaComprada != null)
         {
             mao.adicionarCartas(cartaComprada);
             System.out.println(nome + " comprou a carta: " + cartaComprada.getNome());
         }
+        else
+        {
+            System.out.println("Não foi possível comprar uma carta.");
+        }
     }
 
     public void jogarCarta(Carta carta)
     {
-        mao.removerCarta(carta);
-        System.out.println(nome + " jogou a carta: " + carta.getNome());
+        if (mao.temCarta(carta))
+        {
+            campoDeBatalha.adicionarCartasAoCampo(carta);
+            mao.removerCarta(carta);
+            System.out.println(nome + " jogou a carta: " + carta.getNome());
+        }
+        else
+        {
+            System.out.println("A carta " + carta.getNome() + " não está na mão de " + nome + ".");
+        }
     }
 
     public void enviarAoCemiterio(Carta carta)
@@ -109,16 +128,19 @@ public class Jogador {
         return manaAtual;
     }
 
-    public int getNivel(){
-        return nivel;
+    public void subirNivel()
+    {
+        nivel.ganharNivel();
     }
 
-    public void setNivel(int nivel){
-        this.nivel = nivel;
+    public int getNivel()
+    {
+        return nivel.getNivelAtual();
     }
 
-    public double getExperiencia(){
-        return experiencia;
+    public void mostrarNivel()
+    {
+        nivel.mostrarNivel();
     }
 
     public void receberDano(int dano)
@@ -150,4 +172,8 @@ public class Jogador {
         this.manaAtual -= custoMana;
     }
 
+    public void defender(Carta atacante)
+    {
+        System.out.println(getNome() + " defende com " + atacante.getNome());
+    }
 }

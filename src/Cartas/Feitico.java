@@ -27,14 +27,30 @@ public class Feitico extends Carta
         System.out.println("Habilidade especial de " + getNome() + ": " + habilidadeEspecial);
     }
 
+    public void lancarFeiticoDano(Jogador alvo)
+    {
+        if(dano>0)
+        {
+            System.out.println(getNome() + " foi lançado e causou " + dano + " de dano a " + alvo.getNome());
+            alvo.receberDano(dano);
+        }
+    }
+
+    public void lancarFeiticoCura(Jogador alvo)
+    {
+        System.out.println(getNome() + " foi lançado e curou " + cura + " pontos de vida de " + alvo.getNome());
+        alvo.receberCura(cura);
+    }
+
     public void lancarFeitico(Jogador alvo)
     {
-        if (dano > 0) {
-            System.out.println(getNome() + " causou " + dano + " de dano a " + alvo.getNome());
-            alvo.receberDano(dano);
-        } else if (cura > 0) {
-            System.out.println(getNome() + " curou " + cura + " pontos de vida de " + alvo.getNome());
-            alvo.receberCura(cura);
+        if (dano > 0)
+        {
+            lancarFeiticoDano(alvo);
+        }
+        else if (cura > 0)
+        {
+            lancarFeiticoCura(alvo);
         }
     }
 }
