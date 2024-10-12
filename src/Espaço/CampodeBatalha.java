@@ -7,8 +7,7 @@ import Cartas.Carta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CampodeBatalha
-{
+public class CampodeBatalha {
     private List<Carta> campoDeBatalha;
     private Mao mao;
     private Cemiterio cemiterio;

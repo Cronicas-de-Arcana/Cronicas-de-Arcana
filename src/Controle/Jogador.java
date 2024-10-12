@@ -6,8 +6,6 @@ import Cartas.Carta;
 import Espaço.CampodeBatalha;
 import Espaço.Cemiterio;
 
-import java.util.ArrayList;
-
 public class Jogador
 {
     private String nome;
@@ -18,8 +16,8 @@ public class Jogador
     private CampodeBatalha campoDeBatalha;
     private int mana;
     private int manaAtual;
-    protected Nivel nivel;
-    private ArrayList<Carta> inventario;
+    protected int nivel;
+    protected double experiencia;
 
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual)
     {
@@ -31,7 +29,8 @@ public class Jogador
         this.hp = hp;
         this.mana = mana;
         this.manaAtual = manaAtual;
-        this.nivel = new Nivel();
+        this.nivel = 1;
+        this.experiencia = 0;
 
         System.out.println("Comprando cartas iniciais...");
         for (int i = 0; i < 5; i++)
@@ -70,20 +69,6 @@ public class Jogador
         else
         {
             System.out.println("Não foi possível comprar uma carta.");
-        }
-    }
-
-    public void jogarCarta(Carta carta)
-    {
-        if (mao.temCarta(carta))
-        {
-            campoDeBatalha.adicionarCartasAoCampo(carta);
-            mao.removerCarta(carta);
-            System.out.println(nome + " jogou a carta: " + carta.getNome());
-        }
-        else
-        {
-            System.out.println("A carta " + carta.getNome() + " não está na mão de " + nome + ".");
         }
     }
 
@@ -128,19 +113,16 @@ public class Jogador
         return manaAtual;
     }
 
-    public void subirNivel()
-    {
-        nivel.ganharNivel();
+    public double getExperiencia() {
+        return experiencia;
     }
 
-    public int getNivel()
-    {
-        return nivel.getNivelAtual();
+    public int getNivel() {
+        return nivel;
     }
 
-    public void mostrarNivel()
-    {
-        nivel.mostrarNivel();
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
 
     public void receberDano(int dano)

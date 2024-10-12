@@ -10,7 +10,7 @@ public class Main {
     {
 
         Deck deckJogador1 = new Deck();
-        deckJogador1.adicionarCarta(new Criatura(35,"Goblin",3, 10,2.5,25,"Ataques rápidos"));
+        deckJogador1.adicionarCarta(new Criatura(35,"Goblin",3, 10,3,25,"Ataques rápidos"));
 
         deckJogador1.adicionarCarta(new Feitico("Raio",3,"Um pequeno raio cai do céu infligindo dano à qualquer tipo de tropa(voadora ou terrestre)",15,0));
 
