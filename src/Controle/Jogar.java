@@ -91,7 +91,7 @@ public class Jogar {
             System.out.println(carta.getNome() + " - Custo de Mana: " + carta.getCustoMana());
         }
 
-        System.out.println("Escolha uma carta para jogar (digite o número da carta) ou 0 para não jogar:");
+        System.out.println(jogador.getNome() + " escolha uma carta para jogar (digite o número da carta) ou 0 para não jogar:");
         int escolha = scanner.nextInt();
 
         if (escolha > 0 && escolha <= jogador.getMao().getCartas().size()) {

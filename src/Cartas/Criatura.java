@@ -100,4 +100,6 @@ public class Criatura extends Carta
         Criatura mago = new Criatura(200, "Mago", 3, 130, 100, 10, "Ataques de bola de fogo",false);
         Criatura arqueiro = new Criatura (95, "Arqueiro", 2, 200, 120, 8, "Ataques a longa distância com dano e penetração altos.",false);
     }
+
+    public void setPoder(double valor) {}
 }
