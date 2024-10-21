@@ -58,7 +58,7 @@ public class ModeloCarta extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(240, 420);
 
-        Criatura goblin = new Criatura(35,"Goblin",3, 10,2.5,25,"Ataques rápidos");
+        Criatura goblin = new Criatura(120, "Goblin", 2, 90, 45, 9, "Ataques sucessivos",false);
         JPanel painelAmostra = new JPanel();
 
         painelAmostra.add(ModeloCarta.gerarCartaCriatura(goblin));

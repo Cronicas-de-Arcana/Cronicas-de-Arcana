@@ -14,9 +14,8 @@ public class ModeloMaoJogador extends JPanel {
         JPanel espacamento = new JPanel();
         espacamento.setBackground(new Color(0, 0, 0, 0));
 
-        Criatura arqueiro = new Criatura(25,"Arqueiro",3, 20,1.2,15,"Ataques que atacam tropas voadoras.");
-        Criatura goblin = new Criatura(35,"Goblin",3, 10,2.5,25,"Ataques rápidos");
-
+        Criatura arqueiro = new Criatura (95, "Arqueiro", 2, 200, 120, 8, "Ataques a longa distância com dano e penetração altos.",false);
+        Criatura goblin = new Criatura(120, "Goblin", 2, 90, 45, 9, "Ataques sucessivos",false);
 
         this.add(ModeloCarta.gerarCartaCriatura(arqueiro));
         this.add(espacamento);

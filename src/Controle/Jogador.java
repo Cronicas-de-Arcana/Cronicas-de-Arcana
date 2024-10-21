@@ -58,7 +58,6 @@ public class Jogador
         }
     }
 
-<<<<<<< HEAD
     public void jogarCartaNoCampo(Carta carta)
     {
         if (mao.temCarta(carta))
@@ -72,8 +71,6 @@ public class Jogador
         }
     }
 
-=======
->>>>>>> d16f1b2dd65520d4f1c01d614ec331fb04c0caa7
     public void enviarAoCemiterio(Carta carta)
     {
         cemiterio.adicionarCartasNoCemiterio(carta);

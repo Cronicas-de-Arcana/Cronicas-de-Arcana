@@ -3,6 +3,8 @@ package Espaço;
 import Baralhos.Deck;
 import Baralhos.Mao;
 import Cartas.Carta;
+import Cartas.Criatura;
+import Controle.Jogador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,16 +45,32 @@ public class CampodeBatalha {
 
     public void comprarCarta()
     {
-        Carta cartaComprada = deck.comprarCarta();
-        if (cartaComprada != null)
+        if (!deck.verificarDeckVazio())
         {
+            Carta cartaComprada = deck.comprarCarta();
             mao.adicionarCartas(cartaComprada);
-            System.out.println("Cartas.Carta comprada do deck: " + cartaComprada.getNome());
+        }
+        else
+        {
+            System.out.println("Não existem mais cartas no deck");
         }
     }
 
     public List<Carta> getCampo()
     {
         return campoDeBatalha;
+    }
+
+
+    public List<Criatura> getCriaturasNoCampo(Jogador jogador)
+    {
+        List<Criatura> criaturasNoCampo = new ArrayList<>();
+        for (Carta carta : campoDeBatalha) {
+            if (carta instanceof Criatura)
+            {
+                criaturasNoCampo.add((Criatura) carta);
+            }
+        }
+        return criaturasNoCampo;
     }
 }
