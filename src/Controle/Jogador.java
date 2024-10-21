@@ -6,20 +6,18 @@ import Cartas.Carta;
 import Espaço.CampodeBatalha;
 import Espaço.Cemiterio;
 
-import java.util.ArrayList;
-
 public class Jogador
 {
     private String nome;
     private int hp;
+    private int mana;
+    private int manaAtual;
+    protected int nivel;
+    protected double experiencia;
     protected Deck deck;
     protected Mao mao;
     protected Cemiterio cemiterio;
     private CampodeBatalha campoDeBatalha;
-    private int mana;
-    private int manaAtual;
-    protected Nivel nivel;
-    private ArrayList<Carta> inventario;
 
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual)
     {
@@ -31,7 +29,8 @@ public class Jogador
         this.hp = hp;
         this.mana = mana;
         this.manaAtual = manaAtual;
-        this.nivel = new Nivel();
+        this.nivel = 1;
+        this.experiencia = 0;
 
         System.out.println("Comprando cartas iniciais...");
         for (int i = 0; i < 5; i++)
@@ -41,49 +40,34 @@ public class Jogador
         }
     }
 
-    public void jogarCartaNoCampo(Carta carta)
-    {
-        if (mao.temCarta(carta))
-        {
-            campoDeBatalha.adicionarCartasAoCampo(carta);
-        }
-        else
-        {
-            System.out.println("A carta " + carta.getNome() + " não está na mão.");
-        }
-    }
-
-
     public void comprarCartas()
     {
-        Carta cartaComprada = deck.comprarCarta();
         if (deck.verificarDeckVazio())
         {
             System.out.println("Não existem mais cartas no deck para " + nome + "!");
             return;
         }
+        Carta cartaComprada = deck.comprarCarta();
         if (cartaComprada != null)
         {
             mao.adicionarCartas(cartaComprada);
-            System.out.println(nome + " comprou a carta: " + cartaComprada.getNome());
         }
         else
         {
-            System.out.println("Não foi possível comprar uma carta.");
+            System.out.println("Não foi possível comprar a carta "+ cartaComprada.getNome() + ".");
         }
     }
 
-    public void jogarCarta(Carta carta)
+    public void jogarCartaNoCampo(Carta carta)
     {
         if (mao.temCarta(carta))
         {
             campoDeBatalha.adicionarCartasAoCampo(carta);
             mao.removerCarta(carta);
-            System.out.println(nome + " jogou a carta: " + carta.getNome());
         }
         else
         {
-            System.out.println("A carta " + carta.getNome() + " não está na mão de " + nome + ".");
+            System.out.println("A carta " + carta.getNome() + " não está na mão.");
         }
     }
 
@@ -128,19 +112,16 @@ public class Jogador
         return manaAtual;
     }
 
-    public void subirNivel()
-    {
-        nivel.ganharNivel();
+    public double getExperiencia() {
+        return experiencia;
     }
 
-    public int getNivel()
-    {
-        return nivel.getNivelAtual();
+    public int getNivel() {
+        return nivel;
     }
 
-    public void mostrarNivel()
-    {
-        nivel.mostrarNivel();
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
 
     public void receberDano(int dano)

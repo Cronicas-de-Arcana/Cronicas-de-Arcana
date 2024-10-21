@@ -23,6 +23,12 @@ public abstract class Carta
         return custoMana;
     }
 
+    public void mostrarCaracteristicas()
+    {
+        System.out.println("Nome: " + nome);
+        System.out.println("Custo Mana: " + custoMana);
+    }
+
     public abstract void efeito();
 
     public abstract void jogar();

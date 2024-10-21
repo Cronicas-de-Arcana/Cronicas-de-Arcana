@@ -1,6 +1,7 @@
 package Baralhos;
 
 import Cartas.Carta;
+import Controle.Jogador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,9 @@ public class Mao
         if (cartas.remove(carta))
         {
             System.out.println(carta.getNome() + " foi removida da mão.");
-        } else {
+        }
+        else
+        {
             System.out.println("A carta " + carta.getNome() + " não está na mão.");
         }
     }

@@ -63,15 +63,6 @@ public class Criatura extends Carta
         System.out.println("Habilidade especial de " + getNome() + ": " + habilidadeEspecial);
     }
 
-    public void atacar(Criatura criaturaAlvo) {
-        if (this.voa) {
-            System.out.println(getNome() + " ataca " + criaturaAlvo.getNome() + " pelo ar causando " + forca * poder + " de dano.");
-        } else {
-            System.out.println(getNome() + " ataca diretamente o jogador " + criaturaAlvo.getNome() + ", causando " + forca * poder + " de dano.");
-        }
-        criaturaAlvo.receberDano((int) (forca * poder));
-    }
-
     public void receberDano(int dano)
     {
         resistencia -= dano;
@@ -86,6 +77,15 @@ public class Criatura extends Carta
                 System.out.println(getNome() + " foi abatido!");
             }
         }
+    }
+
+    public void atacar(Criatura criaturaAlvo) {
+        if (this.voa) {
+            System.out.println(getNome() + " ataca " + criaturaAlvo.getNome() + " pelo ar causando " + forca * poder + " de dano.");
+        } else {
+            System.out.println(getNome() + " ataca diretamente o jogador " + criaturaAlvo.getNome() + ", causando " + forca * poder + " de dano.");
+        }
+        criaturaAlvo.receberDano((int) (forca * poder));
     }
 
     public void receberCura(int cura)
