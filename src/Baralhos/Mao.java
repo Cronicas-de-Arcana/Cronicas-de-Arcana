@@ -25,7 +25,7 @@ public class Mao
         if (carta != null)
         {
             cartas.add(carta);
-            System.out.println(carta.getNome() + " foi adicionada à mão.");
+            //System.out.println(carta.getNome() + " foi adicionada à mão.");
         }
         else
         {
@@ -62,12 +62,13 @@ public class Mao
             System.out.println("Nenhuma carta na mão.");
         } else
         {
-            System.out.println("Cartas na mão:");
+            //System.out.println("Cartas na mão:");
             for (int i = 0; i < cartas.size(); i++)
             {
                 Carta carta = cartas.get(i);
                 System.out.println((i + 1) + ": " + carta.getNome() + " - Custo de Mana: " + carta.getCustoMana());
             }
+            System.out.println();
         }
     }
 }

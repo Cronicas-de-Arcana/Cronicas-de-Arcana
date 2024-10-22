@@ -86,12 +86,14 @@ public class Jogar {
             System.out.println("Não há cartas suficientes para jogar.");
         }
         System.out.println(jogador.getNome() + ", suas cartas na mão:");
+        int i=0;
         for (Carta carta : jogador.getMao().getCartas())
         {
-            System.out.println(carta.getNome() + " - Custo de Mana: " + carta.getCustoMana());
+            System.out.println("Carta "+(i+1)+":"+ carta.getNome() + " - Custo de Mana: " + carta.getCustoMana());
+            i++;
         }
 
-        System.out.println(jogador.getNome() + " escolha uma carta para jogar (digite o número da carta) ou 0 para não jogar:");
+        System.out.println("\n"+jogador.getNome() + " escolha uma carta para jogar (digite o número da carta) ou 0 para não jogar:");
         int escolha = scanner.nextInt();
 
         if (escolha > 0 && escolha <= jogador.getMao().getCartas().size()) {
