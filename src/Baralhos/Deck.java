@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Deck
 {
-    private List<Carta> cartas;
+    protected List<Carta> cartas;
 
     public Deck(List<Carta> cartas)
     {
@@ -19,9 +19,9 @@ public class Deck
         this.cartas = new ArrayList<>(cartas);
     }
 
-    public Deck()
+    public Deck(ArrayList<Carta> cartas)
     {
-        this.cartas = new ArrayList<>();
+        this.cartas = cartas;
     }
 
     public boolean verificarDeckVazio()
