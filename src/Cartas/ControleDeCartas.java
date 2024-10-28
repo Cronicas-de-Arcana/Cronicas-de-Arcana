@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class ControleDeCartas
 {
+    //Podemos tornar esses decks decks padrão dos jogadores
     public ArrayList <Carta> inicializadorCartasJ1()
     {
         ArrayList<Carta> deckPadraoJ1 = new ArrayList<>();
@@ -83,5 +84,4 @@ public class ControleDeCartas
 
         return deckPadraoJ2;
     }
-
 }
