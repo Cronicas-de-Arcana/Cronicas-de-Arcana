@@ -32,6 +32,7 @@ public class Jogador
         this.nivel = 1;
         this.experiencia = 0;
 
+        //Deviamos tirar essa compra de Cartas daqui e manter a que esta presente na de Jogo
         System.out.println("Comprando cartas iniciais...\n");
         for (int i = 0; i < 5; i++)
         {

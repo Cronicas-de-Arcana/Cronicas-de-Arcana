@@ -29,10 +29,12 @@ public class Jogar {
 
     public void iniciar()
     {
+        //Cartas são embaralhadas no começo do jogo
         jogador1.getDeck().embaralhar();
         jogador2.getDeck().embaralhar();
         System.out.println("A batalha começou!");
 
+        //Cartas são compradas do Deck já embaralhado
         for (int i = 0; i < 5; i++)
         {
             jogador1.comprarCartas();
