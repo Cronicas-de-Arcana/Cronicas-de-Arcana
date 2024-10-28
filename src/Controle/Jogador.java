@@ -32,12 +32,13 @@ public class Jogador
         this.nivel = 1;
         this.experiencia = 0;
 
-        System.out.println("Comprando cartas iniciais...");
+        System.out.println("Comprando cartas iniciais...\n");
         for (int i = 0; i < 5; i++)
         {
             Carta cartaComprada = deck.comprarCarta();
             mao.adicionarCartas(cartaComprada);
         }
+        System.out.println("Compra de cartas finalizada!\n");
     }
 
     public void comprarCartas()
