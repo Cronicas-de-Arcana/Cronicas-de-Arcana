@@ -24,12 +24,6 @@ public class Main
         Jogador jogador1 = new Jogador(nomeJogador1, deckJ1, 50, 10, 3);
         Jogador jogador2 = new Jogador(nomeJogador2, deckJ2, 50, 10 , 3);
 
-        System.out.println("Cartas na mão do " + jogador1.getNome() + ":");
-        jogador1.getMao().mostrarCartas();
-
-        System.out.println("Cartas na mão do " + jogador2.getNome() + ":");
-        jogador2.getMao().mostrarCartas();
-
         Jogar jogar = new Jogar(jogador1, jogador2,jogador1.getCampoDeBatalha(),jogador2.getCampoDeBatalha());
         jogar.iniciar();
     }

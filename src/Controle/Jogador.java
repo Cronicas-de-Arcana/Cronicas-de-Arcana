@@ -31,15 +31,6 @@ public class Jogador
         this.manaAtual = manaAtual;
         this.nivel = 1;
         this.experiencia = 0;
-
-        //Deviamos tirar essa compra de Cartas daqui e manter a que esta presente na de Jogo
-        System.out.println("Comprando cartas iniciais...\n");
-        for (int i = 0; i < 5; i++)
-        {
-            Carta cartaComprada = deck.comprarCarta();
-            mao.adicionarCartas(cartaComprada);
-        }
-        System.out.println("Compra de cartas finalizada!\n");
     }
 
     public void comprarCartas()
