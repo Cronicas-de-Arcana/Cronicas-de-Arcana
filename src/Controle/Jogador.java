@@ -78,6 +78,10 @@ public class Jogador
         System.out.println(carta.getNome() + " foi enviada ao cemitério.");
     }
 
+    public CampodeBatalha getCampoDeBatalha(){
+        return this.campoDeBatalha;
+    }
+
     public String getNome()
     {
         return nome;
