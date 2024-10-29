@@ -36,14 +36,14 @@ public class Jogar {
         System.out.println("Cartas do Deck de "+jogador2.getNome()+" embaralhadas!\n");
         System.out.println("A batalha começou!");
 
-        //Cartas são compradas do Deck já embaralhado
-        for (int i = 0; i < 5; i++)
+        //4 cartas são compradas do Deck já embaralhado, 1 será comprada quando a rodada começar
+        for (int i = 0; i < 4; i++)
         {
             jogador1.comprarCartas();
         }
         System.out.println("Cartas de "+jogador1.getNome()+" compradas!\n");
 
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 4; i++){
             jogador2.comprarCartas();
         }
         System.out.println("Cartas de "+jogador2.getNome()+" compradas!\n");
@@ -68,14 +68,15 @@ public class Jogar {
         System.out.println("Fase de mana");
         jogador.adicionarMana();
 
-        System.out.println("Fase Principal");
-        jogarCartas(jogador);
+        //Jogador escolhe entre as cartas da mão uma pra colocar no campo de batalha dele
+        System.out.println("Preparação do campo de Batalha\n");
+        jogador.jogarCartaNoCampo(jogador.escolherCarta());
+        //jogarCartas(jogador);
 
         System.out.println("Fase de Combate");
         combate(jogador);
 
         System.out.println(jogador.getNome() + " terminou seu turno.");
-
 
     }
 

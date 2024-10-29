@@ -1,7 +1,5 @@
 package Cartas;
 
-import Espaço.Cemiterio;
-
 public abstract class Carta
 {
     protected String nome;

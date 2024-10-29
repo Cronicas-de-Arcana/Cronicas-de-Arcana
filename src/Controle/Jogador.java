@@ -6,6 +6,8 @@ import Cartas.Carta;
 import Espaço.CampodeBatalha;
 import Espaço.Cemiterio;
 
+import java.util.Scanner;
+
 public class Jogador
 {
     private String nome;
@@ -51,12 +53,31 @@ public class Jogador
         }
     }
 
+    public Carta escolherCarta(){
+
+        //Cartas da mão são mostradas
+        System.out.println("Cartas na mão de "+ this.getNome()+"\n");
+        this.getMao().mostrarCartas();
+        System.out.println("Quantidade de mana: "+this.getManaAtual());
+
+        //Jogador escolhe indice da carta
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Escolha uma carta: ");
+        int cartaEscolhida = sc.nextInt()-1;
+
+        //Retorno de carta escolhida
+        return this.getMao().getCartas().get(cartaEscolhida);
+    }
+
     public void jogarCartaNoCampo(Carta carta)
     {
         if (mao.temCarta(carta))
         {
-            campoDeBatalha.adicionarCartasAoCampo(carta);
-            mao.removerCarta(carta);
+            this.campoDeBatalha.adicionarCartasAoCampo(carta);
+            this.mao.removerCarta(carta);
+            System.out.println(carta.getNome()+" lançada no campo de batalha!");
+            this.manaAtual -= carta.getCustoMana();
+            this.manaAtual++;
         }
         else
         {
@@ -143,6 +164,7 @@ public class Jogador
     public void adicionarMana()
     {
         this.manaAtual++;
+        System.out.println("Nível de mana: " + this.manaAtual+"\n");
     }
 
     public void utilizarMana(int custoMana)
