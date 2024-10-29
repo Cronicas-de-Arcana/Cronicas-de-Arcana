@@ -62,11 +62,25 @@ public class Jogador
 
         //Jogador escolhe indice da carta
         Scanner sc = new Scanner(System.in);
-        System.out.println("Escolha uma carta: ");
+        System.out.println(this.getNome()+ "Escolha uma carta: ");
         int cartaEscolhida = sc.nextInt()-1;
 
         //Retorno de carta escolhida
         return this.getMao().getCartas().get(cartaEscolhida);
+    }
+
+    public Carta escolherCartaCampo(){
+
+        //Cartas do campo são mostradas
+        System.out.println("Cartas no campo de "+ this.getNome()+"\n");
+        this.getCampoDeBatalha().mostrarCartasCampo();
+
+        //Jogador escolhe indice da carta
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Escolha uma carta: ");
+        int cartaEscolhida = sc.nextInt()-1;
+
+        return this.getCampoDeBatalha().getCampo().get(cartaEscolhida);
     }
 
     public void jogarCartaNoCampo(Carta carta)

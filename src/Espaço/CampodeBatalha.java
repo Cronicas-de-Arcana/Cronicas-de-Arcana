@@ -61,6 +61,21 @@ public class CampodeBatalha {
         return campoDeBatalha;
     }
 
+    public void mostrarCartasCampo(){
+        if (campoDeBatalha.isEmpty())
+        {
+            System.out.println("Nenhuma carta no campo de Batalha.");
+        } else
+        {
+            for (int i = 0; i < campoDeBatalha.size(); i++)
+            {
+                Carta carta = campoDeBatalha.get(i);
+                System.out.println((i + 1) + ": " + carta.getNome() + "\n"+carta.getHabilidadeEspecial());
+            }
+            System.out.println();
+        }
+    }
+
 
     public List<Criatura> getCriaturasNoCampo(Jogador jogador)
     {

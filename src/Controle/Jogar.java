@@ -73,11 +73,10 @@ public class Jogar {
         System.out.println("Preparação do campo de Batalha\n");
         jogador1.jogarCartaNoCampo(jogador1.escolherCarta());
         jogador2.jogarCartaNoCampo(jogador2.escolherCarta());
-        //jogarCartas(jogador);
 
         System.out.println("Fase de Combate");
-        combate(jogador1);
-        combate(jogador2);
+        combate(jogador1, jogador2); //Ataca jogador 2
+        combate(jogador2, jogador1); //Ataca jogador 1
 
         System.out.println(jogador1.getNome() + " terminou seu turno.");
 
@@ -124,20 +123,15 @@ public class Jogar {
         }
     }
 
-    private void combate(Jogador jogador)
+    private void combate(Jogador jogador, Jogador jogadorAlvo)
     {
         System.out.println(jogador.getNome() + ", declare suas criaturas para atacar:");
 
-        Jogador oponente = (jogador == jogador1) ? jogador2 : jogador1;
-
-        for (Carta carta : campoDeBatalha.getCampo())
-        {
-            if (carta instanceof Criatura)
-            {
-                System.out.println(carta.getNome() + " ataca!");
-            }
-        }
+        jogador.getCampoDeBatalha().mostrarCartasCampo();
+        jogador.escolherCartaCampo();
+        System.out.println("Carta escolhida!!");
     }
+
     public void atualizarNivel(Jogador jogador)
     {
         //10 níveis, começando do 1
