@@ -77,7 +77,6 @@ public class Jogador
             this.mao.removerCarta(carta);
             System.out.println(carta.getNome()+" lançada no campo de batalha!");
             this.manaAtual -= carta.getCustoMana();
-            this.manaAtual++;
         }
         else
         {

@@ -50,7 +50,7 @@ public class Jogar {
 
         while (true)
         {
-            executarTurno(jogadorAtivo);
+            executarTurno(jogadorAtivo, jogador2);
             if (verificarVitoria(jogador1) || verificarVitoria(jogador2))
             {
                 break;
@@ -59,24 +59,27 @@ public class Jogar {
         }
     }
 
-    private void executarTurno(Jogador jogador)
+    private void executarTurno(Jogador jogador1, Jogador jogador2)
     {
-        System.out.println("É a vez de " + jogador.getNome());
         System.out.println("Fase de Compra: ");
-        jogador.comprarCartas();
+        jogador1.comprarCartas();
+        jogador2.comprarCartas();
 
         System.out.println("Fase de mana");
-        jogador.adicionarMana();
+        jogador1.adicionarMana();
+        jogador2.adicionarMana();
 
         //Jogador escolhe entre as cartas da mão uma pra colocar no campo de batalha dele
         System.out.println("Preparação do campo de Batalha\n");
-        jogador.jogarCartaNoCampo(jogador.escolherCarta());
+        jogador1.jogarCartaNoCampo(jogador1.escolherCarta());
+        jogador2.jogarCartaNoCampo(jogador2.escolherCarta());
         //jogarCartas(jogador);
 
         System.out.println("Fase de Combate");
-        combate(jogador);
+        combate(jogador1);
+        combate(jogador2);
 
-        System.out.println(jogador.getNome() + " terminou seu turno.");
+        System.out.println(jogador1.getNome() + " terminou seu turno.");
 
     }
 
