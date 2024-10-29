@@ -4,6 +4,7 @@ public abstract class Carta
 {
     protected String nome;
     protected int custoMana;
+    protected String habilidadeEspecial;
 
     public Carta(String nome, int custoMana)
     {
@@ -21,13 +22,13 @@ public abstract class Carta
         return custoMana;
     }
 
+    public String getHabilidadeEspecial() {
+        return habilidadeEspecial;
+    }
+
     public void mostrarCaracteristicas()
     {
         System.out.println("Nome: " + nome);
         System.out.println("Custo Mana: " + custoMana);
     }
-
-    public abstract void efeito();
-
-    public abstract void jogar();
 }

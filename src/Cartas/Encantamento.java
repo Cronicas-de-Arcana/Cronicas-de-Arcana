@@ -3,35 +3,19 @@ import Controle.*;
 
 public class Encantamento extends Carta
 {
-    protected String efeitoContinuo;
     protected int quantidadeRodadas;
     protected int cura;
     protected int dano;
     protected double modificadorDano;
 
-    public Encantamento(String nome, int custoMana, String efeitoContinuo, int quantidadeRodadas ,int dano, int cura, double modificadorDano)
+    public Encantamento(String nome, int custoMana, String habilidadeEspecial, int quantidadeRodadas ,int dano, int cura, double modificadorDano)
     {
         super(nome, custoMana);
-        this.efeitoContinuo = efeitoContinuo;
+        this.habilidadeEspecial = habilidadeEspecial;
         this.quantidadeRodadas = quantidadeRodadas;
         this.cura = cura;
         this.dano = dano;
         this.modificadorDano = modificadorDano;
-    }
-
-    public void jogar()
-    {
-        System.out.println(getNome() + " foi sumonada no campo de batalha!");
-    }
-
-    public void efeito()
-    {
-        System.out.println("Habilidade especial de " + getNome() + ": " + efeitoContinuo);
-    }
-
-    public String getEfeitoContinuo()
-    {
-        return efeitoContinuo;
     }
 
     public int getQuantidadeRodadas()

@@ -4,7 +4,6 @@ public class Criatura extends Carta
 {
     protected int hp;
     protected int resistencia;
-    protected String habilidadeEspecial;
     protected double poder;
     protected double forca;
     protected boolean voa;
@@ -53,11 +52,8 @@ public class Criatura extends Carta
         this.voa = voa;
     }
 
-    public void jogar()
-    {
-        System.out.println(getNome() + " foi sumonada no campo de batalha!");
-    }
 
+    //Decidir se devemos manter esse metodo
     public void efeito()
     {
         System.out.println("Habilidade especial de " + getNome() + ": " + habilidadeEspecial);

@@ -3,16 +3,13 @@ import Controle.*;
 
 public class Feitico extends Carta
 {
-    protected String efeito;
     protected int cura;
     protected int dano;
-    protected String habilidadeEspecial;
     protected double modificadorDano;
 
     public Feitico(String nome, int custoMana, String habilidadeEspecial, int dano, int cura, double modificadorDano)
     {
         super(nome, custoMana);
-        this.efeito = efeito;
         this.dano = dano;
         this.cura = cura;
         this.habilidadeEspecial = habilidadeEspecial;
@@ -22,16 +19,6 @@ public class Feitico extends Carta
     public double getModificadorDano()
     {
         return modificadorDano;
-    }
-
-    public void jogar()
-    {
-        System.out.println(getNome() + " foi sumonada no campo de batalha!");
-    }
-
-    public void efeito()
-    {
-        System.out.println("Habilidade especial de " + getNome() + ": " + habilidadeEspecial);
     }
 
     public void lancarFeiticoCriatura(Criatura alvo)

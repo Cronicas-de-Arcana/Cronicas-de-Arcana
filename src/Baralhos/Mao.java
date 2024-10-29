@@ -64,7 +64,7 @@ public class Mao
             for (int i = 0; i < cartas.size(); i++)
             {
                 Carta carta = cartas.get(i);
-                System.out.println((i + 1) + ": " + carta.getNome() + " - Custo de Mana: " + carta.getCustoMana());
+                System.out.println((i + 1) + ": " + carta.getNome() + " - Custo de Mana: " + carta.getCustoMana() + "\n"+carta.getHabilidadeEspecial());
             }
             System.out.println();
         }
