@@ -125,11 +125,16 @@ public class Jogar {
 
     private void combate(Jogador jogador, Jogador jogadorAlvo)
     {
-        System.out.println(jogador.getNome() + ", declare suas criaturas para atacar:");
+        //Jogador vê as cartas do jogador alvo e escolhe qual atacar
+        jogadorAlvo.getCampoDeBatalha().mostrarCartasCampo();
+        System.out.println(jogador.getNome() + ", escolha qual carta atacar:");
+        jogador.escolherCartaCampo(jogadorAlvo);
 
+        //Jogador vê suas cartas no campo e escolhe qual vai usar para atacar
+        System.out.println(jogador.getNome() + ", declare suas criaturas para atacar:");
         jogador.getCampoDeBatalha().mostrarCartasCampo();
-        jogador.escolherCartaCampo();
-        System.out.println("Carta escolhida!!");
+        Carta cartaAtacante = jogador.escolherCartaCampo(jogador);
+
     }
 
     public void atualizarNivel(Jogador jogador)
