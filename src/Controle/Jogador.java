@@ -35,6 +35,53 @@ public class Jogador
         this.experiencia = 0;
     }
 
+    public String getNome()
+    {
+        return nome;
+    }
+
+    public int getHp()
+    {
+        return hp;
+    }
+
+    public Deck getDeck()
+    {
+        return deck;
+    }
+
+    public Mao getMao()
+    {
+        return mao;
+    }
+
+    public Cemiterio getCemiterio()
+    {
+        return cemiterio;
+    }
+
+    public int getMana()
+    {
+        return mana;
+    }
+
+    public int getManaAtual()
+    {
+        return manaAtual;
+    }
+
+    public double getExperiencia() {
+        return experiencia;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
     public void comprarCartas()
     {
         if (deck.verificarDeckVazio())
@@ -108,53 +155,6 @@ public class Jogador
         return this.campoDeBatalha;
     }
 
-    public String getNome()
-    {
-        return nome;
-    }
-
-    public int getHp()
-    {
-        return hp;
-    }
-
-    public Deck getDeck()
-    {
-        return deck;
-    }
-
-    public Mao getMao()
-    {
-        return mao;
-    }
-
-    public Cemiterio getCemiterio()
-    {
-        return cemiterio;
-    }
-
-    public int getMana()
-    {
-        return mana;
-    }
-
-    public int getManaAtual()
-    {
-        return manaAtual;
-    }
-
-    public double getExperiencia() {
-        return experiencia;
-    }
-
-    public int getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
-    }
-
     public void receberDano(int dano)
     {
         this.hp -= dano;
@@ -188,5 +188,20 @@ public class Jogador
     public void defender(Carta atacante)
     {
         System.out.println(getNome() + " defende com " + atacante.getNome());
+    }
+
+    public void atualizarNivel()
+    {
+        //10 níveis, começando do 1
+        int[] experienciaPorNivel= {0, 200, 600, 1200, 1900, 2700, 3500, 4300, 5000, 6000};
+
+        for (int i = 0; i < experienciaPorNivel.length; i++)
+        {
+            if (this.getExperiencia() >= experienciaPorNivel[i])
+            {
+                this.setNivel(i + 1);
+                break;
+            }
+        }
     }
 }

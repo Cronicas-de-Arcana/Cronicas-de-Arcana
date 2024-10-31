@@ -135,30 +135,6 @@ public class Jogar {
         Carta cartaAtacante = jogador.escolherCartaCampo(jogador);
     }
 
-    public void atualizarNivel(Jogador jogador)
-    {
-        //10 níveis, começando do 1
-        int[] experienciaPorNivel= {0, 200, 600, 1200, 1900, 2700, 3500, 4300, 5000, 6000};
-
-        for (int i = 0; i < experienciaPorNivel.length - 1; i++)
-        {
-            if (jogador.getExperiencia() >= experienciaPorNivel[i])
-            {
-                jogador.setNivel(i + 1);
-                break;
-            }
-        }
-    }
-
-    public void adicionarExperiencia(Jogador vencedor, Jogador perdedor)
-    {
-        vencedor.experiencia += 300;
-        perdedor.experiencia += 100;
-
-        atualizarNivel(vencedor);
-        atualizarNivel(perdedor);
-    }
-
     private boolean verificarVitoria(Jogador jogador)
     {
         if (jogador.getHp() <= 0) {
@@ -167,5 +143,14 @@ public class Jogar {
         }
 
         return false;
+    }
+
+    public void adicionarExperiencia(Jogador vencedor, Jogador perdedor)
+    {
+        vencedor.experiencia += 300;
+        perdedor.experiencia += 100;
+
+        vencedor.atualizarNivel();
+        perdedor.atualizarNivel();
     }
 }
