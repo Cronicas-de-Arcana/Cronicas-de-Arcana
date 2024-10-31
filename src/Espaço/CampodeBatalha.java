@@ -9,32 +9,31 @@ import Controle.Jogador;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CampodeBatalha {
-    private List<Carta> campoDeBatalha;
+public class CampodeBatalha extends Espaco {
     private Mao mao;
     private Cemiterio cemiterio;
     private Deck deck;
 
     public CampodeBatalha(Mao mao, Cemiterio cemiterio, Deck deck)
     {
-        this.campoDeBatalha = new ArrayList<>();
+        this.cartas = new ArrayList<>();
         this.mao = mao;
         this.cemiterio = cemiterio;
         this.deck = deck;
     }
 
-    public void adicionarCartasAoCampo(Carta carta)
+    public void adicionarCarta(Carta carta)
     {
-        campoDeBatalha.add(carta);
+        cartas.add(carta);
         mao.removerCarta(carta);
         System.out.println(carta.getNome() + " foi colocada no campo de batalha.");
     }
 
-    public void removerCartaDoCampo(Carta carta)
+    public void removerCarta(Carta carta)
     {
-        if (campoDeBatalha.remove(carta))
+        if (cartas.remove(carta))
         {
-            cemiterio.adicionarCartasNoCemiterio(carta);
+            cemiterio.adicionarCarta(carta);
             System.out.println(carta.getNome() + " foi removida do campo de batalha.");
         }
         else
@@ -58,18 +57,18 @@ public class CampodeBatalha {
 
     public List<Carta> getCampo()
     {
-        return campoDeBatalha;
+        return cartas;
     }
 
-    public void mostrarCartasCampo(){
-        if (campoDeBatalha.isEmpty())
+    public void mostrarCartas(){
+        if (cartas.isEmpty())
         {
             System.out.println("Nenhuma carta no campo de Batalha.");
         } else
         {
-            for (int i = 0; i < campoDeBatalha.size(); i++)
+            for (int i = 0; i < cartas.size(); i++)
             {
-                Carta carta = campoDeBatalha.get(i);
+                Carta carta = cartas.get(i);
                 System.out.println((i + 1) + ": " + carta.getNome() + "\n"+carta.getHabilidadeEspecial());
             }
             System.out.println();
@@ -80,7 +79,7 @@ public class CampodeBatalha {
     public List<Criatura> getCriaturasNoCampo(Jogador jogador)
     {
         List<Criatura> criaturasNoCampo = new ArrayList<>();
-        for (Carta carta : campoDeBatalha) {
+        for (Carta carta : cartas) {
             if (carta instanceof Criatura)
             {
                 criaturasNoCampo.add((Criatura) carta);

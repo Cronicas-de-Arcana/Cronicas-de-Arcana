@@ -73,7 +73,7 @@ public class Jogador
 
         //Cartas do campo são mostradas
         System.out.println("Cartas no campo de "+ this.getNome()+"\n");
-        jogador.getCampoDeBatalha().mostrarCartasCampo();
+        jogador.getCampoDeBatalha().mostrarCartas();
 
         //Jogador escolhe indice da carta
         Scanner sc = new Scanner(System.in);
@@ -87,7 +87,7 @@ public class Jogador
     {
         if (mao.temCarta(carta))
         {
-            this.campoDeBatalha.adicionarCartasAoCampo(carta);
+            this.campoDeBatalha.adicionarCarta(carta);
             this.mao.removerCarta(carta);
             System.out.println(carta.getNome()+" lançada no campo de batalha!");
             this.manaAtual -= carta.getCustoMana();
@@ -100,7 +100,7 @@ public class Jogador
 
     public void enviarAoCemiterio(Carta carta)
     {
-        cemiterio.adicionarCartasNoCemiterio(carta);
+        cemiterio.adicionarCarta(carta);
         System.out.println(carta.getNome() + " foi enviada ao cemitério.");
     }
 

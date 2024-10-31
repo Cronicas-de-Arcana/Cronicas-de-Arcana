@@ -1,7 +1,6 @@
 package Controle;
 
 import Cartas.Carta;
-import Cartas.Criatura;
 import Espaço.CampodeBatalha;
 import java.util.Scanner;
 
@@ -89,7 +88,7 @@ public class Jogar {
             {
                 if (carta.getCustoMana() <= jogador.getManaAtual())
                 {
-                    campoDeBatalha.adicionarCartasAoCampo(carta);
+                    campoDeBatalha.adicionarCarta(carta);
                     jogador.utilizarMana(carta.getCustoMana());
                     break;
                 }
@@ -111,7 +110,7 @@ public class Jogar {
         if (escolha > 0 && escolha <= jogador.getMao().getCartas().size()) {
             Carta cartaEscolhida = jogador.getMao().getCartas().get(escolha - 1);
             if (cartaEscolhida.getCustoMana() <= jogador.getManaAtual()) {
-                campoDeBatalha.adicionarCartasAoCampo(cartaEscolhida);
+                campoDeBatalha.adicionarCarta(cartaEscolhida);
                 jogador.utilizarMana(cartaEscolhida.getCustoMana());
                 jogador.getMao().removerCarta(cartaEscolhida);
                 System.out.println(jogador.getNome() + " jogou a carta " + cartaEscolhida.getNome());
@@ -126,15 +125,14 @@ public class Jogar {
     private void combate(Jogador jogador, Jogador jogadorAlvo)
     {
         //Jogador vê as cartas do jogador alvo e escolhe qual atacar
-        jogadorAlvo.getCampoDeBatalha().mostrarCartasCampo();
+        jogadorAlvo.getCampoDeBatalha().mostrarCartas();
         System.out.println(jogador.getNome() + ", escolha qual carta atacar:");
         jogador.escolherCartaCampo(jogadorAlvo);
 
         //Jogador vê suas cartas no campo e escolhe qual vai usar para atacar
         System.out.println(jogador.getNome() + ", declare suas criaturas para atacar:");
-        jogador.getCampoDeBatalha().mostrarCartasCampo();
+        jogador.getCampoDeBatalha().mostrarCartas();
         Carta cartaAtacante = jogador.escolherCartaCampo(jogador);
-
     }
 
     public void atualizarNivel(Jogador jogador)
