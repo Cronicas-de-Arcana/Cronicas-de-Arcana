@@ -2,13 +2,14 @@ package Cartas;
 
 import java.util.ArrayList;
 
-public class ControleDeCartas
+public class Inventario
 {
+    ArrayList<Carta> cartasInventario = new ArrayList<>();
+
     //Podemos tornar esses decks decks padrão dos jogadores
     public ArrayList <Carta> inicializadorCartasJ1()
     {
         ArrayList<Carta> deckPadraoJ1 = new ArrayList<>();
-
         Criatura goblin = new Criatura(120, "Goblin", 2, 90, 45, 9, "Ataques sucessivos",false);
         deckPadraoJ1.add(goblin);
         Criatura serpenteDoCaos = new Criatura(130, "Serpente do Caos", 5, 120, 80, 10, "Veneno: Aplica envenenamento por 2 rodadas", false);

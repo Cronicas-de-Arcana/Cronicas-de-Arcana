@@ -2,7 +2,6 @@ package Controle;
 
 public class Nivel
 {
-
     private int nivelAtual;
 
     public Nivel()

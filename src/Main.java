@@ -1,5 +1,5 @@
 import Baralhos.Deck;
-import Cartas.ControleDeCartas;
+import Cartas.Inventario;
 import Controle.Jogador;
 import Controle.Jogar;
 import java.util.Scanner;
@@ -16,10 +16,10 @@ public class Main
         System.out.print("Insira o nome do Jogador 2: ");
         String nomeJogador2 = scanner.nextLine();
 
-        ControleDeCartas controleDeCartas = new ControleDeCartas();
+        Inventario inventarioGeral = new Inventario();
 
-        Deck deckJ1 = new Deck(controleDeCartas.inicializadorCartasJ1());
-        Deck deckJ2 = new Deck(controleDeCartas.inicializadorCartasJ2());
+        Deck deckJ1 = new Deck(inventarioGeral.inicializadorCartasJ1());
+        Deck deckJ2 = new Deck(inventarioGeral.inicializadorCartasJ2());
 
         Jogador jogador1 = new Jogador(nomeJogador1, deckJ1, 50, 10, 3);
         Jogador jogador2 = new Jogador(nomeJogador2, deckJ2, 50, 10 , 3);

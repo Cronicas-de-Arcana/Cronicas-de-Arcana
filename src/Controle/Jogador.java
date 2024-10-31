@@ -72,7 +72,7 @@ public class Jogador
     public Carta escolherCartaCampo(Jogador jogador){
 
         //Cartas do campo são mostradas
-        System.out.println("Cartas no campo de "+ this.getNome()+"\n");
+        System.out.println("Cartas no campo de "+ jogador.getNome()+"\n");
         jogador.getCampoDeBatalha().mostrarCartas();
 
         //Jogador escolhe indice da carta
