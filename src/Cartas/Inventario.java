@@ -4,9 +4,30 @@ import java.util.ArrayList;
 
 public class Inventario
 {
-    ArrayList<Carta> cartasInventario = new ArrayList<>();
+    protected ArrayList<Carta> cartasInventario = new ArrayList<>();
+    //Array em que vai ficar as cartas que o player vai conquistando ao progredir os niveis
+    protected Carta[][] cartasProgresso = new Carta[10][10];
 
-    //Podemos tornar esses decks decks padrão dos jogadores
+    public Inventario(){
+        inicializadorCartasJ1();
+        inicializadorCartasJ2();
+        inicializarCartasProgresso();
+    }
+
+    public ArrayList<Carta> getCartasInventario() {
+        return cartasInventario;
+    }
+
+    public Carta[][] getCartasProgresso() {
+        return cartasProgresso;
+    }
+
+    public void inicializarCartasProgresso(){
+        cartasProgresso[0][0] = new Criatura(210, "Gigante", 3, 75, 50, 10, "Socos lentos mas fortes", false);
+        cartasProgresso[0][1] = new Criatura(120, "Lobisomem", 4, 90, 100, 7, "Arranhões sucessivos.", false);
+        //Temos que criar mais cartas nesses Arrays
+    }
+
     public ArrayList <Carta> inicializadorCartasJ1()
     {
         ArrayList<Carta> deckPadraoJ1 = new ArrayList<>();

@@ -3,6 +3,7 @@ package Controle;
 import Baralhos.Deck;
 import Baralhos.Mao;
 import Cartas.Carta;
+import Cartas.Inventario;
 import Espaço.CampodeBatalha;
 import Espaço.Cemiterio;
 
@@ -20,6 +21,7 @@ public class Jogador
     protected Mao mao;
     protected Cemiterio cemiterio;
     private CampodeBatalha campoDeBatalha;
+    private Inventario inventario;
 
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual)
     {
@@ -33,6 +35,7 @@ public class Jogador
         this.manaAtual = manaAtual;
         this.nivel = 1;
         this.experiencia = 0;
+        this.inventario = new Inventario();
     }
 
     public String getNome()
@@ -202,6 +205,15 @@ public class Jogador
                 this.setNivel(i + 1);
                 break;
             }
+        }
+    }
+
+    public void adicionarCartasProgresso(){
+        int nivelAtual = this.getNivel();
+        Carta[] cartasParaAdicionar = inventario.getCartasProgresso()[nivelAtual-1];
+
+        for (Carta carta: cartasParaAdicionar){
+            this.inventario.getCartasInventario().add(carta);
         }
     }
 }
