@@ -1,4 +1,6 @@
-package Visualização;
+package Controle;
+
+import Visualização.Tela;
 
 import javax.swing.*;
 
