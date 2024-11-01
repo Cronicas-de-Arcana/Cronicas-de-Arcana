@@ -36,9 +36,12 @@ public class Deck
             System.out.println("O deck está vazio");
             return null;
         }
-        Carta carta = cartas.remove(cartas.size() - 1);
-        System.out.println("Carta comprada: " + carta.getNome());
-        return carta;
+        else
+        {
+            Carta carta = cartas.remove(cartas.size() - 1);
+            System.out.println(carta.getNome());
+            return carta;
+        }
     }
 
     public int getTamanho() {

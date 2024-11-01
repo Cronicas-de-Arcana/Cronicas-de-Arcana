@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 import java.util.Random;
 
-public class Jogar {
+public class Jogar
+{
     private Jogador jogador1;
     private Jogador jogador2;
     private CampodeBatalha campoDeBatalha;
@@ -28,30 +29,30 @@ public class Jogar {
 
     public void iniciar()
     {
-        //Cartas são embaralhadas no começo do jogo
+        // Cartas são embaralhadas no começo do jogo
         jogador1.getDeck().embaralhar();
-        System.out.println("Cartas do Deck de "+jogador1.getNome()+" embaralhadas!\n");
+        System.out.println("\nCartas do Deck de " + jogador1.getNome() + " embaralhadas!");
         jogador2.getDeck().embaralhar();
-        System.out.println("Cartas do Deck de "+jogador2.getNome()+" embaralhadas!\n");
-        System.out.println("A batalha começou!");
+        System.out.println("\nCartas do Deck de " + jogador2.getNome() + " embaralhadas!");
+        System.out.println("\nA batalha começou!");
 
-        //4 cartas são compradas do Deck já embaralhado, 1 será comprada quando a rodada começar
+        // 4 cartas são compradas do Deck já embaralhado, 1 será comprada quando a rodada começar
+        System.out.println("\nCartas de " + jogador1.getNome() + " sorteadas:");
         for (int i = 0; i < 4; i++)
         {
             jogador1.comprarCartas();
         }
-        System.out.println("Cartas de "+jogador1.getNome()+" compradas!\n");
 
-        for (int i = 0; i < 4; i++){
+        System.out.println("\nCartas de " + jogador2.getNome() + " sorteadas:");
+        for (int i = 0; i < 4; i++)
+        {
             jogador2.comprarCartas();
         }
-        System.out.println("Cartas de "+jogador2.getNome()+" compradas!\n");
 
         while (true)
         {
             executarTurno(jogadorAtivo, jogador2);
-            if (verificarVitoria(jogador1) || verificarVitoria(jogador2))
-            {
+            if (verificarVitoria(jogador1) || verificarVitoria(jogador2)) {
                 break;
             }
             jogadorAtivo = (jogadorAtivo == jogador1) ? jogador2 : jogador1;
@@ -60,76 +61,39 @@ public class Jogar {
 
     private void executarTurno(Jogador jogador1, Jogador jogador2)
     {
-        System.out.println("Fase de Compra: ");
+        System.out.println("\nFase de Compra");
+        System.out.println("\nCarta que " + jogador1.getNome() + " comprou:");
         jogador1.comprarCartas();
+        System.out.println("\nCarta que " + jogador2.getNome() + " comprou:");
         jogador2.comprarCartas();
 
-        System.out.println("Fase de mana");
+        System.out.println("\nFase de mana:\n");
         jogador1.adicionarMana();
+        System.out.println("Nível de mana de " + jogador1.getNome() + ":" + jogador1.getManaAtual());
         jogador2.adicionarMana();
+        System.out.println("Nível de mana de " + jogador2.getNome() + ":" + jogador2.getManaAtual() + "\n");
 
-        //Jogador escolhe entre as cartas da mão uma pra colocar no campo de batalha dele
-        System.out.println("Preparação do campo de Batalha\n");
-        jogador1.jogarCartaNoCampo(jogador1.escolherCarta());
-        jogador2.jogarCartaNoCampo(jogador2.escolherCarta());
+        // Preparação do campo de batalha usando o novo método
+        System.out.println("Preparação do campo de Batalha!\n");
+        jogador1.jogarCartasNoCampo();
+        jogador2.jogarCartasNoCampo();
 
-        System.out.println("Fase de Combate");
-        combate(jogador1, jogador2); //Ataca jogador 2
-        combate(jogador2, jogador1); //Ataca jogador 1
+        System.out.println("Fase de Combate:");
+        combate(jogador1, jogador2); // Ataca jogador 2
+        combate(jogador2, jogador1); // Ataca jogador 1
 
         System.out.println(jogador1.getNome() + " terminou seu turno.");
-
-    }
-
-    private void jogarCartas(Jogador jogador)
-    {
-        if (jogador.getMao().temCartasSuficientes(1)) {
-            for (Carta carta : jogador.getMao().getCartas())
-            {
-                if (carta.getCustoMana() <= jogador.getManaAtual())
-                {
-                    campoDeBatalha.adicionarCarta(carta);
-                    jogador.utilizarMana(carta.getCustoMana());
-                    break;
-                }
-            }
-        } else {
-            System.out.println("Não há cartas suficientes para jogar.");
-        }
-        System.out.println(jogador.getNome() + ", suas cartas na mão:");
-        int i=0;
-        for (Carta carta : jogador.getMao().getCartas())
-        {
-            System.out.println("Carta "+(i+1)+":"+ carta.getNome() + " - Custo de Mana: " + carta.getCustoMana());
-            i++;
-        }
-
-        System.out.println("\n"+jogador.getNome() + " escolha uma carta para jogar (digite o número da carta) ou 0 para não jogar:");
-        int escolha = scanner.nextInt();
-
-        if (escolha > 0 && escolha <= jogador.getMao().getCartas().size()) {
-            Carta cartaEscolhida = jogador.getMao().getCartas().get(escolha - 1);
-            if (cartaEscolhida.getCustoMana() <= jogador.getManaAtual()) {
-                campoDeBatalha.adicionarCarta(cartaEscolhida);
-                jogador.utilizarMana(cartaEscolhida.getCustoMana());
-                jogador.getMao().removerCarta(cartaEscolhida);
-                System.out.println(jogador.getNome() + " jogou a carta " + cartaEscolhida.getNome());
-            } else {
-                System.out.println("Mana insuficiente para jogar essa carta.");
-            }
-        } else {
-            System.out.println("Nenhuma carta foi jogada.");
-        }
     }
 
     private void combate(Jogador jogador, Jogador jogadorAlvo)
     {
-        //Jogador vê as cartas do jogador alvo e escolhe qual atacar
+        // Jogador vê as cartas do jogador alvo e escolhe qual atacar
+        System.out.println("Cartas no campo de " + jogadorAlvo.getNome() + ":");
         jogadorAlvo.getCampoDeBatalha().mostrarCartas();
         System.out.println(jogador.getNome() + ", escolha qual carta atacar:");
         jogador.escolherCartaCampo(jogadorAlvo);
 
-        //Jogador vê suas cartas no campo e escolhe qual vai usar para atacar
+        // Jogador vê suas cartas no campo e escolhe qual vai usar para atacar
         System.out.println(jogador.getNome() + ", declare suas criaturas para atacar:");
         jogador.getCampoDeBatalha().mostrarCartas();
         Carta cartaAtacante = jogador.escolherCartaCampo(jogador);
@@ -137,11 +101,11 @@ public class Jogar {
 
     private boolean verificarVitoria(Jogador jogador)
     {
-        if (jogador.getHp() <= 0) {
+        if (jogador.getHp() <= 0)
+        {
             System.out.println(jogador.getNome() + " foi derrotado!");
             return true;
         }
-
         return false;
     }
 

@@ -25,8 +25,6 @@ public class CampodeBatalha extends Espaco {
     public void adicionarCarta(Carta carta)
     {
         cartas.add(carta);
-        mao.removerCarta(carta);
-        System.out.println(carta.getNome() + " foi colocada no campo de batalha.");
     }
 
     public void removerCarta(Carta carta)
@@ -60,7 +58,8 @@ public class CampodeBatalha extends Espaco {
         return cartas;
     }
 
-    public void mostrarCartas(){
+    public void mostrarCartas()
+    {
         if (cartas.isEmpty())
         {
             System.out.println("Nenhuma carta no campo de Batalha.");

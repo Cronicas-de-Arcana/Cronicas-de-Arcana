@@ -22,8 +22,9 @@ public class Jogador
     protected Cemiterio cemiterio;
     private CampodeBatalha campoDeBatalha;
     private Inventario inventario;
+    private Scanner scanner;
 
-    public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual)
+    public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual, Scanner scanner)
     {
         this.nome = nome;
         this.deck = deck;
@@ -36,6 +37,7 @@ public class Jogador
         this.nivel = 1;
         this.experiencia = 0;
         this.inventario = new Inventario();
+        this.scanner = scanner;
     }
 
     public String getNome()
@@ -99,32 +101,12 @@ public class Jogador
         }
         else
         {
-            System.out.println("Não foi possível comprar a carta "+ cartaComprada.getNome() + ".");
+            System.out.println("Não foi possível comprar a carta "+ nome + ".");
         }
     }
 
-    public Carta escolherCarta(){
-
-        //Cartas da mão são mostradas
-        System.out.println("Cartas na mão de "+ this.getNome()+"\n");
-        this.getMao().mostrarCartas();
-        System.out.println("Quantidade de mana: "+this.getManaAtual());
-
-        //Jogador escolhe indice da carta
-        Scanner sc = new Scanner(System.in);
-        System.out.println(this.getNome()+ "Escolha uma carta: ");
-        int cartaEscolhida = sc.nextInt()-1;
-
-        //Retorno de carta escolhida
-        return this.getMao().getCartas().get(cartaEscolhida);
-    }
-
-    public Carta escolherCartaCampo(Jogador jogador){
-
-        //Cartas do campo são mostradas
-        System.out.println("Cartas no campo de "+ jogador.getNome()+"\n");
-        jogador.getCampoDeBatalha().mostrarCartas();
-
+    public Carta escolherCartaCampo(Jogador jogador)
+    {
         //Jogador escolhe indice da carta
         Scanner sc = new Scanner(System.in);
         System.out.println("Escolha uma carta: ");
@@ -133,18 +115,37 @@ public class Jogador
         return jogador.getCampoDeBatalha().getCampo().get(cartaEscolhida);
     }
 
-    public void jogarCartaNoCampo(Carta carta)
+    public void jogarCartasNoCampo()
     {
-        if (mao.temCarta(carta))
+        System.out.println(this.getNome() + ", suas cartas na mão:");
+        int i = 0;
+        for (Carta carta : this.mao.getCartas())
         {
-            this.campoDeBatalha.adicionarCarta(carta);
-            this.mao.removerCarta(carta);
-            System.out.println(carta.getNome()+" lançada no campo de batalha!");
-            this.manaAtual -= carta.getCustoMana();
+            System.out.println("Carta " + (i + 1) + ": " + carta.getNome() + " - Custo de Mana: " + carta.getCustoMana() + "\nHabilidade: " + carta.getHabilidadeEspecial());
+            i++;
+        }
+
+        System.out.println("\n" + this.nome + " escolha uma carta para jogar (digite o número da carta) ou 0 para não jogar:");
+        int escolha = this.scanner.nextInt();
+
+        if (escolha > 0 && escolha <= this.mao.getCartas().size())
+        {
+            Carta cartaEscolhida = this.mao.getCartas().get(escolha - 1);
+            if (cartaEscolhida.getCustoMana() <= this.manaAtual)
+            {
+                this.campoDeBatalha.adicionarCarta(cartaEscolhida);
+                this.utilizarMana(cartaEscolhida.getCustoMana());
+                this.mao.removerCarta(cartaEscolhida);
+                System.out.println(this.getNome() + " sumonou " + cartaEscolhida.getNome() + "!");
+            }
+            else
+            {
+                System.out.println("Mana insuficiente para jogar essa carta.");
+            }
         }
         else
         {
-            System.out.println("A carta " + carta.getNome() + " não está na mão.");
+            System.out.println("Nenhuma carta foi jogada.\n");
         }
     }
 
@@ -154,7 +155,8 @@ public class Jogador
         System.out.println(carta.getNome() + " foi enviada ao cemitério.");
     }
 
-    public CampodeBatalha getCampoDeBatalha(){
+    public CampodeBatalha getCampoDeBatalha()
+    {
         return this.campoDeBatalha;
     }
 
@@ -179,13 +181,12 @@ public class Jogador
 
     public void adicionarMana()
     {
-        this.manaAtual++;
-        System.out.println("Nível de mana: " + this.manaAtual+"\n");
+        manaAtual++;
     }
 
     public void utilizarMana(int custoMana)
     {
-        this.manaAtual -= custoMana;
+        manaAtual -= custoMana;
     }
 
     public void defender(Carta atacante)
@@ -208,7 +209,8 @@ public class Jogador
         }
     }
 
-    public void adicionarCartasProgresso(){
+    public void adicionarCartasProgresso()
+    {
         int nivelAtual = this.getNivel();
         Carta[] cartasParaAdicionar = inventario.getCartasProgresso()[nivelAtual-1];
 
