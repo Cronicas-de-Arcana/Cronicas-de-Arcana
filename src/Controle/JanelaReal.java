@@ -9,11 +9,11 @@ public class JanelaReal extends JFrame {
 
     //Construtor da Janela que rodará o jogo -> Inicia tela inicial que sera passada como argumento (main)
     public JanelaReal(Tela telaInicial) {
-        this.setLayout(telaInicial.getLayout());
         this.telaAtual = telaInicial;
+        this.add(telaAtual);
         setContentPane(telaAtual);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1920, 1080);
+        setSize(600, 400);
         setVisible(true);
     }
 
@@ -24,5 +24,9 @@ public class JanelaReal extends JFrame {
         setContentPane(telaAtual);
         revalidate();
         repaint();
+    }
+
+    public static void main(String[] args) {
+        new JanelaReal(new TelaInicial());
     }
 }
