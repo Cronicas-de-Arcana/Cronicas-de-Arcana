@@ -11,7 +11,6 @@ public class Janela extends JFrame {
 
     public Janela() {
         super("Crônicas de Arcana");
-
         layout = new CardLayout();
         painelPrincipal = new JPanel(layout);
 
@@ -47,7 +46,7 @@ public class Janela extends JFrame {
         botaoIniciar.setFont(fonteInicio);
         botaoIniciar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Muda para a Tela de Batalha quando o botão "Iniciar" é clicado
+                // Muda para a Visualização.Tela de Batalha quando o botão "Iniciar" é clicado
                 layout.show(painelPrincipal, "TelaBatalha");
             }
         });
