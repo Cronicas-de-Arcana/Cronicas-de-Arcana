@@ -4,8 +4,10 @@ import Visualização.Tela;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class TelaInicial extends Tela{
+public class TelaInicial extends Tela {
 
     public TelaInicial(){
         this.renderizar();
@@ -33,6 +35,11 @@ public class TelaInicial extends Tela{
         configuracaoBotao.weightx = 1.0;
         configuracaoBotao.weighty = 1.0;
         configuracaoBotao.anchor = GridBagConstraints.CENTER;
+        botaoIniciar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //Implementar lógica de mudança de tela
+            }
+        });
 
         //Criando painel e adicionando botão no centro dele
         JPanel painelCentro = new JPanel();
