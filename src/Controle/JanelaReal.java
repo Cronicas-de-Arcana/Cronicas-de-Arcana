@@ -39,6 +39,7 @@ public class JanelaReal extends JFrame implements OuvinteMudancaTela {
     }
 
     public static void main(String[] args) {
+
         new JanelaReal(new TelaInicial());
     }
 }
