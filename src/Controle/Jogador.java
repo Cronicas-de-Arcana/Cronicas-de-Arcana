@@ -3,6 +3,7 @@ package Controle;
 import Baralhos.Deck;
 import Baralhos.Mao;
 import Cartas.Carta;
+import Cartas.Criatura;
 import Cartas.Inventario;
 import Espaço.CampodeBatalha;
 import Espaço.Cemiterio;
@@ -118,36 +119,65 @@ public class Jogador
     public void jogarCartasNoCampo()
     {
         System.out.println(this.getNome() + ", suas cartas na mão:");
-        int i = 0;
-        for (Carta carta : this.mao.getCartas())
-        {
-            System.out.println("Carta " + (i + 1) + ": " + carta.getNome() + " - Custo de Mana: " + carta.getCustoMana() + "\nHabilidade: " + carta.getHabilidadeEspecial());
-            i++;
-        }
 
-        System.out.println("\n" + this.nome + " escolha uma carta para jogar (digite o número da carta) ou 0 para não jogar:");
-        int escolha = this.scanner.nextInt();
-
-        if (escolha > 0 && escolha <= this.mao.getCartas().size())
+        while (true)
         {
-            Carta cartaEscolhida = this.mao.getCartas().get(escolha - 1);
-            if (cartaEscolhida.getCustoMana() <= this.manaAtual)
+            int i = 0;
+            for (Carta carta : this.mao.getCartas())
             {
-                this.campoDeBatalha.adicionarCarta(cartaEscolhida);
-                this.utilizarMana(cartaEscolhida.getCustoMana());
-                this.mao.removerCarta(cartaEscolhida);
-                System.out.println(this.getNome() + " sumonou " + cartaEscolhida.getNome() + "!");
+                System.out.println("Carta " + (i + 1) + ": " + carta.getNome() + " - Custo de Mana: " + carta.getCustoMana() + "\nHabilidade: " + carta.getHabilidadeEspecial());
+                i++;
+            }
+
+            System.out.println("\n" + this.nome + " escolha uma carta para jogar (digite o número da carta) ou 0 para não jogar:");
+            int escolha = this.scanner.nextInt();
+
+            if (escolha == 0)
+            {
+                System.out.println("Nenhuma carta foi jogada. Encerrando a fase de invocação.\n");
+                break;
+            }
+
+            if (escolha > 0 && escolha <= this.mao.getCartas().size())
+            {
+                Carta cartaEscolhida = this.mao.getCartas().get(escolha - 1);
+
+                if (cartaEscolhida.getCustoMana() <= this.manaAtual)
+                {
+                    if (cartaEscolhida instanceof Criatura)
+                    {
+                        this.campoDeBatalha.adicionarCarta(cartaEscolhida);
+                        System.out.println(this.getNome() + " invocou " + cartaEscolhida.getNome() + " no campo de batalha!");
+                        this.utilizarMana(cartaEscolhida.getCustoMana());
+                        this.mao.removerCarta(cartaEscolhida);
+                    }
+                    else
+                    {
+                        System.out.println("Você só pode invocar cartas que sejam criaturas. Escolha novamente.\n");
+                    }
+                }
+                else
+                {
+                    System.out.println("Mana insuficiente para jogar essa carta. Escolha novamente.");
+                }
             }
             else
             {
-                System.out.println("Mana insuficiente para jogar essa carta.");
+                System.out.println("Escolha inválida. Tente novamente.");
+                continue;
+            }
+
+            System.out.println("Deseja jogar outra carta? (s/n)");
+            String resposta = this.scanner.next();
+
+            if (!resposta.equalsIgnoreCase("s"))
+            {
+                System.out.println("Fim da fase de invocação de cartas.\n");
+                break;
             }
         }
-        else
-        {
-            System.out.println("Nenhuma carta foi jogada.\n");
-        }
     }
+
 
     public void enviarAoCemiterio(Carta carta)
     {

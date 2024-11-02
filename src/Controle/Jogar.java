@@ -52,7 +52,7 @@ public class Jogar
         while (true)
         {
             executarTurno(jogador1, jogador2);
-            if (verificarVitoria(jogador1) || verificarVitoria(jogador2))
+            if (verificarVitoria(jogador1, jogador2) || verificarVitoria(jogador2, jogador1))
             {
                 break;
             }
@@ -91,7 +91,7 @@ public class Jogar
         System.out.println("Cartas no campo de " + jogadorAlvo.getNome() + ":");
         jogadorAlvo.getCampoDeBatalha().mostrarCartas();
         System.out.println(jogador.getNome() + ", escolha qual carta atacar:");
-        jogador.escolherCartaCampo(jogadorAlvo);
+        jogadorAlvo.escolherCartaCampo(jogador);
 
         // Jogador vê suas cartas no campo e escolhe qual vai usar para atacar
         System.out.println(jogador.getNome() + ", declare suas criaturas para atacar:");
@@ -99,11 +99,18 @@ public class Jogar
         Carta cartaAtacante = jogador.escolherCartaCampo(jogador);
     }
 
-    private boolean verificarVitoria(Jogador jogador)
+    private boolean verificarVitoria(Jogador jogador1 , Jogador jogador2)
     {
-        if (jogador.getHp() <= 0)
+        if (jogador1.getHp() <= 0)
         {
-            System.out.println(jogador.getNome() + " foi derrotado!");
+            System.out.println(jogador1.getNome() + " foi derrotado!");
+            adicionarExperiencia(jogador2, jogador1);
+            return true;
+        }
+        else if (jogador2.getHp() <= 0)
+        {
+            System.out.println(jogador2.getNome() + " foi derrotado!");
+            adicionarExperiencia(jogador1, jogador2);
             return true;
         }
         return false;
