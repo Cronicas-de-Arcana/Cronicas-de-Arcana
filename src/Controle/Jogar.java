@@ -51,11 +51,11 @@ public class Jogar
 
         while (true)
         {
-            executarTurno(jogadorAtivo, jogador2);
-            if (verificarVitoria(jogador1) || verificarVitoria(jogador2)) {
+            executarTurno(jogador1, jogador2);
+            if (verificarVitoria(jogador1) || verificarVitoria(jogador2))
+            {
                 break;
             }
-            jogadorAtivo = (jogadorAtivo == jogador1) ? jogador2 : jogador1;
         }
     }
 
