@@ -1,5 +1,6 @@
 package Controle;
 
+import Visualização.OuvinteMudancaTela;
 import Visualização.Tela;
 
 import javax.swing.*;
@@ -9,8 +10,14 @@ import java.awt.event.ActionListener;
 
 public class TelaInicial extends Tela {
 
+    private OuvinteMudancaTela ouvinte;
+
     public TelaInicial(){
         this.renderizar();
+    }
+
+    public void setOuvinteMudancaTela(OuvinteMudancaTela ouvinte) {
+        this.ouvinte = ouvinte;
     }
 
     public void renderizar(){
@@ -24,20 +31,26 @@ public class TelaInicial extends Tela {
         titulo.setForeground(new Color(255, 255, 255));
         this.add(titulo, BorderLayout.NORTH);
 
-        //Criando botão iniciar partida e definindo parametros para ajustá-lo no centro
+        //Criando botão iniciar
         JButton botaoIniciar = new JButton("Iniciar Partida");
         botaoIniciar.setFont(new Font("Arial", Font.BOLD, (int) (titulo.getFont().getSize()*0.7)));
         botaoIniciar.setBackground(Color.WHITE);
         botaoIniciar.setPreferredSize(new Dimension(320, 120));
+
+        // Configuração do Botão e ActionListener
         GridBagConstraints configuracaoBotao = new GridBagConstraints();
         configuracaoBotao.gridx = 0;
         configuracaoBotao.gridy = 0;
         configuracaoBotao.weightx = 1.0;
         configuracaoBotao.weighty = 1.0;
         configuracaoBotao.anchor = GridBagConstraints.CENTER;
+
+
         botaoIniciar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //Implementar lógica de mudança de tela
+                if (ouvinte != null) {
+                    ouvinte.mudarTela();  // Notifica o observador para mudar a tela
+                }
             }
         });
 

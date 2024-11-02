@@ -11,6 +11,12 @@ public class JanelaReal extends JFrame implements OuvinteMudancaTela {
     //Construtor da Janela que rodará o jogo -> Inicia tela inicial que sera passada como argumento (main)
     public JanelaReal(Tela telaInicial) {
         this.telaAtual = telaInicial;
+
+        // Registra JanelaReal como observador da TelaInicial
+        if (telaInicial instanceof TelaInicial) {
+            ((TelaInicial) telaInicial).setOuvinteMudancaTela(this);
+        }
+
         this.add(telaAtual);
         setContentPane(telaAtual);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,6 +35,7 @@ public class JanelaReal extends JFrame implements OuvinteMudancaTela {
 
     @Override
     public void mudarTela() {
+        //Mudar nova tela pra uma tela que ainda precisa ser desenvolvida.
         Tela novaTela = new TelaInicial();
         setTelaAtual(novaTela);
     }
