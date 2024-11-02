@@ -1,5 +1,6 @@
 package Controle;
 
+import Espaço.TelaBatalha;
 import Visualização.OuvinteMudancaTela;
 import Visualização.Tela;
 
@@ -24,19 +25,16 @@ public class JanelaReal extends JFrame implements OuvinteMudancaTela {
         setVisible(true);
     }
 
-    public void setTelaAtual(Tela telaAtual) {
-        this.setLayout(telaAtual.getLayout());
-        this.removeAll();
-        this.telaAtual = telaAtual;
-        setContentPane(telaAtual);
+    public void setTelaAtual(Tela novaTela) {
+        this.telaAtual = novaTela;
+        setContentPane(novaTela);
         revalidate();
         repaint();
     }
 
     @Override
     public void mudarTela() {
-        //Mudar nova tela pra uma tela que ainda precisa ser desenvolvida.
-        Tela novaTela = new TelaInicial();
+        Tela novaTela = new TelaBatalha();
         setTelaAtual(novaTela);
     }
 
