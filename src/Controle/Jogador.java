@@ -154,11 +154,13 @@ public class Jogador
                     else
                     {
                         System.out.println("Você só pode invocar cartas que sejam criaturas. Escolha novamente.\n");
+                        continue;
                     }
                 }
                 else
                 {
-                    System.out.println("Mana insuficiente para jogar essa carta. Escolha novamente.");
+                    System.out.println("Mana insuficiente para jogar essa carta. Escolha novamente.\n");
+                    continue;
                 }
             }
             else
@@ -172,7 +174,7 @@ public class Jogador
 
             if (!resposta.equalsIgnoreCase("s"))
             {
-                System.out.println("Fim da fase de invocação de cartas.\n");
+                System.out.println("Fim da fase de invocação de cartas para "+ nome +".\n");
                 break;
             }
         }

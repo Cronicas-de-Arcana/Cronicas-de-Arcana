@@ -31,5 +31,4 @@ public abstract class Carta
         System.out.println("Nome: " + nome);
         System.out.println("Custo Mana: " + custoMana);
     }
-
 }

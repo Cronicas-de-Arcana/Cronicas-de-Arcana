@@ -36,7 +36,7 @@ public class Mao
     {
         if (cartas.remove(carta))
         {
-            System.out.println(carta.getNome() + " foi removida da mão.");
+            System.out.println(carta.getNome() + " foi removida da mão.\n");
         }
         else
         {

@@ -68,7 +68,7 @@ public class CampodeBatalha extends Espaco {
             for (int i = 0; i < cartas.size(); i++)
             {
                 Carta carta = cartas.get(i);
-                System.out.println((i + 1) + ": " + carta.getNome() + "\n"+carta.getHabilidadeEspecial());
+                System.out.println((i + 1) + ": " + carta.getNome() + "\nHabilidade especial: "+carta.getHabilidadeEspecial());
             }
             System.out.println();
         }

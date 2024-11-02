@@ -61,21 +61,29 @@ public class Criatura extends Carta
 
     public void receberDano(int dano)
     {
-        resistencia -= dano;
-
-        System.out.println(getNome() + " recebeu " + dano + " de dano. Resistência atual: " + resistencia);
+        int danoAbsorvido = Math.min(dano, resistencia);
+        resistencia -= danoAbsorvido;
+        System.out.println(getNome() + " recebeu " + dano + " de dano. Dano absorvido pela resistência: " + danoAbsorvido + ". Resistência atual: " + resistencia);
 
         if (resistencia <= 0)
         {
-            hp += resistencia;
+            // Dano que excedeu a resistência
+            int danoRestante = dano - danoAbsorvido;
+            hp -= danoRestante;
+
             if (hp <= 0)
             {
                 System.out.println(getNome() + " foi abatido!");
             }
+            else
+            {
+                System.out.println(getNome() + " recebeu " + danoRestante + " de dano. HP atual: " + hp);
+            }
         }
     }
 
-    public void atacar(Criatura criaturaAlvo) {
+    public void atacar(Criatura criaturaAlvo)
+    {
         if (this.voa) {
             System.out.println(getNome() + " ataca " + criaturaAlvo.getNome() + " pelo ar causando " + forca * poder + " de dano.");
         } else {
