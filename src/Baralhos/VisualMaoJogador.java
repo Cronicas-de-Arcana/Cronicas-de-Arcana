@@ -1,19 +1,23 @@
 package Baralhos;
 
+import Cartas.ModeloCarta;
 import Visualização.ComponenteVisual;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class VisualMaoJogador extends ComponenteVisual {
-    JButton[] botao = new JButton[5];
+    ArrayList<ModeloCarta> modelosCartas;
 
-    public void renderizar(){
-        for (int i = 0; i < 5; i++){
-            botao[i] = new JButton("Botão" + (i + 1));
-            this.add(botao[i]);
-        }
-        setVisible(true);
+    public VisualMaoJogador(){
+        this.definirEstilo();
+        this.renderizar();
+    }
+
+    //Pensar como vou pegar as cartas da mao do player!
+    public void renderizar(Mao mao){
+
     }
 
     @Override
@@ -21,11 +25,5 @@ public class VisualMaoJogador extends ComponenteVisual {
         this.setLayout(new GridLayout());
         this.setBackground(Color.BLACK);
         this.setForeground(Color.WHITE);
-    }
-
-    public VisualMaoJogador(){
-        this.definirEstilo();
-        this.renderizar();
-
     }
 }

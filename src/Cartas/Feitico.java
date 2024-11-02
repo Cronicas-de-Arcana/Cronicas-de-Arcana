@@ -21,6 +21,14 @@ public class Feitico extends Carta
         return modificadorDano;
     }
 
+    public int getCura() {
+        return cura;
+    }
+
+    public int getDano() {
+        return dano;
+    }
+
     public void lancarFeiticoCriatura(Criatura alvo)
     {
         if(dano>0)
