@@ -1,10 +1,11 @@
 package Controle;
 
+import Visualização.OuvinteMudancaTela;
 import Visualização.Tela;
 
 import javax.swing.*;
 
-public class JanelaReal extends JFrame {
+public class JanelaReal extends JFrame implements OuvinteMudancaTela {
     private Tela telaAtual;
 
     //Construtor da Janela que rodará o jogo -> Inicia tela inicial que sera passada como argumento (main)
@@ -24,6 +25,12 @@ public class JanelaReal extends JFrame {
         setContentPane(telaAtual);
         revalidate();
         repaint();
+    }
+
+    @Override
+    public void mudarTela() {
+        Tela novaTela = new TelaInicial();
+        setTelaAtual(novaTela);
     }
 
     public static void main(String[] args) {
