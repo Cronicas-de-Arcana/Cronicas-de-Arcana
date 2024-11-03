@@ -9,7 +9,7 @@ public class Criatura extends Carta
     protected double forca;
     protected boolean voa;
 
-    public Criatura(int hp, String nome, int custoMana, double poder, double forca, int resistencia, String habilidadeEspecial, boolean voa)
+    public Criatura(int hp, String nome, int custoMana, double poder, int resistencia, String habilidadeEspecial, boolean voa)
     {
         super(nome, custoMana);
         this.hp = hp;
@@ -123,9 +123,9 @@ public class Criatura extends Carta
 
     public void criaturasPadrao()
     {
-        Criatura goblin = new Criatura(120, "Goblin", 2, 90, 45, 9, "Ataques sucessivos",false);
-        Criatura mago = new Criatura(200, "Mago", 3, 130, 100, 10, "Ataques de bola de fogo",false);
-        Criatura arqueiro = new Criatura (95, "Arqueiro", 2, 200, 120, 8, "Ataques a longa distância com dano e penetração altos.",false);
+        Criatura goblin = new Criatura(120, "Goblin", 2, 9, 90, "Ataques sucessivos",false);
+        Criatura mago = new Criatura(150, "Mago", 3, 13, 100, "Ataques de bola de fogo",false);
+        Criatura arqueiro = new Criatura (95, "Arqueiro", 2, 20, 80, "Ataques a longa distância com dano e penetração altos.",false);
     }
 
 
