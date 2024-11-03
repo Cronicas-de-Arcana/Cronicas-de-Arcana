@@ -1,7 +1,6 @@
 package Baralhos;
 
 import Cartas.Carta;
-import Controle.Jogador;
 
 import java.util.ArrayList;
 import java.util.List;

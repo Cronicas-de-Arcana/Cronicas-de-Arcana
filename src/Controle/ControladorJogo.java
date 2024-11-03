@@ -2,14 +2,9 @@
 
 package Controle;
 
-import Baralhos.Deck;
-import Cartas.Inventario;
 import Controle.View.Janela;
 import Controle.View.TelaInicial;
 import Espaço.View.TelaBatalha;
-
-import javax.swing.*;
-import java.util.Scanner;
 
 public class ControladorJogo {
     private Jogar jogar;
