@@ -51,7 +51,9 @@ public class TelaInicial extends Tela {
         botaoIniciar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //Classe controlador inicia o jogo
-                controlador.iniciarJogo();
+                System.out.println("Jogo iniciado!");
+                //controlador.iniciarJogoThread();
+                controlador.mostrarTelaBatalha();
             }
         });
 

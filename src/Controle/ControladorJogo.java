@@ -2,9 +2,14 @@
 
 package Controle;
 
+import Baralhos.Deck;
+import Cartas.Inventario;
 import Controle.View.Janela;
 import Controle.View.TelaInicial;
 import Espaço.View.TelaBatalha;
+
+import javax.swing.*;
+import java.util.Scanner;
 
 public class ControladorJogo {
     private Jogar jogar;
@@ -22,20 +27,15 @@ public class ControladorJogo {
         TelaInicial telaInicial = new TelaInicial(this);
         this.janela = new Janela(telaInicial);
         telaInicial.setOuvinteMudancaTela(this.janela);  // Registra a Janela como ouvinte
-
+        this.iniciarJogo();
     }
 
     public void iniciarJogo(){
         this.jogar.iniciar(); // Inicia a partida no Backend
-        mostrarTelaBatalha();
     }
 
     public void mostrarTelaBatalha(){
         TelaBatalha telaBatalha = new TelaBatalha(this.jogador1, this.jogador2);
         this.janela.setTelaAtual(telaBatalha);
-    }
-
-    public static void main(String[] args) {
-
     }
 }

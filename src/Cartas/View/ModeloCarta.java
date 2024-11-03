@@ -21,8 +21,8 @@ public class ModeloCarta extends ComponenteVisual {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBackground(new Color(30, 30, 30));
         this.setBorder(BorderFactory.createLineBorder(Color.white));
-        setPreferredSize(new Dimension(60, 90));
-        setMaximumSize(new Dimension(60, 150));
+        setPreferredSize(new Dimension(160, 140));
+        setMaximumSize(new Dimension(180, 140));
     }
 
     @Override
@@ -112,6 +112,10 @@ public class ModeloCarta extends ComponenteVisual {
             default -> {
             }
         }
+
+        JButton botaoAtaque = new JButton("Ataque (provisório)");
+        botaoAtaque.setAlignmentX(CENTER_ALIGNMENT);
+        this.add(botaoAtaque);
 
         // Adicionando espaço entre os elementos para melhor visualização
         this.add(Box.createVerticalGlue());
