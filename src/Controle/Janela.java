@@ -6,14 +6,14 @@ import Visualização.Tela;
 
 import javax.swing.*;
 
-public class JanelaReal extends JFrame implements OuvinteMudancaTela {
+public class Janela extends JFrame implements OuvinteMudancaTela {
     private Tela telaAtual;
 
     //Construtor da Janela que rodará o jogo -> Inicia tela inicial que sera passada como argumento (main)
-    public JanelaReal(Tela telaInicial) {
+    public Janela(Tela telaInicial) {
         this.telaAtual = telaInicial;
 
-        // Registra JanelaReal como observador da TelaInicial
+        // Registra Janela como observador da TelaInicial
         if (telaInicial instanceof TelaInicial) {
             ((TelaInicial) telaInicial).setOuvinteMudancaTela(this);
         }
@@ -40,6 +40,6 @@ public class JanelaReal extends JFrame implements OuvinteMudancaTela {
 
     public static void main(String[] args) {
 
-        new JanelaReal(new TelaInicial());
+        new Janela(new TelaInicial());
     }
 }
