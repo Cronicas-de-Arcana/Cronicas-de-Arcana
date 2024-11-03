@@ -1,4 +1,5 @@
 package Cartas;
+import Controle.Jogador;
 
 public class Criatura extends Carta
 {
@@ -84,12 +85,19 @@ public class Criatura extends Carta
 
     public void atacar(Criatura criaturaAlvo)
     {
-        if (this.voa) {
+        if (this.voa)
+        {
             System.out.println(getNome() + " ataca " + criaturaAlvo.getNome() + " pelo ar causando " + forca * poder + " de dano.");
         } else {
             System.out.println(getNome() + " ataca diretamente o jogador " + criaturaAlvo.getNome() + ", causando " + forca * poder + " de dano.");
         }
         criaturaAlvo.receberDano((int) (forca * poder));
+    }
+
+    public void atacarJogador(Jogador jogadorAlvo)
+    {
+        System.out.println(getNome() + " ataca " + jogadorAlvo.getNome() + " pelo ar causando " + forca * poder + " de dano.");
+        jogadorAlvo.receberDano((int) (forca * poder));
     }
 
     public void receberCura(int cura)

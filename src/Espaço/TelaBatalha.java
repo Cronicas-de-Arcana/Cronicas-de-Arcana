@@ -5,7 +5,8 @@ import Visualização.Tela;
 
 import java.awt.*;
 
-public class TelaBatalha extends Tela {
+public class TelaBatalha extends Tela
+{
 
     public TelaBatalha() {
         this.renderizar();
@@ -15,7 +16,7 @@ public class TelaBatalha extends Tela {
     public void renderizar() {
         this.setLayout(new BorderLayout());
 
-        this.add(new VisualMaoJogador(), BorderLayout.NORTH);
-        this.add(new VisualMaoJogador(), BorderLayout.SOUTH);
+        //this.add(new VisualMaoJogador(), BorderLayout.NORTH);
+        //this.add(new VisualMaoJogador(), BorderLayout.SOUTH);
     }
 }

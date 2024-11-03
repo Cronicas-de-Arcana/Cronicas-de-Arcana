@@ -106,14 +106,66 @@ public class Jogador
         }
     }
 
+    public Carta escolherCartaMao(Jogador jogador)
+    {
+        mao.mostrarCartas();
+
+        if (mao.getCartas().isEmpty())
+        {
+            System.out.println("Nenhuma carta na mão.");
+            return null;
+        }
+
+        while (true)
+        {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Escolha uma carta da mão para atacar (digite o número) ou 0 para não escolher: ");
+            int cartaEscolhida = sc.nextInt() - 1;
+
+            if (cartaEscolhida < 0 || cartaEscolhida >= mao.getCartas().size())
+            {
+                System.out.println("Escolha inválida. Tente novamente.");
+            }
+            else if (cartaEscolhida == 0)
+            {
+                break;
+            }
+            else
+            {
+                return mao.getCartas().get(cartaEscolhida);
+            }
+        }
+        return null;
+    }
+
     public Carta escolherCartaCampo(Jogador jogador)
     {
-        //Jogador escolhe indice da carta
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Escolha uma carta: ");
-        int cartaEscolhida = sc.nextInt()-1;
+        if (jogador.getCampoDeBatalha().getCampo().isEmpty())
+        {
+            System.out.println("Nenhuma carta no campo de batalha.");
+            return null;
+        }
 
-        return jogador.getCampoDeBatalha().getCampo().get(cartaEscolhida);
+        while(true)
+        {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Escolha uma carta da mão para atacar (digite o número) ou 0 para não escolher: ");
+            int cartaEscolhida = sc.nextInt() - 1;
+
+            if (cartaEscolhida < 0 || cartaEscolhida >= jogador.getCampoDeBatalha().getCampo().size())
+            {
+                System.out.println("Escolha inválida. Tente novamente.");
+            }
+            else if (cartaEscolhida == 0)
+            {
+                break;
+            }
+            else
+            {
+                return jogador.getCampoDeBatalha().getCampo().get(cartaEscolhida);
+            }
+        }
+        return null;
     }
 
     public void jogarCartasNoCampo()

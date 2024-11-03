@@ -88,53 +88,106 @@ public class Jogar
         System.out.println(jogador1.getNome() + " terminou seu turno.");
     }
 
-    private void combate(Jogador jogador, Jogador jogadorAlvo) {
+    private void combate(Jogador jogador, Jogador jogadorAlvo)
+    {
         System.out.println("Combate iniciado entre " + jogador.getNome() + " e " + jogadorAlvo.getNome() + "!");
 
-        // Verificar se o jogador alvo tem criaturas no campo de batalha
-        if (jogadorAlvo.getCampoDeBatalha().getCampo().isEmpty()) {
+        if (jogadorAlvo.getCampoDeBatalha().getCampo().isEmpty())
+        {
             System.out.println(jogadorAlvo.getNome() + " não tem criaturas no campo de batalha. Você pode atacar diretamente!");
 
-            // Opção para o jogador atacar diretamente o jogador alvo
-            System.out.println(jogador.getNome() + ", você pode atacar diretamente. Escolha um feitiço ou encantamento:");
-            jogador.getMao().mostrarCartas();
+            System.out.println(jogador.getNome() + ", você pode atacar diretamente.");
+
+            jogador.getCampoDeBatalha().mostrarCartas();
             Carta cartaEscolhida = jogador.escolherCartaCampo(jogador);
 
-            if (cartaEscolhida != null)
-            {
-                if (cartaEscolhida instanceof Feitico)
-                {
-                    ((Feitico) cartaEscolhida).lancarFeiticoJogador(jogadorAlvo);
-                } else if (cartaEscolhida instanceof Encantamento)
-                {
-                    ((Encantamento) cartaEscolhida).lancarEncantamentoJogador(jogadorAlvo);
-                }
+            System.out.println(jogadorAlvo.getNome() + " você também pode atacar com um feitiço ou encantamento!");
 
-            } else {
-                System.out.println("Nenhum feitiço ou encantamento escolhido.");
+            jogador.getMao().mostrarCartas();
+            Carta cartaEscolhida2 = jogador.escolherCartaMao(jogador);
+
+            while(true)
+            {
+                if (cartaEscolhida != null)
+                {
+                    ((Criatura)cartaEscolhida).atacarJogador(jogadorAlvo);
+                    break;
+                }
+                else
+                {
+                    System.out.println("Nenhuma criatura escolhida.");
+                }
+            }
+
+            while(true)
+            {
+                if (cartaEscolhida2 != null)
+                {
+                    if (cartaEscolhida2 instanceof Feitico)
+                    {
+                        ((Feitico) cartaEscolhida2).lancarFeiticoJogador(jogadorAlvo);
+                        break;
+                    }
+                    else if (cartaEscolhida2 instanceof Encantamento)
+                    {
+                        ((Encantamento) cartaEscolhida2).lancarEncantamentoJogador(jogadorAlvo);
+                        break;
+                    }
+                }
+                else
+                {
+                    System.out.println("Nenhum feitiço ou encantamento escolhido.");
+                }
             }
         }
         else
         {
-            // Jogador vê as cartas do jogador alvo e escolhe qual atacar
             System.out.println("Cartas no campo de " + jogadorAlvo.getNome() + ":");
             jogadorAlvo.getCampoDeBatalha().mostrarCartas();
             System.out.println(jogador.getNome() + ", escolha qual criatura atacar:");
             Carta cartaDefensora = jogadorAlvo.escolherCartaCampo(jogadorAlvo);
 
-            // Jogador vê suas cartas no campo e escolhe qual vai usar para atacar
             System.out.println(jogador.getNome() + ", declare suas criaturas para atacar:");
             jogador.getCampoDeBatalha().mostrarCartas();
             Carta cartaAtacante = jogador.escolherCartaCampo(jogador);
 
-            // Realiza o ataque
-            if (cartaAtacante instanceof Criatura && cartaDefensora instanceof Criatura)
+
+            System.out.println(jogadorAlvo.getNome() + " você também pode atacar com um feitiço ou encantamento!");
+            jogador.getMao().mostrarCartas();
+            Carta cartaEscolhida2 = jogador.escolherCartaMao(jogador);
+
+            while(true)
             {
-                ((Criatura) cartaAtacante).atacar((Criatura) cartaDefensora);
+                if (cartaAtacante instanceof Criatura && cartaDefensora instanceof Criatura)
+                {
+                    ((Criatura) cartaAtacante).atacar((Criatura) cartaDefensora);
+                    break;
+                }
+                else
+                {
+                    System.out.println("Escolha inválida para ataque, escolha novamente.");
+                }
             }
-            else
+
+            while(true)
             {
-                System.out.println("Escolha inválida para ataque.");
+                if (cartaEscolhida2 != null)
+                {
+                    if (cartaEscolhida2 instanceof Feitico)
+                    {
+                        ((Feitico) cartaEscolhida2).lancarFeiticoJogador(jogadorAlvo);
+                        break;
+                    }
+                    else if (cartaEscolhida2 instanceof Encantamento)
+                    {
+                        ((Encantamento) cartaEscolhida2).lancarEncantamentoJogador(jogadorAlvo);
+                        break;
+                    }
+                }
+                else
+                {
+                    System.out.println("Nenhum feitiço ou encantamento escolhido.");
+                }
             }
         }
     }
