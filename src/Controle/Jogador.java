@@ -4,10 +4,13 @@ import Baralhos.Deck;
 import Baralhos.Mao;
 import Cartas.Carta;
 import Cartas.Criatura;
+import Cartas.Encantamento;
 import Cartas.Inventario;
 import Espaço.CampodeBatalha;
 import Espaço.Cemiterio;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Jogador
@@ -24,6 +27,7 @@ public class Jogador
     private CampodeBatalha campoDeBatalha;
     private Inventario inventario;
     private Scanner scanner;
+    protected List<Encantamento> encantamentosAtivos = new ArrayList<>();
 
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual, Scanner scanner)
     {
@@ -232,6 +236,35 @@ public class Jogador
         }
     }
 
+    public void processarEncantamentos()
+    {
+        for (int i = 0; i < encantamentosAtivos.size(); i++)
+        {
+            Encantamento encantamento = encantamentosAtivos.get(i);
+            if (encantamento.getQuantidadeRodadas() > 0)
+            {
+                Object alvo = encantamento.getAlvo();
+                if (alvo != null)
+                {
+                    encantamento.aplicarEfeito(alvo);
+                    encantamento.reduzirRodadas();
+                }
+            }
+
+            if (encantamento.getQuantidadeRodadas() <= 0)
+            {
+                encantamentosAtivos.remove(i);
+                i--;
+                System.out.println("O encantamento " + encantamento.getNome() + " terminou.");
+            }
+        }
+    }
+
+
+    public void adicionarEncantamentoAtivo(Encantamento encantamento)
+    {
+        encantamentosAtivos.add(encantamento);
+    }
 
     public void enviarAoCemiterio(Carta carta)
     {

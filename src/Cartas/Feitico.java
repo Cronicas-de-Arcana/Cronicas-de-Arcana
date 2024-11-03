@@ -62,4 +62,18 @@ public class Feitico extends Carta
             alvo.receberCura(cura);
         }
     }
+
+    public void aplicarEfeito(Object alvo)
+    {
+        if (alvo instanceof Criatura)
+        {
+            Criatura criaturaAlvo = (Criatura) alvo;
+            this.lancarFeiticoCriatura(criaturaAlvo);
+        }
+        else if (alvo instanceof Jogador)
+        {
+            Jogador jogadorAlvo = (Jogador) alvo;
+            this.lancarFeiticoJogador(jogadorAlvo);
+        }
+    }
 }

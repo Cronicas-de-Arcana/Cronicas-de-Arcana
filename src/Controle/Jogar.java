@@ -5,6 +5,8 @@ import Cartas.Criatura;
 import Cartas.Encantamento;
 import Cartas.Feitico;
 import Espaço.CampodeBatalha;
+
+import java.util.List;
 import java.util.Scanner;
 
 import java.util.Random;
@@ -82,10 +84,12 @@ public class Jogar
         jogador2.jogarCartasNoCampo();
 
         System.out.println("Fase de Combate:");
-        combate(jogador1, jogador2); // Ataca jogador 2
-        combate(jogador2, jogador1); // Ataca jogador 1
+        combate(jogador1, jogador2);
+        combate(jogador2, jogador1);
+        jogador1.processarEncantamentos();
+        jogador2.processarEncantamentos();
 
-        System.out.println(jogador1.getNome() + " terminou seu turno.");
+        System.out.println("Terminou o turno.");
     }
 
     private void combate(Jogador jogador, Jogador jogadorAlvo)
@@ -160,7 +164,7 @@ public class Jogar
             {
                 if (cartaAtacante instanceof Criatura && cartaDefensora instanceof Criatura)
                 {
-                    ((Criatura) cartaAtacante).atacar((Criatura) cartaDefensora);
+                    ((Criatura) cartaAtacante).atacar((Criatura)cartaDefensora);
                     break;
                 }
                 else
@@ -175,12 +179,12 @@ public class Jogar
                 {
                     if (cartaEscolhida2 instanceof Feitico)
                     {
-                        ((Feitico) cartaEscolhida2).lancarFeiticoJogador(jogadorAlvo);
+                        ((Feitico) cartaEscolhida2).lancarFeiticoCriatura((Criatura)cartaDefensora);
                         break;
                     }
                     else if (cartaEscolhida2 instanceof Encantamento)
                     {
-                        ((Encantamento) cartaEscolhida2).lancarEncantamentoJogador(jogadorAlvo);
+                        ((Encantamento) cartaEscolhida2).lancarEncantamentoCriatura((Criatura)cartaDefensora);
                         break;
                     }
                 }
