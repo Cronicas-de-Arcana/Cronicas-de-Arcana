@@ -1,6 +1,6 @@
-package Controle;
+package Controle.View;
 
-import Espaço.TelaBatalha;
+import Controle.ControladorJogo;
 import Visualização.OuvinteMudancaTela;
 import Visualização.Tela;
 

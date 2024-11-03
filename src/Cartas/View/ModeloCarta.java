@@ -1,5 +1,9 @@
-package Cartas;
+package Cartas.View;
 
+import Cartas.Carta;
+import Cartas.Criatura;
+import Cartas.Encantamento;
+import Cartas.Feitico;
 import Visualização.ComponenteVisual;
 
 import javax.swing.*;
@@ -17,8 +21,8 @@ public class ModeloCarta extends ComponenteVisual {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBackground(new Color(30, 30, 30));
         this.setBorder(BorderFactory.createLineBorder(Color.white));
-        setPreferredSize(new Dimension(90, 150));
-        setMaximumSize(new Dimension(120, 200));
+        setPreferredSize(new Dimension(60, 90));
+        setMaximumSize(new Dimension(60, 150));
     }
 
     @Override

@@ -1,7 +1,7 @@
 package Visualização;
 
 import Controle.Jogador;
-import Controle.Janela;
+import Controle.View.Janela;
 
 import javax.swing.*;
 

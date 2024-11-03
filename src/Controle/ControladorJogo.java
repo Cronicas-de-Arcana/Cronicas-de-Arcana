@@ -2,10 +2,9 @@
 
 package Controle;
 
-import Cartas.Inventario;
-import Espaço.TelaBatalha;
-
-import java.util.Scanner;
+import Controle.View.Janela;
+import Controle.View.TelaInicial;
+import Espaço.View.TelaBatalha;
 
 public class ControladorJogo {
     private Jogar jogar;

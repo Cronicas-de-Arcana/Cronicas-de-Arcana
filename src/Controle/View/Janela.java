@@ -1,6 +1,5 @@
-package Controle;
+package Controle.View;
 
-import Espaço.TelaBatalha;
 import Visualização.OuvinteMudancaTela;
 import Visualização.Tela;
 
@@ -11,6 +10,7 @@ public class Janela extends JFrame implements OuvinteMudancaTela {
 
     //Construtor da Janela que rodará o jogo -> Inicia tela inicial que sera passada como argumento (main)
     public Janela(Tela telaInicial) {
+        super("Crônicas de Arcana");
         this.telaAtual = telaInicial;
 
         // Registra Janela como observador da TelaInicial

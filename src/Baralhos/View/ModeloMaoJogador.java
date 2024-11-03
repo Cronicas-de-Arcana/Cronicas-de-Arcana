@@ -1,18 +1,18 @@
-package Baralhos;
+package Baralhos.View;
 
-import Cartas.Carta;
-import Cartas.ModeloCarta;
 import Baralhos.Mao;
+import Cartas.Carta;
+import Cartas.View.ModeloCarta;
 import Visualização.ComponenteVisual;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class VisualMaoJogador extends ComponenteVisual {
+public class ModeloMaoJogador extends ComponenteVisual {
     private Mao mao;
     private ArrayList<ModeloCarta> modelosCartas;
 
-    public VisualMaoJogador(Mao mao) {
+    public ModeloMaoJogador(Mao mao) {
         this.mao = mao;
         this.modelosCartas = new ArrayList<>();
         this.definirEstilo();
@@ -23,7 +23,6 @@ public class VisualMaoJogador extends ComponenteVisual {
     public void definirEstilo() {
         this.setLayout(new GridLayout(1, 0, 10, 10)); // Layout para dispor as cartas lado a lado
         this.setBackground(Color.BLACK);
-        this.setForeground(Color.WHITE);
     }
 
     // Metodo renderizar para exibir as cartas da mão
