@@ -2,6 +2,6 @@ package Visualização;
 
 public interface OuvinteMudancaTela {
 
-    void mudarTela();
+    void mudarTela(Tela tela);
 
 }

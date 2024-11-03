@@ -33,13 +33,8 @@ public class Janela extends JFrame implements OuvinteMudancaTela {
     }
 
     @Override
-    public void mudarTela() {
-        Tela novaTela = new TelaBatalha();
+    public void mudarTela(Tela novaTela) {
         setTelaAtual(novaTela);
     }
 
-    public static void main(String[] args) {
-
-        new Janela(new TelaInicial());
-    }
 }

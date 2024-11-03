@@ -1,5 +1,6 @@
 package Controle;
 
+import Espaço.TelaBatalha;
 import Visualização.OuvinteMudancaTela;
 import Visualização.Tela;
 
@@ -9,10 +10,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TelaInicial extends Tela {
-
     private OuvinteMudancaTela ouvinte;
+    private ControladorJogo controlador;
 
-    public TelaInicial(){
+    public TelaInicial(ControladorJogo controlador) {
+        this.controlador = controlador;
         this.renderizar();
     }
 
@@ -48,9 +50,8 @@ public class TelaInicial extends Tela {
 
         botaoIniciar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (ouvinte != null) {
-                    ouvinte.mudarTela();  // Notifica o observador para mudar a tela
-                }
+                //Classe controlador inicia o jogo
+                controlador.iniciarJogo();
             }
         });
 

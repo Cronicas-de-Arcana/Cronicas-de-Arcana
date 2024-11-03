@@ -5,7 +5,6 @@ import Cartas.ModeloCarta;
 import Baralhos.Mao;
 import Visualização.ComponenteVisual;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
