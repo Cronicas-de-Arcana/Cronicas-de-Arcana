@@ -146,19 +146,19 @@ public class Jogador
     {
         if (jogador.getCampoDeBatalha().getCampo().isEmpty())
         {
-            System.out.println("Nenhuma carta no campo de batalha.");
             return null;
         }
 
         while(true)
         {
             Scanner sc = new Scanner(System.in);
-            System.out.print("Escolha uma carta da mão para atacar (digite o número) ou 0 para não escolher: ");
+            System.out.print("Escolha uma carta do campo para atacar (digite o número) ou 0 para não escolher: ");
             int cartaEscolhida = sc.nextInt() - 1;
 
             if (cartaEscolhida < 0 || cartaEscolhida >= jogador.getCampoDeBatalha().getCampo().size())
             {
                 System.out.println("Escolha inválida. Tente novamente.");
+                continue;
             }
             else if (cartaEscolhida == 0)
             {
@@ -181,7 +181,7 @@ public class Jogador
             int i = 0;
             for (Carta carta : this.mao.getCartas())
             {
-                System.out.println("Carta " + (i + 1) + ": " + carta.getNome() + " - Custo de Mana: " + carta.getCustoMana() + "\nHabilidade: " + carta.getHabilidadeEspecial());
+                System.out.println("Carta " + (i + 1) + ": " + carta.getNome() + " - Custo de Mana: " + carta.getCustoMana() + " - Habilidade: " + carta.getHabilidadeEspecial());
                 i++;
             }
 

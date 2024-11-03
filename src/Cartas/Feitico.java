@@ -21,11 +21,13 @@ public class Feitico extends Carta
         return modificadorDano;
     }
 
-    public int getCura() {
+    public int getCura()
+    {
         return cura;
     }
 
-    public int getDano() {
+    public int getDano()
+    {
         return dano;
     }
 

@@ -15,9 +15,25 @@ public class Mao
         this.cartas = new ArrayList<>();
     }
 
-    public boolean temCartasSuficientes(int quantidade)
+    public List<Carta> getCartas()
     {
-        return cartas.size() >= quantidade;
+        return cartas;
+    }
+
+    public void mostrarCartas()
+    {
+        if (cartas.isEmpty())
+        {
+            System.out.println("Nenhuma carta na mão.");
+        } else
+        {
+            for (int i = 0; i < cartas.size(); i++)
+            {
+                Carta carta = cartas.get(i);
+                System.out.println((i + 1) + ": " + carta.getNome() + " - Custo de Mana: " + carta.getCustoMana() + "\n"+carta.getHabilidadeEspecial());
+            }
+            System.out.println();
+        }
     }
 
     public void adicionarCartas(Carta carta)
@@ -44,29 +60,14 @@ public class Mao
         }
     }
 
+    public boolean temCartasSuficientes(int quantidade)
+    {
+        return cartas.size() >= quantidade;
+    }
+
+
     public boolean temCarta(Carta carta)
     {
         return cartas.contains(carta);
-    }
-
-    public List<Carta> getCartas()
-    {
-        return cartas;
-    }
-
-    public void mostrarCartas()
-    {
-        if (cartas.isEmpty())
-        {
-            System.out.println("Nenhuma carta na mão.");
-        } else
-        {
-            for (int i = 0; i < cartas.size(); i++)
-            {
-                Carta carta = cartas.get(i);
-                System.out.println((i + 1) + ": " + carta.getNome() + " - Custo de Mana: " + carta.getCustoMana() + "\n"+carta.getHabilidadeEspecial());
-            }
-            System.out.println();
-        }
     }
 }

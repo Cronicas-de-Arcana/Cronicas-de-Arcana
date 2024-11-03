@@ -19,9 +19,14 @@ public class Deck
         this.cartas = new ArrayList<>(cartas);
     }
 
-    public Deck(ArrayList<Carta> cartas)
+    public List<Carta> getCartas()
     {
-        this.cartas = cartas;
+        return cartas;
+    }
+
+    public int getTamanho()
+    {
+        return cartas.size();
     }
 
     public boolean verificarDeckVazio()
@@ -44,22 +49,18 @@ public class Deck
         }
     }
 
-    public int getTamanho() {
-        return cartas.size();
-    }
-
-    public void adicionarCarta(Carta carta)
-    {
-        cartas.add(carta);
-    }
-
     public void embaralhar()
     {
         Collections.shuffle(cartas);
     }
 
-    public List<Carta> getCartas()
+    public Deck(ArrayList<Carta> cartas)
     {
-        return cartas;
+        this.cartas = cartas;
+    }
+
+    public void adicionarCarta(Carta carta)
+    {
+        cartas.add(carta);
     }
 }

@@ -40,24 +40,24 @@ public class Criatura extends Carta
         return poder;
     }
 
+    public void setPoder(double valor)
+    {
+
+    }
+
     public double getForca()
     {
         return forca;
     }
 
-    public boolean Voa() {
+    public boolean Voa()
+    {
         return voa;
     }
 
-    public void setVoa(boolean voa) {
-        this.voa = voa;
-    }
-
-
-    //Decidir se devemos manter esse metodo
-    public void efeito()
+    public void setVoa(boolean voa)
     {
-        System.out.println("Habilidade especial de " + getNome() + ": " + habilidadeEspecial);
+        this.voa = voa;
     }
 
     public void receberDano(int dano)
@@ -83,12 +83,14 @@ public class Criatura extends Carta
         }
     }
 
-    public void atacar(Criatura criaturaAlvo)
+    public void atacarCriatura(Criatura criaturaAlvo)
     {
         if (this.voa)
         {
             System.out.println(getNome() + " ataca " + criaturaAlvo.getNome() + " pelo ar causando " + forca * poder + " de dano.");
-        } else {
+        }
+        else
+        {
             System.out.println(getNome() + " ataca diretamente o jogador " + criaturaAlvo.getNome() + ", causando " + forca * poder + " de dano.");
         }
         criaturaAlvo.receberDano((int) (forca * poder));
@@ -96,7 +98,14 @@ public class Criatura extends Carta
 
     public void atacarJogador(Jogador jogadorAlvo)
     {
-        System.out.println(getNome() + " ataca " + jogadorAlvo.getNome() + " pelo ar causando " + forca * poder + " de dano.");
+        if (this.voa)
+        {
+            System.out.println(getNome() + " ataca " + jogadorAlvo.getNome() + " pelo ar causando " + forca * poder + " de dano.");
+        }
+        else
+        {
+            System.out.println(getNome() + " ataca diretamente o jogador " + jogadorAlvo.getNome() + ", causando " + forca * poder + " de dano.");
+        }
         jogadorAlvo.receberDano((int) (forca * poder));
     }
 
@@ -106,6 +115,12 @@ public class Criatura extends Carta
         System.out.println(getNome() + " se curou em " + cura + " pontos de vida. Vida atual: " + this.hp);
     }
 
+    //Decidir se devemos manter esse metodo
+    public void efeito()
+    {
+        System.out.println("Habilidade especial de " + getNome() + ": " + habilidadeEspecial);
+    }
+
     public void criaturasPadrao()
     {
         Criatura goblin = new Criatura(120, "Goblin", 2, 90, 45, 9, "Ataques sucessivos",false);
@@ -113,5 +128,5 @@ public class Criatura extends Carta
         Criatura arqueiro = new Criatura (95, "Arqueiro", 2, 200, 120, 8, "Ataques a longa distância com dano e penetração altos.",false);
     }
 
-    public void setPoder(double valor) {}
+
 }

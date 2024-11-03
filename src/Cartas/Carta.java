@@ -12,14 +12,14 @@ public abstract class Carta
         this.custoMana = custoMana;
     }
 
-    public String getNome()
-    {
-        return nome;
-    }
-
     public int getCustoMana()
     {
         return custoMana;
+    }
+
+    public String getNome()
+    {
+        return nome;
     }
 
     public String getHabilidadeEspecial() {

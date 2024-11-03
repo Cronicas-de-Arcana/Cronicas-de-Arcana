@@ -24,11 +24,6 @@ public class Encantamento extends Carta
         return quantidadeRodadas;
     }
 
-    public void reduzirRodadas()
-    {
-        quantidadeRodadas--;
-    }
-
     public int getCura()
     {
         return cura;
@@ -47,6 +42,11 @@ public class Encantamento extends Carta
     public Object getAlvo()
     {
         return alvo;
+    }
+
+    public void reduzirRodadas()
+    {
+        quantidadeRodadas--;
     }
 
     public void lancarEncantamentoCriatura(Criatura alvo)
