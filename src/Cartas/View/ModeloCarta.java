@@ -20,7 +20,7 @@ public class ModeloCarta extends ComponenteVisual {
     @Override
     public void definirEstilo() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(new Color(0, 72, 221));
+        this.setBackground(new Color(74, 117, 218));
         this.setBorder(new LineBorder(new Color(0, 0, 0)));
         setPreferredSize(new Dimension(160, 140));
         setMaximumSize(new Dimension(180, 140));

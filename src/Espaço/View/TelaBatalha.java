@@ -20,9 +20,11 @@ public class TelaBatalha extends Tela
         JPanel painelNorte = new JPanel();
         painelNorte.add(new ModeloMaoJogador(jogador2.getMao()));
         this.add(painelNorte, BorderLayout.NORTH);
+        painelNorte.setBackground(new Color(119, 2, 2));
 
         JPanel painelSul = new JPanel();
         painelSul.add(new ModeloMaoJogador(jogador1.getMao()));
+        painelSul.setBackground(new Color(1, 31, 99));
         this.add(painelSul, BorderLayout.SOUTH);
 
         JPanel painelCentral = new JPanel();
@@ -30,6 +32,21 @@ public class TelaBatalha extends Tela
         painelCentral.add(new ModeloCampoDeBatalha(jogador2.getCampoDeBatalha()));
         painelCentral.add(new ModeloCampoDeBatalha(jogador1.getCampoDeBatalha()));
         this.add(painelCentral, BorderLayout.CENTER);
+
+        //Provisório para mapear a tela
+        JPanel painelOeste = new JPanel();
+        painelOeste.setBackground(Color.BLACK);
+        painelOeste.setLayout(new GridLayout(2, 1));
+        painelOeste.setPreferredSize(new Dimension(320, painelOeste.getPreferredSize().height));
+        JLabel texto = new JLabel("Cemitério Jogador1");
+        texto.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        texto.setHorizontalAlignment(SwingConstants.CENTER);
+        JLabel texto2 = new JLabel("Cemiterio Jogador2");
+        texto2.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        texto2.setHorizontalAlignment(SwingConstants.CENTER);
+        painelOeste.add(texto);
+        painelOeste.add(texto2);
+        this.add(painelOeste, BorderLayout.WEST);
 
     }
 }
