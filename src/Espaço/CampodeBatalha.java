@@ -9,7 +9,8 @@ import Controle.Jogador;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CampodeBatalha extends Espaco {
+public class CampodeBatalha extends Espaco
+{
     private Mao mao;
     private Cemiterio cemiterio;
     private Deck deck;
@@ -27,16 +28,13 @@ public class CampodeBatalha extends Espaco {
         cartas.add(carta);
     }
 
-    public void removerCarta(Carta carta)
+    public void removerCarta(Carta criatura)
     {
-        if (cartas.remove(carta))
-        {
-            cemiterio.adicionarCarta(carta);
-            System.out.println(carta.getNome() + " foi removida do campo de batalha.");
-        }
-        else
-        {
-            System.out.println(carta.getNome() + " não está no campo de batalha.");
+        if (cartas.remove(criatura)) {
+            cemiterio.adicionarCarta(criatura);
+            System.out.println(criatura.getNome() + " foi removida do campo de batalha e enviada ao cemitério.");
+        } else {
+            System.out.println(criatura.getNome() + " não está no campo de batalha.");
         }
     }
 

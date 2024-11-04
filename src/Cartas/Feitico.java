@@ -1,5 +1,7 @@
 package Cartas;
-import Controle.*;
+import Controle.Jogador;
+import Espaço.Cemiterio;
+import Espaço.CampodeBatalha;
 
 public class Feitico extends Carta
 {
@@ -33,23 +35,23 @@ public class Feitico extends Carta
 
     public void lancarFeiticoCriatura(Criatura alvo)
     {
-        if(dano>0)
+        if (dano > 0)
         {
             System.out.println(getNome() + " foi lançado e causou " + dano + " de dano a " + alvo.getNome());
             alvo.receberDano(dano);
         }
-        else if(dano<0)
+        else if (dano < 0)
         {
             System.out.println(getNome() + " foi lançado e curou " + cura + " pontos de vida de " + alvo.getNome());
             alvo.receberCura(cura);
-        }
-        else if (modificadorDano != 0)
+        } else if (modificadorDano != 0)
         {
             alvo.setPoder(alvo.getPoder() + modificadorDano);
             String tipo = modificadorDano > 0 ? "aumentou" : "reduziu";
             System.out.println(getNome() + " " + tipo + " o poder de " + alvo.getNome() + " em " + modificadorDano + " pontos.");
         }
     }
+
 
     public void lancarFeiticoJogador(Jogador alvo)
     {

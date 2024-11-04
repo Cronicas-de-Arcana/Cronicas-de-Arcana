@@ -12,7 +12,8 @@ public class Cemiterio extends Espaco {
         this.cartas = new ArrayList<>();
     }
 
-    public void removerCarta(Carta carta){
+    public void removerCarta(Carta carta)
+    {
         //Pensar esse metodo
     }
 
@@ -25,7 +26,8 @@ public class Cemiterio extends Espaco {
         System.out.println();
     }
 
-    public void adicionarCarta(Carta carta){
+    public void adicionarCarta(Carta carta)
+    {
         this.cartas.add(carta);
     }
 

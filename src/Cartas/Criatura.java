@@ -1,5 +1,7 @@
 package Cartas;
 import Controle.Jogador;
+import Espaço.Cemiterio;
+import Espaço.CampodeBatalha;
 
 public class Criatura extends Carta
 {
@@ -68,7 +70,6 @@ public class Criatura extends Carta
 
         if (resistencia <= 0)
         {
-            // Dano que excedeu a resistência
             int danoRestante = dano - danoAbsorvido;
             hp -= danoRestante;
 
@@ -83,30 +84,31 @@ public class Criatura extends Carta
         }
     }
 
+
     public void atacarCriatura(Criatura criaturaAlvo)
     {
         if (this.voa)
         {
-            System.out.println(getNome() + " ataca " + criaturaAlvo.getNome() + " pelo ar causando " + forca * poder + " de dano.");
+            System.out.println(getNome() + " ataca " + criaturaAlvo.getNome() + " pelo ar causando " + poder + " de dano.");
         }
         else
         {
-            System.out.println(getNome() + " ataca diretamente o jogador " + criaturaAlvo.getNome() + ", causando " + forca * poder + " de dano.");
+            System.out.println(getNome() + " ataca diretamente " + criaturaAlvo.getNome() + ", causando " + poder + " de dano.");
         }
-        criaturaAlvo.receberDano((int) (forca * poder));
+        criaturaAlvo.receberDano((int) (poder));
     }
 
     public void atacarJogador(Jogador jogadorAlvo)
     {
         if (this.voa)
         {
-            System.out.println(getNome() + " ataca " + jogadorAlvo.getNome() + " pelo ar causando " + forca * poder + " de dano.");
+            System.out.println(getNome() + " ataca " + jogadorAlvo.getNome() + " pelo ar causando " + poder + " de dano.");
         }
         else
         {
-            System.out.println(getNome() + " ataca diretamente o jogador " + jogadorAlvo.getNome() + ", causando " + forca * poder + " de dano.");
+            System.out.println(getNome() + " ataca diretamente o jogador " + jogadorAlvo.getNome() + ", causando " + poder + " de dano.");
         }
-        jogadorAlvo.receberDano((int) (forca * poder));
+        jogadorAlvo.receberDano((int) (poder));
     }
 
     public void receberCura(int cura)

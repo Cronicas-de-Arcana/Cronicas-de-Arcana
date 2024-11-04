@@ -1,5 +1,7 @@
 package Cartas;
-import Controle.*;
+import Controle.Jogador;
+import Espaço.Cemiterio;
+import Espaço.CampodeBatalha;
 
 public class Encantamento extends Carta
 {
@@ -52,16 +54,16 @@ public class Encantamento extends Carta
     public void lancarEncantamentoCriatura(Criatura alvo)
     {
         this.alvo = alvo;
-        if(quantidadeRodadas > 0)
+        if (quantidadeRodadas > 0)
         {
             if (dano > 0)
             {
-                System.out.println(getNome() + " causou " + dano + " de dano a " + alvo.getNome() + "por " + quantidadeRodadas + " rodadas.");
+                System.out.println(getNome() + " causou " + dano + " de dano a " + alvo.getNome() + " por " + quantidadeRodadas + " rodadas.");
                 alvo.receberDano(dano);
             }
             else if (cura > 0)
             {
-                System.out.println(getNome() + " curou " + cura + " pontos de vida de " + alvo.getNome() + "por " + quantidadeRodadas + " rodadas.");
+                System.out.println(getNome() + " curou " + cura + " pontos de vida de " + alvo.getNome() + " por " + quantidadeRodadas + " rodadas.");
                 alvo.receberCura(cura);
             }
             else if (modificadorDano != 0)

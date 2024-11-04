@@ -91,7 +91,8 @@ public class Jogar
     {
         System.out.println("Combate iniciado entre " + jogador.getNome() + " e " + jogadorAlvo.getNome() + "!\n");
 
-        if (jogadorAlvo.getCampoDeBatalha().getCampo().isEmpty()) {
+        if (jogadorAlvo.getCampoDeBatalha().getCampo().isEmpty())
+        {
             System.out.println(jogadorAlvo.getNome() + " não tem criaturas no campo de batalha!\n");
             System.out.println(jogador.getNome() + ", você pode atacar diretamente!\n");
             jogador.getCampoDeBatalha().mostrarCartas();
@@ -141,7 +142,11 @@ public class Jogar
 
             if (cartaAtacante != null)
             {
-                ((Criatura) cartaAtacante).atacarJogador(jogadorAlvo);
+                ((Criatura) cartaAtacante).atacarCriatura((Criatura)cartaDefensora);
+                if (((Criatura)cartaDefensora).getHP() <= 0)
+                {
+                    campoDeBatalha.removerCarta(cartaAtacante);
+                }
             }
             else
             {
@@ -152,11 +157,19 @@ public class Jogar
             {
                 if (cartaAtacante2 instanceof Feitico)
                 {
-                    ((Feitico) cartaAtacante2).lancarFeiticoCriatura((Criatura) cartaDefensora);
+                    ((Feitico) cartaAtacante2).lancarFeiticoCriatura((Criatura)cartaDefensora);
+                    if (((Criatura)cartaDefensora).getHP() <= 0)
+                    {
+                        campoDeBatalha.removerCarta(cartaAtacante);
+                    }
                 }
                 else if (cartaAtacante2 instanceof Encantamento)
                 {
-                    ((Encantamento) cartaAtacante2).lancarEncantamentoCriatura((Criatura) cartaDefensora);
+                    ((Encantamento) cartaAtacante2).lancarEncantamentoCriatura((Criatura)cartaDefensora);
+                    if (((Criatura)cartaDefensora).getHP() <= 0)
+                    {
+                        campoDeBatalha.removerCarta(cartaAtacante);
+                    }
                 }
             }
             else

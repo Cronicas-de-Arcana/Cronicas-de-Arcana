@@ -4,7 +4,8 @@ import Cartas.Carta;
 
 import java.util.List;
 
-abstract public class Espaco {
+abstract public class Espaco
+{
     protected List<Carta> cartas;
 
     abstract void removerCarta(Carta carta);

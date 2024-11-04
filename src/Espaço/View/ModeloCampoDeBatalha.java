@@ -1,6 +1,7 @@
 package Espaço.View;
 
 import Cartas.Carta;
+import Cartas.Criatura;
 import Cartas.View.ModeloCarta;
 import Espaço.CampodeBatalha;
 import Visualização.ComponenteVisual;
@@ -54,7 +55,7 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
     }
 
     // Remove uma carta do campo de batalha e atualiza a interface
-    public void removerCarta(Carta carta) {
+    public void removerCarta(Criatura carta) {
         campoBatalha.removerCarta(carta);    // Remove a carta do campo
         atualizarCampo();                    // Atualiza a interface para refletir a mudança
     }
