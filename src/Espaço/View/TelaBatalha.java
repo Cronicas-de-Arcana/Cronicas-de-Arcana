@@ -39,12 +39,12 @@ public class TelaBatalha extends Tela
         painelOeste.setLayout(new GridLayout(2, 1));
         painelOeste.setPreferredSize(new Dimension(320, painelOeste.getPreferredSize().height));
 
-        JLabel texto = new JLabel("Cemitério Jogador1");
+        JLabel texto = new JLabel("Cemitério Jogador2");
         texto.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         texto.setHorizontalAlignment(SwingConstants.CENTER);
         texto.setForeground(Color.WHITE);
 
-        JLabel texto2 = new JLabel("Cemiterio Jogador2");
+        JLabel texto2 = new JLabel("Cemiterio Jogador1");
         texto2.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         texto2.setHorizontalAlignment(SwingConstants.CENTER);
         texto2.setForeground(Color.WHITE);

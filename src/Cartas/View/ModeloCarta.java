@@ -114,7 +114,7 @@ public class ModeloCarta extends ComponenteVisual {
             }
         }
 
-        JButton botaoAtaque = new JButton("Ataque (provisório)");
+        JButton botaoAtaque = new JButton("Jogar");
         botaoAtaque.setAlignmentX(CENTER_ALIGNMENT);
         this.add(botaoAtaque);
 
