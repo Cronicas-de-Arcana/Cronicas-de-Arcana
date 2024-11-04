@@ -7,6 +7,7 @@ import Cartas.Feitico;
 import Visualização.ComponenteVisual;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class ModeloCarta extends ComponenteVisual {
@@ -19,8 +20,8 @@ public class ModeloCarta extends ComponenteVisual {
     @Override
     public void definirEstilo() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(new Color(30, 30, 30));
-        this.setBorder(BorderFactory.createLineBorder(Color.white));
+        this.setBackground(new Color(0, 72, 221));
+        this.setBorder(new LineBorder(new Color(0, 0, 0)));
         setPreferredSize(new Dimension(160, 140));
         setMaximumSize(new Dimension(180, 140));
     }

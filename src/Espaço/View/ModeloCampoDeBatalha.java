@@ -5,6 +5,7 @@ import Cartas.View.ModeloCarta;
 import Espaço.CampodeBatalha;
 import Visualização.ComponenteVisual;
 
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -22,7 +23,8 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
     @Override
     public void definirEstilo() {
         this.setLayout(new GridLayout(3, 3, 4, 6));
-        this.setBackground(new Color(21, 1, 101));
+        this.setBackground(new Color(55, 51, 51));
+        this.setBorder(new LineBorder(new Color(255, 255, 255)));
     }
 
     // Renderiza todas as cartas do campo de batalha

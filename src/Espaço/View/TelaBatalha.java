@@ -24,5 +24,12 @@ public class TelaBatalha extends Tela
         JPanel painelSul = new JPanel();
         painelSul.add(new ModeloMaoJogador(jogador1.getMao()));
         this.add(painelSul, BorderLayout.SOUTH);
+
+        JPanel painelCentral = new JPanel();
+        painelCentral.setLayout(new GridLayout(2, 1));
+        painelCentral.add(new ModeloCampoDeBatalha(jogador2.getCampoDeBatalha()));
+        painelCentral.add(new ModeloCampoDeBatalha(jogador1.getCampoDeBatalha()));
+        this.add(painelCentral, BorderLayout.CENTER);
+
     }
 }
