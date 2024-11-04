@@ -46,7 +46,7 @@ public class ModeloCarta extends ComponenteVisual {
         this.add(custoMana);
 
         // Espaçamento entre campos
-        this.add(Box.createVerticalStrut(10));
+        this.add(Box.createVerticalStrut(9));
 
         // Configurações específicas de cada tipo de carta
         switch (carta) {

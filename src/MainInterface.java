@@ -5,7 +5,8 @@ import Controle.Jogador;
 
 import java.util.Scanner;
 
-//Classe voltada para testes de interface
+//Classe voltada para testes de interface e integração do front com back
+//Usar ela pra testar a interface
 public class MainInterface {
     public static void main(String[] args) {
         // Dados para teste
@@ -17,6 +18,7 @@ public class MainInterface {
         Jogador jogador2 = new Jogador("Jogador 2", deckJ2, 100, 10, 2, scanner);
 
         // Inicializa o controlador, que deve abrir a tela inicial
+        // 'Iniciar Partida' vai mostrar as maos dos jogadores (comparar mão com saida no terminal)
         ControladorJogo controladorJogo = new ControladorJogo(jogador1, jogador2);
     }
 }

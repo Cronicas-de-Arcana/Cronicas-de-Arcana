@@ -22,7 +22,7 @@ public class ModeloMaoJogador extends ComponenteVisual {
     @Override
     public void definirEstilo() {
         this.setLayout(new GridLayout(1, 0, 10, 10)); // Layout para dispor as cartas lado a lado
-        this.setBackground(Color.WHITE);
+        this.setBackground(new Color(0, 0,0, 0)); // Deixar transparente
     }
 
     // Metodo renderizar para exibir as cartas da mão
