@@ -92,6 +92,10 @@ public class Jogador
         this.nivel = nivel;
     }
 
+    public Inventario getInventario() {
+        return inventario;
+    }
+
     public void comprarCartas()
     {
         if (deck.verificarDeckVazio())
