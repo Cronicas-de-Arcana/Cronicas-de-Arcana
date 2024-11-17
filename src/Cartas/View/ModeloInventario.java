@@ -5,6 +5,7 @@ import Cartas.Inventario;
 import Controle.Jogador;
 import Visualização.ComponenteVisual;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -37,5 +38,8 @@ public class ModeloInventario extends ComponenteVisual {
 
         revalidate();
         repaint();
+
+        JButton botao = new JButton("Cartas selecionadas");
+        this.add(botao);
     }
 }

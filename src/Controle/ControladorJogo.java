@@ -4,6 +4,7 @@ package Controle;
 
 import Controle.View.Janela;
 import Controle.View.TelaInicial;
+import Controle.View.TelaInventario;
 import Espaço.View.TelaBatalha;
 
 public class ControladorJogo {
@@ -32,5 +33,10 @@ public class ControladorJogo {
     public void mostrarTelaBatalha(){
         TelaBatalha telaBatalha = new TelaBatalha(this.jogador1, this.jogador2);
         this.janela.setTelaAtual(telaBatalha);
+    }
+
+    public void mostrarTelaInventario(){
+        TelaInventario telaInventario = new TelaInventario(this, this.jogador1, this.jogador2);
+        this.janela.setTelaAtual(telaInventario);
     }
 }

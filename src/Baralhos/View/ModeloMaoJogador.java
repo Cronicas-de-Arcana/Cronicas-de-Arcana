@@ -5,6 +5,7 @@ import Cartas.Carta;
 import Cartas.View.ModeloCarta;
 import Visualização.ComponenteVisual;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
