@@ -17,6 +17,7 @@ public class TelaBatalha extends Tela
     @Override
     public void renderizar(Jogador jogador1, Jogador jogador2) {
         this.setLayout(new BorderLayout());
+
         JPanel painelNorte = new JPanel();
         painelNorte.add(new ModeloMaoJogador(jogador2.getMao()));
         this.add(painelNorte, BorderLayout.NORTH);
@@ -35,22 +36,11 @@ public class TelaBatalha extends Tela
 
         //Provisório para mapear a tela - porção Oeste
         JPanel painelOeste = new JPanel();
-        painelOeste.setBackground(Color.BLACK);
         painelOeste.setLayout(new GridLayout(2, 1));
         painelOeste.setPreferredSize(new Dimension(320, painelOeste.getPreferredSize().height));
 
-        JLabel texto = new JLabel("Cemitério Jogador2");
-        texto.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        texto.setHorizontalAlignment(SwingConstants.CENTER);
-        texto.setForeground(Color.WHITE);
-
-        JLabel texto2 = new JLabel("Cemiterio Jogador1");
-        texto2.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        texto2.setHorizontalAlignment(SwingConstants.CENTER);
-        texto2.setForeground(Color.WHITE);
-
-        painelOeste.add(texto);
-        painelOeste.add(texto2);
+        painelOeste.add(new ModeloCemiterio(jogador2.getCemiterio()));
+        painelOeste.add(new ModeloCemiterio(jogador1.getCemiterio()));
         this.add(painelOeste, BorderLayout.WEST);
 
         //Provisório para mapear a tela - porção Leste
