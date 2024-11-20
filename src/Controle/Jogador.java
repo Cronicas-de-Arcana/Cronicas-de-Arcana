@@ -129,9 +129,9 @@ public class Jogador
         {
             Scanner sc = new Scanner(System.in);
             System.out.print("Escolha uma carta da mão para atacar (digite o número) ou 0 para não escolher: ");
-            int cartaEscolhida = sc.nextInt() - 1;
+            int cartaEscolhida = sc.nextInt();
 
-            if (cartaEscolhida <= -1 || cartaEscolhida >= mao.getCartas().size())
+            if (cartaEscolhida < 0 || cartaEscolhida >= mao.getCartas().size())
             {
                 System.out.println("Escolha inválida. Tente novamente.");
             }
