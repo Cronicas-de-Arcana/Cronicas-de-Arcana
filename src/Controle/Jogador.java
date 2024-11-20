@@ -106,7 +106,8 @@ public class Jogador
         Carta cartaComprada = deck.comprarCarta();
         if (cartaComprada != null)
         {
-            mao.adicionarCartas(cartaComprada);
+            this.mao.adicionarCartas(cartaComprada);
+            this.getDeck().getCartas().remove(cartaComprada);
         }
         else
         {
@@ -130,7 +131,7 @@ public class Jogador
             System.out.print("Escolha uma carta da mão para atacar (digite o número) ou 0 para não escolher: ");
             int cartaEscolhida = sc.nextInt() - 1;
 
-            if (cartaEscolhida < 0 || cartaEscolhida >= mao.getCartas().size())
+            if (cartaEscolhida <= -1 || cartaEscolhida >= mao.getCartas().size())
             {
                 System.out.println("Escolha inválida. Tente novamente.");
             }
