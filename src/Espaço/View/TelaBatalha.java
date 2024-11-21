@@ -2,6 +2,7 @@ package Espaço.View;
 
 import Baralhos.View.ModeloMaoJogador;
 import Controle.Jogador;
+import Controle.View.ModeloInfoJogador;
 import Visualização.Tela;
 
 import javax.swing.*;
@@ -45,28 +46,18 @@ public class TelaBatalha extends Tela
 
         //Provisório para mapear a tela - porção Leste
         JPanel painelLeste = new JPanel();
-        painelLeste.setBackground(new Color(13, 112, 4));
         painelLeste.setLayout(new GridLayout(3, 1));
+        painelLeste.setBackground(new Color(60, 43, 214));
         painelLeste.setPreferredSize(new Dimension(320, painelOeste.getPreferredSize().height));
-
-        JLabel informacaoJogador2 = new JLabel("Informações Jogador 2 aqui!");
-        informacaoJogador2.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        informacaoJogador2.setHorizontalAlignment(SwingConstants.CENTER);
-        informacaoJogador2.setForeground(Color.WHITE);
 
         JLabel contadorRodadas = new JLabel("Rodada nºX + Futuras informações adicinais!");
         contadorRodadas.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         contadorRodadas.setHorizontalAlignment(SwingConstants.CENTER);
         contadorRodadas.setForeground(Color.WHITE);
 
-        JLabel informacaoJogador1 = new JLabel("Informações Jogador 1 aqui!");
-        informacaoJogador1.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        informacaoJogador1.setHorizontalAlignment(SwingConstants.CENTER);
-        informacaoJogador1.setForeground(Color.WHITE);
-
-        painelLeste.add(informacaoJogador2);
+        painelLeste.add(new ModeloInfoJogador(jogador2));
         painelLeste.add(contadorRodadas);
-        painelLeste.add(informacaoJogador1);
+        painelLeste.add(new ModeloInfoJogador(jogador1));
 
         this.add(painelLeste, BorderLayout.EAST);
     }
