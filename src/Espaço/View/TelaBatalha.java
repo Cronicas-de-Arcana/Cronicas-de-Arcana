@@ -10,8 +10,12 @@ import java.awt.*;
 
 public class TelaBatalha extends Tela
 {
+    private ModeloMaoJogador ModeloMaoJogador1;
+    private ModeloMaoJogador ModeloMaoJogador2;
 
     public TelaBatalha(Jogador jogador1, Jogador jogador2) {
+        this.ModeloMaoJogador1 = new ModeloMaoJogador(jogador1.getMao());
+        this.ModeloMaoJogador2 = new ModeloMaoJogador(jogador2.getMao());
         this.renderizar(jogador1, jogador2);
     }
 
@@ -20,12 +24,12 @@ public class TelaBatalha extends Tela
         this.setLayout(new BorderLayout());
 
         JPanel painelNorte = new JPanel();
-        painelNorte.add(new ModeloMaoJogador(jogador2.getMao()));
+        painelNorte.add(ModeloMaoJogador1);
         this.add(painelNorte, BorderLayout.NORTH);
         painelNorte.setBackground(new Color(119, 2, 2));
 
         JPanel painelSul = new JPanel();
-        painelSul.add(new ModeloMaoJogador(jogador1.getMao()));
+        painelSul.add(ModeloMaoJogador2);
         painelSul.setBackground(new Color(1, 31, 99));
         this.add(painelSul, BorderLayout.SOUTH);
 
