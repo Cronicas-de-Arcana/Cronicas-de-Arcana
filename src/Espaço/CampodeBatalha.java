@@ -5,6 +5,8 @@ import Baralhos.Mao;
 import Cartas.Carta;
 import Cartas.Criatura;
 import Controle.Jogador;
+import Espaço.View.ModeloCampoDeBatalha;
+import Visualização.ComponenteVisual;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ public class CampodeBatalha extends Espaco
     private Mao mao;
     private Cemiterio cemiterio;
     private Deck deck;
+    private ModeloCampoDeBatalha modeloCampo;
 
     public CampodeBatalha(Mao mao, Cemiterio cemiterio, Deck deck)
     {
@@ -26,6 +29,20 @@ public class CampodeBatalha extends Espaco
     public void adicionarCarta(Carta carta)
     {
         cartas.add(carta);
+        this.getModeloCampo().atualizarCampo();
+    }
+
+    public List<Carta> getCampo()
+    {
+        return cartas;
+    }
+
+    public ModeloCampoDeBatalha getModeloCampo(){
+        return modeloCampo;
+    }
+
+    public void setModeloCampo(ModeloCampoDeBatalha modeloCampo){
+        this.modeloCampo = modeloCampo;
     }
 
     public void removerCarta(Carta criatura)
@@ -51,11 +68,6 @@ public class CampodeBatalha extends Espaco
         }
     }
 
-    public List<Carta> getCampo()
-    {
-        return cartas;
-    }
-
     public void mostrarCartas()
     {
         if (cartas.isEmpty())
@@ -72,7 +84,6 @@ public class CampodeBatalha extends Espaco
             System.out.println();
         }
     }
-
 
     public List<Criatura> getCriaturasNoCampo(Jogador jogador)
     {
