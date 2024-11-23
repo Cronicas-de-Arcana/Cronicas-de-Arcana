@@ -28,6 +28,7 @@ public class Jogador
     private Inventario inventario;
     private Scanner scanner;
     protected List<Encantamento> encantamentosAtivos = new ArrayList<>();
+    private ControladorJogo controladorJogo;
 
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual, Scanner scanner)
     {
@@ -43,6 +44,14 @@ public class Jogador
         this.experiencia = 0;
         this.inventario = new Inventario();
         this.scanner = scanner;
+    }
+
+    public ControladorJogo getControladorJogo() {
+        return controladorJogo;
+    }
+
+    public void setControladorJogo(ControladorJogo controladorJogo) {
+        this.controladorJogo = controladorJogo;
     }
 
     public String getNome()
@@ -108,6 +117,7 @@ public class Jogador
         {
             this.mao.adicionarCartas(cartaComprada);
             this.getDeck().getCartas().remove(cartaComprada);
+            //ADICIONAR ATUALIZAÇÃO
         }
         else
         {
@@ -163,7 +173,6 @@ public class Jogador
             if (cartaEscolhida < 0 || cartaEscolhida >= jogador.getCampoDeBatalha().getCampo().size())
             {
                 System.out.println("Escolha inválida. Tente novamente.");
-                continue;
             }
             else if (cartaEscolhida == 0)
             {
@@ -211,6 +220,7 @@ public class Jogador
                         System.out.println(this.getNome() + " invocou " + cartaEscolhida.getNome() + " no campo de batalha!");
                         this.utilizarMana(cartaEscolhida.getCustoMana());
                         this.mao.removerCarta(cartaEscolhida);
+                        //ADICIONAR ATUALIZAÇÃO
                     }
                     else
                     {

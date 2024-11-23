@@ -17,6 +17,8 @@ public class ControladorJogo {
         //Inicialização de atributos do controlador
         this.jogador1 = jogador1;
         this.jogador2 = jogador2;
+        this.jogador1.setControladorJogo(this);
+        this.jogador2.setControladorJogo(this);
         this.jogar = new Jogar(jogador1, jogador2,jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
 
         // Cria a Janela e define TelaInicial como a primeira tela
@@ -27,6 +29,10 @@ public class ControladorJogo {
 
     public void iniciarJogo(){
         this.jogar.iniciar(); // Inicia a partida no Backend
+    }
+
+    public Janela getJanela() {
+        return janela;
     }
 
     public void mostrarTelaBatalha(){
