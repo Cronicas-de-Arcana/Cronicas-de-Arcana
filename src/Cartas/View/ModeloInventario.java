@@ -12,11 +12,9 @@ import java.awt.*;
 public class ModeloInventario extends ComponenteVisual {
     private TelaInventario telaInventario;
     private ControladorJogo controladorJogo;
-    private Jogador jogador;
 
     public ModeloInventario(Jogador jogador, TelaInventario telaInventario, ControladorJogo controladorJogo) {
         this.telaInventario = telaInventario;
-        this.jogador = jogador;
         this.controladorJogo = controladorJogo;
         this.definirEstilo();
         this.renderizar();
