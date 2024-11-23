@@ -65,6 +65,7 @@ public class ControladorJogo {
         TelaBatalha telaBatalha = new TelaBatalha(this.jogador1, this.jogador2, this);
         this.janela.setTelaBatalha(telaBatalha);
         this.janela.setTelaAtual(telaBatalha);
+        jogar.iniciarPartida();
     }
 
     public void mostrarTelaInventario(Jogador jogadorAtual){
@@ -83,7 +84,7 @@ public class ControladorJogo {
             jogador2.comprarCartas();
         }
 
-        this.jogar = new Jogar(jogador1, jogador2,jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
+        this.jogar = new Jogar(jogador1, jogador2, jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
         this.jogar.setControladorJogo(this);
     }
 }

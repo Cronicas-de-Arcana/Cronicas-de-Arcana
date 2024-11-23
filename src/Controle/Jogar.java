@@ -6,6 +6,7 @@ import Cartas.Encantamento;
 import Cartas.Feitico;
 import Espaço.CampodeBatalha;
 
+import javax.swing.*;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -37,6 +38,11 @@ public class Jogar
 
     public void setControladorJogo(ControladorJogo controladorJogo) {
         this.controladorJogo = controladorJogo;
+    }
+
+    public void iniciarPartida(){
+        Jogador jogadorAtivo = new Random().nextBoolean() ? jogador1 : jogador2;
+        JOptionPane.showMessageDialog(null, jogadorAtivo.getNome() + " deve jogar", "Informação", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void iniciar()
