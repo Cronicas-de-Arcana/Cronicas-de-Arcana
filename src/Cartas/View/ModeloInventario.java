@@ -57,7 +57,7 @@ public class ModeloInventario extends ComponenteVisual {
         JButton botaoDeck2 = new JButton("Deck 2");
         botaoDeck2.addActionListener(e -> {
             //Ao escolher esse botao deve ser definido o Deck padrão 2 do inventario e mudar a tela baseado no jogador Atual
-            Deck deckEscolhido = new Deck(controladorJogo.getInventario().inicializadorCartasJ1());
+            Deck deckEscolhido = new Deck(controladorJogo.getInventario().inicializadorCartasJ2());
             controladorJogo.getJogadorAtual().setDeck(deckEscolhido);
 
             if (controladorJogo.getJogadorAtual() == controladorJogo.getJogador1()) {

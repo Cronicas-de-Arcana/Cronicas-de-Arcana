@@ -24,8 +24,8 @@ public class ControladorJogo {
         this.jogador1.setControladorJogo(this);
         this.jogador2.setControladorJogo(this);
         this.jogadorAtual = jogador1;
-
         this.inventario = new Inventario();
+
         this.jogar = new Jogar(jogador1, jogador2,jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
         this.jogar.setControladorJogo(this);
     }
@@ -56,10 +56,6 @@ public class ControladorJogo {
 
     public Inventario getInventario() {
         return inventario;
-    }
-
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
     }
 
     public void inicializacaoJanela(){
