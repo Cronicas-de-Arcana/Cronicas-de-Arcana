@@ -43,20 +43,4 @@ public class ModeloMaoJogador extends ComponenteVisual {
         revalidate();
         repaint();
     }
-
-    // Metodo para atualizar a mão dinamicamente
-    public void atualizarCartas() {
-        renderizar();  // Re-renderiza toda a mão ao atualizar as cartas
-    }
-
-    // Adicionalmente, pode-se incluir métodos para adicionar/remover cartas dinamicamente
-    public void adicionarCarta(Carta carta) {
-        mao.adicionarCartas(carta);  // Adiciona a carta à mão
-        atualizarCartas();           // Atualiza a interface para refletir a mudança
-    }
-
-    public void removerCarta(Carta carta) {
-        mao.removerCarta(carta);     // Remove a carta da mão
-        atualizarCartas();           // Atualiza a interface para refletir a mudança
-    }
 }

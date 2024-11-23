@@ -84,6 +84,24 @@ public class TelaBatalha extends Tela
         this.add(painelLeste, BorderLayout.EAST);
     }
 
+    public void atualizarElementos() {
+        //Atualiza as mãos
+        getModeloMaoJogador1().atualizar();
+        getModeloMaoJogador2().atualizar();
+
+        //Atualiza os campos
+        getModeloCampoDeBatalhaJogador1().atualizar();
+        getModeloCampoDeBatalhaJogador2().atualizar();
+
+        //Atualiza os cemiterios
+        getModeloCemiterioJogador1().atualizar();
+        getModeloCemiterioJogador2().atualizar();
+
+        //Atualiza as informações
+        getModeloInfoJogador1().atualizar();
+        getModeloInfoJogador2().atualizar();
+    }
+
     public void setModeloMaoJogador1(ModeloMaoJogador modeloMaoJogador1) {
         this.modeloMaoJogador1 = modeloMaoJogador1;
     }

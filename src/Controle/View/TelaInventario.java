@@ -21,4 +21,5 @@ public class TelaInventario extends Tela {
         this.add(new ModeloInventario(jogador1));
         this.add(new ModeloInventario(jogador2));
     }
+
 }

@@ -6,7 +6,6 @@ import Controle.View.Janela;
 import javax.swing.*;
 
 abstract public class Tela extends JPanel {
-    protected Janela janela;
 
     public void renderizar(){
 
@@ -16,5 +15,4 @@ abstract public class Tela extends JPanel {
 
     }
 
-    //abstract public void atualizarElementos();
 }

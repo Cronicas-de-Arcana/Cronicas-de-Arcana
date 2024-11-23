@@ -39,4 +39,5 @@ public class ModeloCemiterio extends ComponenteVisual {
         revalidate();
         repaint();
     }
+
 }

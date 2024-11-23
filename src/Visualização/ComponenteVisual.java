@@ -17,4 +17,7 @@ abstract public class ComponenteVisual extends JPanel {
 
     public abstract void definirEstilo();
 
+    public void atualizar() {
+        renderizar();
+    }
 }

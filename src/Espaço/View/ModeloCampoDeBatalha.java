@@ -42,22 +42,5 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
         revalidate();
         repaint();
     }
-
-    // Atualiza o campo de batalha dinamicamente
-    public void atualizarCampo() {
-        renderizar();  // Re-renderiza o campo ao atualizar as cartas
-    }
-
-    // Adiciona uma carta ao campo de batalha e atualiza a interface
-    public void adicionarCarta(Carta carta) {
-        campoBatalha.adicionarCarta(carta);  // Adiciona a carta ao campo
-        atualizarCampo();                    // Atualiza a interface para refletir a mudança
-    }
-
-    // Remove uma carta do campo de batalha e atualiza a interface
-    public void removerCarta(Criatura carta) {
-        campoBatalha.removerCarta(carta);    // Remove a carta do campo
-        atualizarCampo();                    // Atualiza a interface para refletir a mudança
-    }
 }
 
