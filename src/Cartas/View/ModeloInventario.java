@@ -50,6 +50,7 @@ public class ModeloInventario extends ComponenteVisual {
                 controladorJogo.setJogadorAtual(controladorJogo.getJogador2());
                 controladorJogo.mostrarTelaInventario(controladorJogo.getJogador2());
             } else {
+                controladorJogo.inicializacaoJogo();
                 controladorJogo.mostrarTelaBatalha();
             }
         });
@@ -64,10 +65,10 @@ public class ModeloInventario extends ComponenteVisual {
                 controladorJogo.setJogadorAtual(controladorJogo.getJogador2());
                 controladorJogo.mostrarTelaInventario(controladorJogo.getJogador2());
             } else {
+                controladorJogo.inicializacaoJogo();
                 controladorJogo.mostrarTelaBatalha();
             }
         });
-
         // Adiciona os botões ao painel
         this.add(botaoDeck1);
         this.add(botaoDeck2);

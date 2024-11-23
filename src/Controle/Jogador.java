@@ -30,6 +30,17 @@ public class Jogador
     protected List<Encantamento> encantamentosAtivos = new ArrayList<>();
     private ControladorJogo controladorJogo;
 
+    public Jogador(String nome){
+        this.nome = nome;
+        this.mao = new Mao();
+        this.cemiterio = new Cemiterio();
+        this.campoDeBatalha = new CampodeBatalha();
+        this.hp = 50;
+        this.manaAtual = 10;
+        this.nivel = 1;
+        this.experiencia = 0;
+    }
+
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual, Scanner scanner)
     {
         this.nome = nome;

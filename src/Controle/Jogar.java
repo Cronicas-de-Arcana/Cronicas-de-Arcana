@@ -41,7 +41,7 @@ public class Jogar
 
     public void iniciar()
     {
-        jogador1.getDeck().embaralhar();
+        /*jogador1.getDeck().embaralhar();
         System.out.println("\nCartas do Deck de " + jogador1.getNome() + " embaralhadas!");
         jogador2.getDeck().embaralhar();
         System.out.println("\nCartas do Deck de " + jogador2.getNome() + " embaralhadas!");
@@ -57,7 +57,7 @@ public class Jogar
         for (int i = 0; i < 4; i++)
         {
             jogador2.comprarCartas();
-        }
+        }*/
 
         while (true)
         {

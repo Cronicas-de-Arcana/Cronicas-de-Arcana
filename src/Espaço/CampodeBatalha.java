@@ -15,6 +15,10 @@ public class CampodeBatalha extends Espaco
     private Cemiterio cemiterio;
     private Deck deck;
 
+    public CampodeBatalha(){
+        this.cartas = new ArrayList<>();
+    }
+
     public CampodeBatalha(Mao mao, Cemiterio cemiterio, Deck deck)
     {
         this.cartas = new ArrayList<>();

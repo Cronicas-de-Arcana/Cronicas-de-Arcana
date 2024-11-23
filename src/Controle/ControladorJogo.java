@@ -26,8 +26,8 @@ public class ControladorJogo {
         this.jogadorAtual = jogador1;
         this.inventario = new Inventario();
 
-        this.jogar = new Jogar(jogador1, jogador2,jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
-        this.jogar.setControladorJogo(this);
+        //this.jogar = new Jogar(jogador1, jogador2,jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
+        //this.jogar.setControladorJogo(this);
     }
 
     public Jogador getJogador1() {
@@ -74,5 +74,13 @@ public class ControladorJogo {
     public void mostrarTelaInventario(Jogador jogadorAtual){
         TelaInventario telaInventario = new TelaInventario(this, jogadorAtual);
         this.janela.setTelaAtual(telaInventario);
+    }
+
+    public void inicializacaoJogo(){
+        //Compra inicial das 5 cartas
+        for (int i=0; i<5; i++){
+            jogador1.comprarCartas();
+            jogador2.comprarCartas();
+        }
     }
 }
