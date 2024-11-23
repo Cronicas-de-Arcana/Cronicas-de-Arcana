@@ -54,6 +54,18 @@ public class Jogar
         JOptionPane.showMessageDialog(null, jogadorAtivo.getNome() + " deve jogar", "Informação", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    public void inicializacaoMaos(){
+        //Embaralhar Decks
+        jogador1.getDeck().embaralhar();
+        jogador2.getDeck().embaralhar();
+
+        //Compra inicial das 5 cartas
+        for (int i=0; i<5; i++){
+            jogador1.comprarCartas();
+            jogador2.comprarCartas();
+        }
+    }
+
     public void iniciar()
     {
         jogador1.getDeck().embaralhar();

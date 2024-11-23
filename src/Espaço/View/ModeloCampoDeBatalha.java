@@ -1,7 +1,6 @@
 package Espaço.View;
 
 import Cartas.Carta;
-import Cartas.Criatura;
 import Cartas.View.ModeloCarta;
 import Controle.ControladorJogo;
 import Controle.Jogador;
