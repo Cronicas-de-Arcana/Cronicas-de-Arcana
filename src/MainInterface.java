@@ -20,5 +20,6 @@ public class MainInterface {
         // Inicializa o controlador, que deve abrir a tela inicial
         // 'Iniciar Partida' vai mostrar as maos dos jogadores (comparar mão com saida no terminal)
         ControladorJogo controladorJogo = new ControladorJogo(jogador1, jogador2);
+        controladorJogo.iniciarJogo();
     }
 }

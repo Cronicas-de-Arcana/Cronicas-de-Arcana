@@ -23,7 +23,6 @@ public class ControladorJogo {
         TelaInicial telaInicial = new TelaInicial(this);
         this.janela = new Janela(telaInicial);
         telaInicial.setOuvinteMudancaTela(this.janela);  // Registra a Janela como ouvinte
-        this.iniciarJogo();
     }
 
     public void iniciarJogo(){
@@ -31,7 +30,7 @@ public class ControladorJogo {
     }
 
     public void mostrarTelaBatalha(){
-        TelaBatalha telaBatalha = new TelaBatalha(this.jogador1, this.jogador2);
+        TelaBatalha telaBatalha = new TelaBatalha(this.jogador1, this.jogador2, this);
         this.janela.setTelaAtual(telaBatalha);
     }
 

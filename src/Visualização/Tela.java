@@ -15,4 +15,6 @@ abstract public class Tela extends JPanel {
     public void renderizar(Jogador jogador1, Jogador jogador2){
 
     }
+
+    //abstract public void atualizarElementos();
 }

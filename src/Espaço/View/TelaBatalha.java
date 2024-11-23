@@ -1,6 +1,7 @@
 package Espaço.View;
 
 import Baralhos.View.ModeloMaoJogador;
+import Controle.ControladorJogo;
 import Controle.Jogador;
 import Controle.View.ModeloInfoJogador;
 import Visualização.Tela;
@@ -10,12 +11,29 @@ import java.awt.*;
 
 public class TelaBatalha extends Tela
 {
-    private ModeloMaoJogador ModeloMaoJogador1;
-    private ModeloMaoJogador ModeloMaoJogador2;
+    private ModeloMaoJogador modeloMaoJogador1;
+    private ModeloMaoJogador modeloMaoJogador2;
+    private ModeloInfoJogador modeloInfoJogador1;
+    private ModeloInfoJogador modeloInfoJogador2;
+    private ModeloCemiterio modeloCemiterioJogador1;
+    private ModeloCemiterio modeloCemiterioJogador2;
+    private ModeloCampoDeBatalha modeloCampoDeBatalhaJogador1;
+    private ModeloCampoDeBatalha modeloCampoDeBatalhaJogador2;
+    private ControladorJogo controladorJogo;
 
-    public TelaBatalha(Jogador jogador1, Jogador jogador2) {
-        this.ModeloMaoJogador1 = new ModeloMaoJogador(jogador1.getMao());
-        this.ModeloMaoJogador2 = new ModeloMaoJogador(jogador2.getMao());
+    public TelaBatalha(Jogador jogador1, Jogador jogador2, ControladorJogo controladorJogo) {
+        //Cosntrutor irá atribuir e gerar todos os modelos que irão compor a tela
+        this.modeloMaoJogador1 = new ModeloMaoJogador(jogador1.getMao());
+        this.modeloMaoJogador2 = new ModeloMaoJogador(jogador2.getMao());
+        this.modeloCampoDeBatalhaJogador1 = new ModeloCampoDeBatalha(jogador1.getCampoDeBatalha());
+        this.modeloCampoDeBatalhaJogador2 = new ModeloCampoDeBatalha(jogador2.getCampoDeBatalha());
+        this.modeloInfoJogador1 = new ModeloInfoJogador(jogador1);
+        this.modeloInfoJogador2 = new ModeloInfoJogador(jogador2);
+        this.modeloCemiterioJogador1 = new ModeloCemiterio(jogador1.getCemiterio());
+        this.modeloCemiterioJogador2 = new ModeloCemiterio(jogador2.getCemiterio());
+
+        //Estabelecendo controlador da tela, responsavel por referenciar e chamar atualizações
+        this.controladorJogo = controladorJogo;
         this.renderizar(jogador1, jogador2);
     }
 
@@ -24,19 +42,19 @@ public class TelaBatalha extends Tela
         this.setLayout(new BorderLayout());
 
         JPanel painelNorte = new JPanel();
-        painelNorte.add(ModeloMaoJogador1);
+        painelNorte.add(modeloMaoJogador1);
         this.add(painelNorte, BorderLayout.NORTH);
         painelNorte.setBackground(new Color(119, 2, 2));
 
         JPanel painelSul = new JPanel();
-        painelSul.add(ModeloMaoJogador2);
+        painelSul.add(modeloMaoJogador2);
         painelSul.setBackground(new Color(1, 31, 99));
         this.add(painelSul, BorderLayout.SOUTH);
 
         JPanel painelCentral = new JPanel();
         painelCentral.setLayout(new GridLayout(2, 1));
-        painelCentral.add(new ModeloCampoDeBatalha(jogador2.getCampoDeBatalha()));
-        painelCentral.add(new ModeloCampoDeBatalha(jogador1.getCampoDeBatalha()));
+        painelCentral.add(modeloCampoDeBatalhaJogador2);
+        painelCentral.add(modeloCampoDeBatalhaJogador1);
         this.add(painelCentral, BorderLayout.CENTER);
 
         //Provisório para mapear a tela - porção Oeste
@@ -44,8 +62,8 @@ public class TelaBatalha extends Tela
         painelOeste.setLayout(new GridLayout(2, 1));
         painelOeste.setPreferredSize(new Dimension(320, painelOeste.getPreferredSize().height));
 
-        painelOeste.add(new ModeloCemiterio(jogador2.getCemiterio()));
-        painelOeste.add(new ModeloCemiterio(jogador1.getCemiterio()));
+        painelOeste.add(modeloCemiterioJogador2);
+        painelOeste.add(modeloCemiterioJogador1);
         this.add(painelOeste, BorderLayout.WEST);
 
         //Provisório para mapear a tela - porção Leste
@@ -59,10 +77,82 @@ public class TelaBatalha extends Tela
         contadorRodadas.setHorizontalAlignment(SwingConstants.CENTER);
         contadorRodadas.setForeground(Color.WHITE);
 
-        painelLeste.add(new ModeloInfoJogador(jogador2));
+        painelLeste.add(modeloInfoJogador2);
         painelLeste.add(contadorRodadas);
-        painelLeste.add(new ModeloInfoJogador(jogador1));
+        painelLeste.add(modeloInfoJogador1);
 
         this.add(painelLeste, BorderLayout.EAST);
+    }
+
+    public void setModeloMaoJogador1(ModeloMaoJogador modeloMaoJogador1) {
+        this.modeloMaoJogador1 = modeloMaoJogador1;
+    }
+
+    public void setModeloMaoJogador2(ModeloMaoJogador modeloMaoJogador2) {
+        this.modeloMaoJogador2 = modeloMaoJogador2;
+    }
+
+    public ModeloInfoJogador getModeloInfoJogador1() {
+        return modeloInfoJogador1;
+    }
+
+    public void setModeloInfoJogador1(ModeloInfoJogador modeloInfoJogador1) {
+        this.modeloInfoJogador1 = modeloInfoJogador1;
+    }
+
+    public ModeloInfoJogador getModeloInfoJogador2() {
+        return modeloInfoJogador2;
+    }
+
+    public void setModeloInfoJogador2(ModeloInfoJogador modeloInfoJogador2) {
+        this.modeloInfoJogador2 = modeloInfoJogador2;
+    }
+
+    public ModeloCemiterio getModeloCemiterioJogador1() {
+        return modeloCemiterioJogador1;
+    }
+
+    public void setModeloCemiterioJogador1(ModeloCemiterio modeloCemiterioJogador1) {
+        this.modeloCemiterioJogador1 = modeloCemiterioJogador1;
+    }
+
+    public ModeloCemiterio getModeloCemiterioJogador2() {
+        return modeloCemiterioJogador2;
+    }
+
+    public void setModeloCemiterioJogador2(ModeloCemiterio modeloCemiterioJogador2) {
+        this.modeloCemiterioJogador2 = modeloCemiterioJogador2;
+    }
+
+    public ModeloCampoDeBatalha getModeloCampoDeBatalhaJogador1() {
+        return modeloCampoDeBatalhaJogador1;
+    }
+
+    public void setModeloCampoDeBatalhaJogador1(ModeloCampoDeBatalha modeloCampoDeBatalhaJogador1) {
+        this.modeloCampoDeBatalhaJogador1 = modeloCampoDeBatalhaJogador1;
+    }
+
+    public ModeloCampoDeBatalha getModeloCampoDeBatalhaJogador2() {
+        return modeloCampoDeBatalhaJogador2;
+    }
+
+    public void setModeloCampoDeBatalhaJogador2(ModeloCampoDeBatalha modeloCampoDeBatalhaJogador2) {
+        this.modeloCampoDeBatalhaJogador2 = modeloCampoDeBatalhaJogador2;
+    }
+
+    public ModeloMaoJogador getModeloMaoJogador1() {
+        return modeloMaoJogador1;
+    }
+
+    public ModeloMaoJogador getModeloMaoJogador2() {
+        return modeloMaoJogador2;
+    }
+
+    public void setControladorJogo(ControladorJogo controladorJogo) {
+        this.controladorJogo = controladorJogo;
+    }
+
+    public ControladorJogo getControladorJogo() {
+        return controladorJogo;
     }
 }
