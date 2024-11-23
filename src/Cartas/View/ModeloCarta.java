@@ -4,6 +4,8 @@ import Cartas.Carta;
 import Cartas.Criatura;
 import Cartas.Encantamento;
 import Cartas.Feitico;
+import Controle.ControladorJogo;
+import Controle.Jogador;
 import Visualização.ComponenteVisual;
 
 import javax.swing.*;
@@ -11,8 +13,12 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class ModeloCarta extends ComponenteVisual {
+    private Jogador jogador;
+    private ControladorJogo controladorJogo;
 
-    public ModeloCarta(Carta carta) {
+    public ModeloCarta(Carta carta, Jogador jogador, ControladorJogo controladorJogo) {
+        this.jogador = jogador;
+        this.controladorJogo = controladorJogo;
         this.definirEstilo();
         this.renderizar(carta);
     }

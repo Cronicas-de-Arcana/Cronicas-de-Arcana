@@ -2,6 +2,8 @@ package Espaço.View;
 
 import Cartas.Carta;
 import Cartas.View.ModeloCarta;
+import Controle.ControladorJogo;
+import Controle.Jogador;
 import Espaço.Cemiterio;
 import Visualização.ComponenteVisual;
 
@@ -12,9 +14,13 @@ import java.util.ArrayList;
 public class ModeloCemiterio extends ComponenteVisual {
     private Cemiterio cemiterio;
     private ArrayList<ModeloCarta> modelosCartasCemiterio;
+    private ControladorJogo controladorJogo;
+    private Jogador jogador;
 
-    public ModeloCemiterio(Cemiterio cemiterio) {
+    public ModeloCemiterio(Cemiterio cemiterio, Jogador jogador, ControladorJogo controladorJogo) {
         this.cemiterio = cemiterio;
+        this.jogador = jogador;
+        this.controladorJogo = controladorJogo;
         this.modelosCartasCemiterio = new ArrayList<>();
         this.definirEstilo();
         this.renderizar();
@@ -31,7 +37,7 @@ public class ModeloCemiterio extends ComponenteVisual {
         modelosCartasCemiterio.clear();
 
         for (Carta carta : cemiterio.getCartas()) {
-            ModeloCarta modeloCarta = new ModeloCarta(carta);
+            ModeloCarta modeloCarta = new ModeloCarta(carta, jogador, controladorJogo);
             modelosCartasCemiterio.add(modeloCarta);
             this.add(modeloCarta);
         }

@@ -40,6 +40,15 @@ public class Jogar
         this.controladorJogo = controladorJogo;
     }
 
+    public Jogador getJogadorAtivo(){
+        return jogadorAtivo;
+    }
+
+    public void mudarJogadorAtivo(){
+        jogadorAtivo = (jogadorAtivo == jogador1) ? jogador2 : jogador1;
+        JOptionPane.showMessageDialog(null, jogadorAtivo.getNome() + " deve jogar", "Próximo Turno", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public void iniciarPartida(){
         Jogador jogadorAtivo = new Random().nextBoolean() ? jogador1 : jogador2;
         JOptionPane.showMessageDialog(null, jogadorAtivo.getNome() + " deve jogar", "Informação", JOptionPane.INFORMATION_MESSAGE);

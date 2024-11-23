@@ -22,18 +22,19 @@ public class TelaBatalha extends Tela
     private ControladorJogo controladorJogo;
 
     public TelaBatalha(Jogador jogador1, Jogador jogador2, ControladorJogo controladorJogo) {
-        //Cosntrutor irá atribuir e gerar todos os modelos que irão compor a tela
-        this.modeloMaoJogador1 = new ModeloMaoJogador(jogador1.getMao());
-        this.modeloMaoJogador2 = new ModeloMaoJogador(jogador2.getMao());
-        this.modeloCampoDeBatalhaJogador1 = new ModeloCampoDeBatalha(jogador1.getCampoDeBatalha());
-        this.modeloCampoDeBatalhaJogador2 = new ModeloCampoDeBatalha(jogador2.getCampoDeBatalha());
-        this.modeloInfoJogador1 = new ModeloInfoJogador(jogador1);
-        this.modeloInfoJogador2 = new ModeloInfoJogador(jogador2);
-        this.modeloCemiterioJogador1 = new ModeloCemiterio(jogador1.getCemiterio());
-        this.modeloCemiterioJogador2 = new ModeloCemiterio(jogador2.getCemiterio());
-
         //Estabelecendo controlador da tela, responsavel por referenciar e chamar atualizações
         this.controladorJogo = controladorJogo;
+
+        //Cosntrutor irá atribuir e gerar todos os modelos que irão compor a tela
+        this.modeloMaoJogador1 = new ModeloMaoJogador(jogador1.getMao(), this.getControladorJogo().getJogador1(), this.getControladorJogo());
+        this.modeloMaoJogador2 = new ModeloMaoJogador(jogador2.getMao(), this.getControladorJogo().getJogador2(), this.getControladorJogo());
+        this.modeloCampoDeBatalhaJogador1 = new ModeloCampoDeBatalha(jogador1.getCampoDeBatalha(), this.getControladorJogo().getJogador1(), this.getControladorJogo());
+        this.modeloCampoDeBatalhaJogador2 = new ModeloCampoDeBatalha(jogador2.getCampoDeBatalha(), this.getControladorJogo().getJogador2(), this.getControladorJogo());
+        this.modeloInfoJogador1 = new ModeloInfoJogador(jogador1);
+        this.modeloInfoJogador2 = new ModeloInfoJogador(jogador2);
+        this.modeloCemiterioJogador1 = new ModeloCemiterio(jogador1.getCemiterio(), this.getControladorJogo().getJogador1(), this.getControladorJogo());
+        this.modeloCemiterioJogador2 = new ModeloCemiterio(jogador2.getCemiterio(), this.getControladorJogo().getJogador2(), this.getControladorJogo());
+
         this.renderizar(jogador1, jogador2);
     }
 
