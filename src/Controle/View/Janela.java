@@ -1,5 +1,6 @@
 package Controle.View;
 
+import Espaço.View.TelaBatalha;
 import Visualização.OuvinteMudancaTela;
 import Visualização.Tela;
 
@@ -7,6 +8,7 @@ import javax.swing.*;
 
 public class Janela extends JFrame implements OuvinteMudancaTela {
     private Tela telaAtual;
+    private TelaBatalha telaBatalha;
 
     //Construtor da Janela que rodará o jogo -> Inicia tela inicial que sera passada como argumento (main)
     public Janela(Tela telaInicial) {
@@ -35,6 +37,14 @@ public class Janela extends JFrame implements OuvinteMudancaTela {
     @Override
     public void mudarTela(Tela novaTela) {
         setTelaAtual(novaTela);
+    }
+
+    public void setTelaBatalha(TelaBatalha telaBatalha) {
+        this.telaBatalha = telaBatalha;
+    }
+
+    public TelaBatalha getTelaBatalha() {
+        return telaBatalha;
     }
 
 }

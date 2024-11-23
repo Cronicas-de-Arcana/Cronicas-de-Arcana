@@ -31,6 +31,7 @@ public class ControladorJogo {
 
     public void mostrarTelaBatalha(){
         TelaBatalha telaBatalha = new TelaBatalha(this.jogador1, this.jogador2, this);
+        this.janela.setTelaBatalha(telaBatalha);
         this.janela.setTelaAtual(telaBatalha);
     }
 
