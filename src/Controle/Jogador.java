@@ -220,7 +220,7 @@ public class Jogador
                         System.out.println(this.getNome() + " invocou " + cartaEscolhida.getNome() + " no campo de batalha!");
                         this.utilizarMana(cartaEscolhida.getCustoMana());
                         this.mao.removerCarta(cartaEscolhida);
-                        //ADICIONAR ATUALIZAÇÃO
+                        this.getControladorJogo().getJanela().getTelaBatalha().atualizarElementos();
                     }
                     else
                     {

@@ -42,12 +42,12 @@ public class TelaBatalha extends Tela
         this.setLayout(new BorderLayout());
 
         JPanel painelNorte = new JPanel();
-        painelNorte.add(modeloMaoJogador1);
+        painelNorte.add(modeloMaoJogador2);
         this.add(painelNorte, BorderLayout.NORTH);
         painelNorte.setBackground(new Color(119, 2, 2));
 
         JPanel painelSul = new JPanel();
-        painelSul.add(modeloMaoJogador2);
+        painelSul.add(modeloMaoJogador1);
         painelSul.setBackground(new Color(1, 31, 99));
         this.add(painelSul, BorderLayout.SOUTH);
 

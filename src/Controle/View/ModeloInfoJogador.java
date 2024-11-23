@@ -23,6 +23,7 @@ public class ModeloInfoJogador extends ComponenteVisual {
     }
 
     public void renderizar() {
+        removeAll();
         JLabel nomeJogador = criarLabel(this.jogador.getNome());
         JLabel hpJogador = criarLabel("HP: " + this.jogador.getHp());
         JLabel nivel = criarLabel("Nível: " + this.jogador.getNivel());
