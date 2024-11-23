@@ -9,6 +9,8 @@ import javax.swing.*;
 public class Janela extends JFrame implements OuvinteMudancaTela {
     private Tela telaAtual;
     private TelaBatalha telaBatalha;
+    private TelaInventario telaInventarioJogador1;
+    private TelaInventario telaInventarioJogador2;
 
     //Construtor da Janela que rodará o jogo -> Inicia tela inicial que sera passada como argumento (main)
     public Janela(Tela telaInicial) {

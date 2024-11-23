@@ -2,6 +2,7 @@
 
 package Controle;
 
+import Cartas.Inventario;
 import Controle.View.Janela;
 import Controle.View.TelaInicial;
 import Controle.View.TelaInventario;
@@ -12,6 +13,7 @@ public class ControladorJogo {
     private Jogador jogador1;
     private Jogador jogador2;
     private Janela janela;
+    private Inventario inventario;
 
     public ControladorJogo(Jogador jogador1, Jogador jogador2) {
         //Inicialização de atributos do controlador
@@ -20,8 +22,17 @@ public class ControladorJogo {
         this.jogador1.setControladorJogo(this);
         this.jogador2.setControladorJogo(this);
 
+        this.inventario = new Inventario();
         this.jogar = new Jogar(jogador1, jogador2,jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
         this.jogar.setControladorJogo(this);
+    }
+
+    public Jogador getJogador1() {
+        return jogador1;
+    }
+
+    public Jogador getJogador2() {
+        return jogador2;
     }
 
     public Jogar getJogar() {
@@ -45,8 +56,8 @@ public class ControladorJogo {
         this.janela.setTelaAtual(telaBatalha);
     }
 
-    public void mostrarTelaInventario(){
-        TelaInventario telaInventario = new TelaInventario(this, this.jogador1, this.jogador2);
+    public void mostrarTelaInventario(Jogador jogador){
+        TelaInventario telaInventario = new TelaInventario(this, jogador);
         this.janela.setTelaAtual(telaInventario);
     }
 }

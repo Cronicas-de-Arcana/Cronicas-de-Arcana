@@ -10,36 +10,31 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ModeloInventario extends ComponenteVisual {
-    private Inventario inventario;
-    private ArrayList<ModeloCarta> modelosCartas;
 
     public ModeloInventario(Jogador jogador) {
-        this.inventario = jogador.getInventario();
-        this.modelosCartas = new ArrayList<>();
         this.definirEstilo();
         this.renderizar();
     }
 
     @Override
     public void definirEstilo() {
-        this.setLayout(new GridLayout(6, 5, 10, 10));
-        this.setBackground(Color.BLACK);
+        this.setLayout(new GridLayout(2, 2, 10, 10));
+        this.setBackground(new Color(68, 41, 170));
     }
 
     public void renderizar(){
-        this.removeAll();
-        modelosCartas.clear();
+        this.removeAll(); // Limpa componentes anteriores
 
-        for (Carta carta : inventario.getCartasInventario()){
-            ModeloCarta modelo = new ModeloCarta(carta);
-            modelosCartas.add(modelo);
-            this.add(modelo);
-        }
+        // Criação dos botões
+        JButton botaoDeck1 = new JButton("Deck 1");
+        JButton botaoDeck2 = new JButton("Deck 2");
+        JButton botaoDeck3 = new JButton("Deck 3");
+        JButton botaoDeck4 = new JButton("Deck 4");
 
-        revalidate();
-        repaint();
-
-        JButton botao = new JButton("Cartas selecionadas");
-        this.add(botao);
+        // Adiciona os botões ao painel
+        this.add(botaoDeck1);
+        this.add(botaoDeck2);
+        this.add(botaoDeck3);
+        this.add(botaoDeck4);
     }
 }

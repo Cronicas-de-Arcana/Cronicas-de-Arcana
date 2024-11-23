@@ -52,7 +52,7 @@ public class TelaInicial extends Tela {
             public void actionPerformed(ActionEvent e) {
                 //Classe controlador inicia o jogo pelo construtor
                 // vamos ter que mudar para a entrega final
-                controlador.mostrarTelaBatalha();
+                controlador.mostrarTelaInventario(controlador.getJogador1());
             }
         });
 
