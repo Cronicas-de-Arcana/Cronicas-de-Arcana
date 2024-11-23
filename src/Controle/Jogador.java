@@ -54,6 +54,10 @@ public class Jogador
         this.controladorJogo = controladorJogo;
     }
 
+    public void setDeck(Deck deck){
+        this.deck = deck;
+    }
+
     public String getNome()
     {
         return nome;

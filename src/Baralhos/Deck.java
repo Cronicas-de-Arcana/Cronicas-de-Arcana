@@ -10,15 +10,6 @@ public class Deck
 {
     protected List<Carta> cartas;
 
-    public Deck(List<Carta> cartas)
-    {
-        if (cartas.size() < 30)
-        {
-            throw new IllegalArgumentException("O deck deve ter no mínimo 30 cartas");
-        }
-        this.cartas = new ArrayList<>(cartas);
-    }
-
     public List<Carta> getCartas()
     {
         return cartas;

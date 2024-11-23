@@ -2,6 +2,7 @@
 
 package Controle;
 
+import Baralhos.Deck;
 import Cartas.Inventario;
 import Controle.View.Janela;
 import Controle.View.TelaInicial;
@@ -12,6 +13,7 @@ public class ControladorJogo {
     private Jogar jogar;
     private Jogador jogador1;
     private Jogador jogador2;
+    private Jogador jogadorAtual;
     private Janela janela;
     private Inventario inventario;
 
@@ -21,6 +23,7 @@ public class ControladorJogo {
         this.jogador2 = jogador2;
         this.jogador1.setControladorJogo(this);
         this.jogador2.setControladorJogo(this);
+        this.jogadorAtual = jogador1;
 
         this.inventario = new Inventario();
         this.jogar = new Jogar(jogador1, jogador2,jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
@@ -35,12 +38,28 @@ public class ControladorJogo {
         return jogador2;
     }
 
+    public Jogador getJogadorAtual() {
+        return jogadorAtual;
+    }
+
+    public void setJogadorAtual(Jogador jogadorAtual) {
+        this.jogadorAtual = jogadorAtual;
+    }
+
     public Jogar getJogar() {
         return jogar;
     }
 
     public Janela getJanela() {
         return janela;
+    }
+
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
     }
 
     public void inicializacaoJanela(){
@@ -56,8 +75,8 @@ public class ControladorJogo {
         this.janela.setTelaAtual(telaBatalha);
     }
 
-    public void mostrarTelaInventario(Jogador jogador){
-        TelaInventario telaInventario = new TelaInventario(this, jogador);
+    public void mostrarTelaInventario(Jogador jogadorAtual){
+        TelaInventario telaInventario = new TelaInventario(this, jogadorAtual);
         this.janela.setTelaAtual(telaInventario);
     }
 }

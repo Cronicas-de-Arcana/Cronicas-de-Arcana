@@ -14,9 +14,13 @@ public class TelaInventario extends Tela {
 
     public TelaInventario(ControladorJogo controladorJogo, Jogador jogador) {
         this.controladorJogo = controladorJogo;
-        this.modeloInventario = new ModeloInventario(jogador);
+        this.modeloInventario = new ModeloInventario(jogador, this, this.getControladorJogo());
         definirEstilo();
         renderizar(jogador);
+    }
+
+    public ControladorJogo getControladorJogo() {
+        return controladorJogo;
     }
 
     public void definirEstilo(){
