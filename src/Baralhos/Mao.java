@@ -40,7 +40,6 @@ public class Mao
         if (carta != null)
         {
             cartas.add(carta);
-            //INSERIR ATUALIZAÇÃO
         }
         else
         {

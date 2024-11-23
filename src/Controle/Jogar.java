@@ -18,6 +18,7 @@ public class Jogar
     private CampodeBatalha campoJogador2;
     private Jogador jogadorAtivo;
     private Scanner scanner;
+    private ControladorJogo controladorJogo;
 
     public Jogar(Jogador jogador1, Jogador jogador2, CampodeBatalha campoJogador1, CampodeBatalha campoJogador2)
     {
@@ -28,6 +29,14 @@ public class Jogar
         this.campoJogador2 = campoJogador2;
         this.jogadorAtivo = new Random().nextBoolean() ? jogador1 : jogador2;
         this.scanner = new Scanner(System.in);
+    }
+
+    public ControladorJogo getControladorJogo() {
+        return controladorJogo;
+    }
+
+    public void setControladorJogo(ControladorJogo controladorJogo) {
+        this.controladorJogo = controladorJogo;
     }
 
     public void iniciar()

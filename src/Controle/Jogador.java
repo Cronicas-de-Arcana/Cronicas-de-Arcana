@@ -117,7 +117,6 @@ public class Jogador
         {
             this.mao.adicionarCartas(cartaComprada);
             this.getDeck().getCartas().remove(cartaComprada);
-            //ADICIONAR ATUALIZAÇÃO
         }
         else
         {

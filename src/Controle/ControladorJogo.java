@@ -19,20 +19,24 @@ public class ControladorJogo {
         this.jogador2 = jogador2;
         this.jogador1.setControladorJogo(this);
         this.jogador2.setControladorJogo(this);
-        this.jogar = new Jogar(jogador1, jogador2,jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
 
-        // Cria a Janela e define TelaInicial como a primeira tela
-        TelaInicial telaInicial = new TelaInicial(this);
-        this.janela = new Janela(telaInicial);
-        telaInicial.setOuvinteMudancaTela(this.janela);  // Registra a Janela como ouvinte
+        this.jogar = new Jogar(jogador1, jogador2,jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
+        this.jogar.setControladorJogo(this);
     }
 
-    public void iniciarJogo(){
-        this.jogar.iniciar(); // Inicia a partida no Backend
+    public Jogar getJogar() {
+        return jogar;
     }
 
     public Janela getJanela() {
         return janela;
+    }
+
+    public void inicializacaoJanela(){
+        // Cria a Janela e define TelaInicial como a primeira tela
+        TelaInicial telaInicial = new TelaInicial(this);
+        this.janela = new Janela(telaInicial);
+        telaInicial.setOuvinteMudancaTela(this.janela);  // Registra a Janela como ouvinte
     }
 
     public void mostrarTelaBatalha(){
