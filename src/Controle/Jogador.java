@@ -39,6 +39,7 @@ public class Jogador
         this.manaAtual = 10;
         this.nivel = 1;
         this.experiencia = 0;
+        this.scanner = new Scanner(System.in);
     }
 
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual, Scanner scanner)
