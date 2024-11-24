@@ -2,7 +2,6 @@
 
 package Controle;
 
-import Cartas.Carta;
 import Cartas.Inventario;
 import Controle.View.Janela;
 import Controle.View.TelaInicial;
@@ -19,6 +18,7 @@ public class ControladorJogo {
     private Jogador jogadorAtual;
     private Janela janela;
     private Inventario inventario;
+    private int controleDeEscolhas;
 
     public ControladorJogo(Jogador jogador1, Jogador jogador2) {
         //Inicialização de atributos do controlador
@@ -30,6 +30,18 @@ public class ControladorJogo {
         this.inventario = new Inventario();
         this.jogar = new Jogar(jogador1, jogador2, jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
         this.jogar.setControladorJogo(this);
+    }
+
+    public int getControleDeEscolhas() {
+        return controleDeEscolhas;
+    }
+
+    public void setControleDeEscolhas(int controleDeEscolhas) {
+        this.controleDeEscolhas = controleDeEscolhas;
+    }
+
+    public void incrementoControleDeEscolhas(){
+        this.controleDeEscolhas++;
     }
 
     public Jogador getJogador1() {
@@ -87,8 +99,6 @@ public class ControladorJogo {
         Jogador jogadorAtual = new Random().nextBoolean() ? jogador1 : jogador2;
         setJogadorAtual(jogadorAtual);
         JOptionPane.showMessageDialog(null, jogadorAtual.getNome() + " deve jogar", "Informação", JOptionPane.INFORMATION_MESSAGE);
-
-        executarTurno(jogadorAtual);
     }
 
     public void inicializacaoMaos(){
@@ -102,17 +112,7 @@ public class ControladorJogo {
             jogador2.comprarCartas();
         }
 
-        //inicio de partida
-        iniciarPartida();
-    }
-
-    public void executarTurno(Jogador jogadorAtual){
-        //Jogador deve comprar cartas - atualização de tela acontece
-        jogadorAtual.comprarCartas();
-        //Jogador recebe +1 de mana - atualização de tela acontece
-        jogadorAtual.adicionarMana();
-        //Aqui o jogador escolhe a carta, isso acontece direto pela interface e pelo botao da carta!
-        jogadorAtual.escolherCartaMao();
+        jogar.faseCompra();
     }
 
 }

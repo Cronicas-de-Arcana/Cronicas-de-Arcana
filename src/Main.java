@@ -1,5 +1,6 @@
 import Baralhos.Deck;
 import Cartas.Inventario;
+import Controle.ControladorJogo;
 import Controle.Jogador;
 import Controle.Jogar;
 import java.util.Scanner;

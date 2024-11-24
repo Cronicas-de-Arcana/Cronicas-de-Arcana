@@ -74,6 +74,23 @@ public class Jogar
         }
     }
 
+    public void faseCompra(/*Jogador jogador1, Jogador jogador2*/){
+        //Jogadores compram cartas
+        jogador1.comprarCartas();
+        jogador2.comprarCartas();
+
+        //Jogadores recebem mana
+        JOptionPane.showMessageDialog(null, "jogadores recebem 1 de mana");
+        jogador1.adicionarMana();
+        jogador2.adicionarMana();
+
+        controladorJogo.setControleDeEscolhas(0);
+        Jogador jogadorAtual = new Random().nextBoolean() ? jogador1 : jogador2;
+        controladorJogo.setJogadorAtual(jogadorAtual);
+        JOptionPane.showMessageDialog(null, "Inicio da fase de Escolha de Cartas!");
+        JOptionPane.showMessageDialog(null, jogadorAtual.getNome() + " deve escolher sua Carta", "Informação", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     private void executarTurno(Jogador jogador1, Jogador jogador2)
     {
         System.out.println("\nFase de Compra");

@@ -40,7 +40,6 @@ public class Mao
     {
         if (carta != null)
         {
-            JOptionPane.showMessageDialog(null, carta.getNome() + " foi comprada!");
             cartas.add(carta);
         }
         else

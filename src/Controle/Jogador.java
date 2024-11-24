@@ -134,6 +134,7 @@ public class Jogador
         {
             this.mao.adicionarCartas(cartaComprada);
             this.getDeck().getCartas().remove(cartaComprada);
+            JOptionPane.showMessageDialog(null, cartaComprada.getNome() + " foi comprada!", this.getNome() + " comprou uma carta", JOptionPane.INFORMATION_MESSAGE);
             this.controladorJogo.getJanela().getTelaBatalha().atualizarMaos();
         }
         else
@@ -142,25 +143,35 @@ public class Jogador
         }
     }
 
-    public void jogarCarta(Carta carta, Jogador jogador) {
-        if (jogador != this) {
-            JOptionPane.showMessageDialog(null, "Não é seu turno!", "Ação Inválida", JOptionPane.WARNING_MESSAGE);
-            return;
+    public void jogarCartaCampo(Carta carta, Jogador jogador) {
+        boolean jogadaValida = false; // Inicializamos como falsa para entrar no loop
+
+        while (!jogadaValida) { // Continua no loop até que a jogada seja válida
+            if (jogador != controladorJogo.getJogadorAtual()) {
+                JOptionPane.showMessageDialog(null, "Não é seu turno!", "Ação Inválida", JOptionPane.WARNING_MESSAGE);
+                return; // Sai do metodo porque o jogador errado está tentando jogar
+            }
+            if (jogador.getCampoDeBatalha().getCampo().contains(carta)) {
+                JOptionPane.showMessageDialog(null, "Esta carta já está no campo de batalha!", "Ação Inválida", JOptionPane.WARNING_MESSAGE);
+                return; // Sai do mtodo para evitar ações duplicadas
+            }
+            if (carta.getCustoMana() > jogador.getManaAtual()) {
+                JOptionPane.showMessageDialog(null, "Mana insuficiente para jogar esta carta.", "Ação Inválida", JOptionPane.WARNING_MESSAGE);
+                return; // Sai do metodo para impedir a jogada inválida
+            }
+
+            // Se todas as condições forem satisfeitas, a jogada é válida
+            jogador.getCampoDeBatalha().adicionarCarta(carta);
+            jogador.utilizarMana(carta.getCustoMana());
+            jogador.getMao().removerCarta(carta);
+
+            // Atualiza a interface para refletir a nova jogada
+            controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+
+            jogadaValida = true; // Marca como válida para sair do loop
         }
-
-        if (carta.getCustoMana() > jogador.getManaAtual()) {
-            JOptionPane.showMessageDialog(null, "Mana insuficiente para jogar esta carta.", "Ação Inválida", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        // Jogar a carta no campo de batalha
-        jogador.getCampoDeBatalha().adicionarCarta(carta);
-        jogador.utilizarMana(carta.getCustoMana());
-        jogador.getMao().removerCarta(carta);
-
-        // Atualizar a interface
-        controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
         controladorJogo.mudarJogadorAtual();
+        controladorJogo.incrementoControleDeEscolhas();
     }
 
     public void escolherCartaMao() {
@@ -361,7 +372,6 @@ public class Jogador
     public void adicionarMana()
     {
         manaAtual++;
-        JOptionPane.showMessageDialog(null, "+1 de Mana!");
         controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
     }
 
