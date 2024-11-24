@@ -8,15 +8,6 @@ public class Inventario
     //Array em que vai ficar as cartas que o player vai conquistando ao progredir os niveis
     protected Carta[][] cartasProgresso = new Carta[10][10];
 
-    public Inventario()
-    {
-        inicializadorCartasJ1();
-        inicializadorCartasJ2();
-        inicializadorCartasJ3();
-        inicializadorCartasJ4();
-        inicializarCartasProgresso();
-    }
-
     public ArrayList<Carta> getCartasInventario() {
         return cartasInventario;
     }

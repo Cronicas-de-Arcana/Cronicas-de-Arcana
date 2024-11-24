@@ -12,12 +12,12 @@ import javax.swing.*;
 import java.util.Random;
 
 public class ControladorJogo {
-    private Jogar jogar;
-    private Jogador jogador1;
-    private Jogador jogador2;
+    private final Jogar jogar;
+    private final Jogador jogador1;
+    private final Jogador jogador2;
     private Jogador jogadorAtual;
     private Janela janela;
-    private Inventario inventario;
+    private final Inventario inventario;
     private int controleDeEscolhas;
 
     public ControladorJogo(Jogador jogador1, Jogador jogador2) {
