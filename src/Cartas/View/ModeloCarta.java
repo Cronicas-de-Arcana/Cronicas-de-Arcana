@@ -26,7 +26,7 @@ public class ModeloCarta extends ComponenteVisual {
         botao = new JButton(texto);
         botao.setAlignmentX(CENTER_ALIGNMENT);
         botao.addActionListener(e -> {
-            controladorJogo.jogarCarta(carta, jogador); // Informa ao controlador que uma carta foi jogada
+            controladorJogo.getJogadorAtual().jogarCarta(carta, jogador); // Informa ao controlador que uma carta foi jogada
         });
         this.add(botao);
     }

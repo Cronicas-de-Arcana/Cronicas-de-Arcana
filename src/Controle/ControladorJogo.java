@@ -115,25 +115,4 @@ public class ControladorJogo {
         jogadorAtual.escolherCartaMao();
     }
 
-    public void jogarCarta(Carta carta, Jogador jogador) {
-        if (jogador != jogadorAtual) {
-            JOptionPane.showMessageDialog(null, "Não é seu turno!", "Ação Inválida", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        if (carta.getCustoMana() > jogador.getManaAtual()) {
-            JOptionPane.showMessageDialog(null, "Mana insuficiente para jogar esta carta.", "Ação Inválida", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        // Jogar a carta no campo de batalha
-        jogador.getCampoDeBatalha().adicionarCarta(carta);
-        jogador.utilizarMana(carta.getCustoMana());
-        jogador.getMao().removerCarta(carta);
-
-        // Atualizar a interface
-        janela.getTelaBatalha().atualizarElementos();
-        mudarJogadorAtual();
-    }
-
 }
