@@ -71,7 +71,7 @@ public class ModeloInventario extends ComponenteVisual {
         });
 
         JButton botaoDeck3 = new JButton("Deck 3");
-        botaoDeck1.addActionListener(e -> {
+        botaoDeck3.addActionListener(e -> {
             //Ao escolher esse botao deve ser definido o Deck padrão 1 do inventario e mudar a tela baseado no jogador Atual
             Deck deckEscolhido = new Deck(controladorJogo.getInventario().inicializadorCartasJ3());
             controladorJogo.getJogadorAtual().setDeck(deckEscolhido);
@@ -88,7 +88,7 @@ public class ModeloInventario extends ComponenteVisual {
         });
 
         JButton botaoDeck4 = new JButton("Deck 4");
-        botaoDeck1.addActionListener(e -> {
+        botaoDeck4.addActionListener(e -> {
             //Ao escolher esse botao deve ser definido o Deck padrão 1 do inventario e mudar a tela baseado no jogador Atual
             Deck deckEscolhido = new Deck(controladorJogo.getInventario().inicializadorCartasJ4());
             controladorJogo.getJogadorAtual().setDeck(deckEscolhido);

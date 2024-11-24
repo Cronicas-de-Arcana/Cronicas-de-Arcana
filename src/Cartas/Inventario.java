@@ -39,7 +39,7 @@ public class Inventario
         cartasProgresso[0][8] = new Criatura(180, "Roc Implacável", 4, 45, 70, "Pássaro gigante de ataque feroz.", true);
         cartasProgresso[0][9] = new Feitico("Lança de Gelo", 3, "Causa 20 de dano e reduz velocidade de ataque.", 20, 0, 0);
 
-// Nível 2 - Criaturas mais estratégicas, com maior resistência e dano.
+        // Nível 2 - Criaturas mais estratégicas, com maior resistência e dano.
         cartasProgresso[1][0] = new Criatura(250, "Elemental da Rocha", 5, 50, 110, "Resistente como as montanhas.", false);
         cartasProgresso[1][1] = new Feitico("Impacto Glacial", 4, "Congela e causa dano a uma criatura.", 25, 0, 0);
         cartasProgresso[1][2] = new Criatura(200, "Fera Etérea", 4, 40, 90, "Caminha entre dimensões.", true);
@@ -51,7 +51,7 @@ public class Inventario
         cartasProgresso[1][8] = new Criatura(170, "Espectro de Sombras", 4, 35, 70, "Silencioso e letal.", true);
         cartasProgresso[1][9] = new Feitico("Erosão Sombria", 4, "Inflige 20 de dano e reduz defesa do alvo.", 20, 0, 0);
 
-// Nível 3 - Criaturas de poder extremo para os níveis mais altos.
+        // Nível 3 - Criaturas de poder extremo para os níveis mais altos.
         cartasProgresso[2][0] = new Criatura(300, "Dragão Ancião", 6, 70, 150, "Domina o céu com sua presença.", true);
         cartasProgresso[2][1] = new Feitico("Inferno Ardente", 5, "Dano massivo em todas as criaturas inimigas.", 30, 0, 0);
         cartasProgresso[2][2] = new Criatura(260, "Fenrir", 6, 55, 130, "Predador alfa lendário.", false);
