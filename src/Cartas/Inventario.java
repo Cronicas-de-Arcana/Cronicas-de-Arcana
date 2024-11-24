@@ -12,6 +12,8 @@ public class Inventario
     {
         inicializadorCartasJ1();
         inicializadorCartasJ2();
+        inicializadorCartasJ3();
+        inicializadorCartasJ4();
         inicializarCartasProgresso();
     }
 
@@ -152,4 +154,15 @@ public class Inventario
         return deckPadraoJ2;
     }
 
+    public ArrayList<Carta> inicializadorCartasJ3()
+    {
+        ArrayList<Carta> deckPadraoJ3 = new ArrayList<>();
+        return deckPadraoJ3;
+    }
+
+    public ArrayList<Carta> inicializadorCartasJ4()
+    {
+        ArrayList<Carta> deckPadraoJ4 = new ArrayList<>();
+        return deckPadraoJ4;
+    }
 }

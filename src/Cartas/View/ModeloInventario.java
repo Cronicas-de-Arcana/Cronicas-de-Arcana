@@ -69,8 +69,44 @@ public class ModeloInventario extends ComponenteVisual {
                 controladorJogo.mostrarTelaBatalha();
             }
         });
+
+        JButton botaoDeck3 = new JButton("Deck 3");
+        botaoDeck1.addActionListener(e -> {
+            //Ao escolher esse botao deve ser definido o Deck padrão 1 do inventario e mudar a tela baseado no jogador Atual
+            Deck deckEscolhido = new Deck(controladorJogo.getInventario().inicializadorCartasJ3());
+            controladorJogo.getJogadorAtual().setDeck(deckEscolhido);
+
+            if (controladorJogo.getJogadorAtual() == controladorJogo.getJogador1()) {
+                controladorJogo.setJogadorAtual(controladorJogo.getJogador2());
+                controladorJogo.mostrarTelaInventario(controladorJogo.getJogador2());
+            } else {
+                //Após jogador 2 escolher seu deck devemos iniciar as mãos, mostrar a tela de batalha e iniciar a partida!
+                controladorJogo.getJogar().inicializacaoMaos();
+                controladorJogo.mostrarTelaBatalha();
+
+            }
+        });
+
+        JButton botaoDeck4 = new JButton("Deck 4");
+        botaoDeck1.addActionListener(e -> {
+            //Ao escolher esse botao deve ser definido o Deck padrão 1 do inventario e mudar a tela baseado no jogador Atual
+            Deck deckEscolhido = new Deck(controladorJogo.getInventario().inicializadorCartasJ4());
+            controladorJogo.getJogadorAtual().setDeck(deckEscolhido);
+
+            if (controladorJogo.getJogadorAtual() == controladorJogo.getJogador1()) {
+                controladorJogo.setJogadorAtual(controladorJogo.getJogador2());
+                controladorJogo.mostrarTelaInventario(controladorJogo.getJogador2());
+            } else {
+                //Após jogador 2 escolher seu deck devemos iniciar as mãos, mostrar a tela de batalha e iniciar a partida!
+                controladorJogo.getJogar().inicializacaoMaos();
+                controladorJogo.mostrarTelaBatalha();
+
+            }
+        });
         // Adiciona os botões ao painel
         this.add(botaoDeck1);
         this.add(botaoDeck2);
+        this.add(botaoDeck3);
+        this.add(botaoDeck4);
     }
 }
