@@ -85,6 +85,7 @@ public class ControladorJogo {
 
     public void iniciarPartida(){
         Jogador jogadorAtual = new Random().nextBoolean() ? jogador1 : jogador2;
+        setJogadorAtual(jogadorAtual);
         JOptionPane.showMessageDialog(null, jogadorAtual.getNome() + " deve jogar", "Informação", JOptionPane.INFORMATION_MESSAGE);
 
         executarTurno(jogadorAtual);
@@ -110,8 +111,8 @@ public class ControladorJogo {
         jogadorAtual.comprarCartas();
         //Jogador recebe +1 de mana - atualização de tela acontece
         jogadorAtual.adicionarMana();
-
         //Aqui o jogador escolhe a carta, isso acontece direto pela interface e pelo botao da carta!
+        jogadorAtual.escolherCartaMao();
     }
 
     public void jogarCarta(Carta carta, Jogador jogador) {
@@ -132,11 +133,7 @@ public class ControladorJogo {
 
         // Atualizar a interface
         janela.getTelaBatalha().atualizarElementos();
-
-        /* Verificar se o turno continua ou passa para o próximo jogador
-        if (!verificarFimDeTurno(jogador)) {
-            mudarJogadorAtual();
-        }*/
+        mudarJogadorAtual();
     }
 
 }

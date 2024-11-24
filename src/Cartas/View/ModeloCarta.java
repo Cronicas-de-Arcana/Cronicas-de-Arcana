@@ -13,21 +13,22 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class ModeloCarta extends ComponenteVisual {
-    private JButton botaoJogar;
+    private JButton botao;
     private Jogador jogador;
     private ControladorJogo controladorJogo;
 
-    public ModeloCarta(Carta carta, Jogador jogador, ControladorJogo controladorJogo) {
+    public ModeloCarta(Carta carta, Jogador jogador, ControladorJogo controladorJogo, String texto) {
         this.jogador = jogador;
         this.controladorJogo = controladorJogo;
         this.definirEstilo();
         this.renderizar(carta);
 
-        botaoJogar = new JButton("Jogar");
-        botaoJogar.addActionListener(e -> {
+        botao = new JButton(texto);
+        botao.setAlignmentX(CENTER_ALIGNMENT);
+        botao.addActionListener(e -> {
             controladorJogo.jogarCarta(carta, jogador); // Informa ao controlador que uma carta foi jogada
         });
-        this.add(botaoJogar);
+        this.add(botao);
     }
 
     @Override
@@ -132,6 +133,10 @@ public class ModeloCarta extends ComponenteVisual {
     }
 
     public void setHabilitar(boolean habilitar) {
-        botaoJogar.setEnabled(habilitar);
+        botao.setEnabled(habilitar);
+    }
+
+    public JButton getBotao() {
+        return botao;
     }
 }

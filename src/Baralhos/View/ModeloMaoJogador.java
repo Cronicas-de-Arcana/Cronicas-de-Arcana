@@ -43,7 +43,7 @@ public class ModeloMaoJogador extends ComponenteVisual {
 
         // Itera sobre as cartas na mão e cria modelos de cartas
         for (Carta carta : mao.getCartas()) {
-            ModeloCarta modelo = new ModeloCarta(carta, jogador, controladorJogo);
+            ModeloCarta modelo = new ModeloCarta(carta, jogador, controladorJogo, "Jogar Carta");
             modelosCartas.add(modelo);
             this.add(modelo);  // Adiciona o modelo visual da carta ao layout
         }

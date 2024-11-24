@@ -39,7 +39,7 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
         modelosCartas.clear();
 
         for (Carta carta : campoBatalha.getCampo()) {
-            ModeloCarta modelo = new ModeloCarta(carta, jogador, controladorJogo);
+            ModeloCarta modelo = new ModeloCarta(carta, jogador, controladorJogo, "Atacar");
             modelosCartas.add(modelo);
             this.add(modelo);  // Adiciona o modelo visual da carta ao layout
         }

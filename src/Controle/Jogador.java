@@ -142,6 +142,16 @@ public class Jogador
         }
     }
 
+    public void escolherCartaMao() {
+        // A interação é realizada diretamente pela interface
+        if (mao.getCartas().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Nenhuma carta na mão.", "Escolha Sua Carta", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Clique em uma carta para jogá-la!", "Escolha Sua Carta", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
     public Carta escolherCartaMao(Jogador jogador)
     {
         mao.mostrarCartas();

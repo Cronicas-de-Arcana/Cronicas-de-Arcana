@@ -37,7 +37,7 @@ public class ModeloCemiterio extends ComponenteVisual {
         modelosCartasCemiterio.clear();
 
         for (Carta carta : cemiterio.getCartas()) {
-            ModeloCarta modeloCarta = new ModeloCarta(carta, jogador, controladorJogo);
+            ModeloCarta modeloCarta = new ModeloCarta(carta, jogador, controladorJogo, "Carta morta");
             modelosCartasCemiterio.add(modeloCarta);
             this.add(modeloCarta);
         }
