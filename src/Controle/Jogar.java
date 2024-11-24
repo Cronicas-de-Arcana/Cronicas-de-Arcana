@@ -44,11 +44,6 @@ public class Jogar
         return jogadorAtivo;
     }
 
-    public void mudarJogadorAtivo(){
-        jogadorAtivo = (jogadorAtivo == jogador1) ? jogador2 : jogador1;
-        JOptionPane.showMessageDialog(null, jogadorAtivo.getNome() + " deve jogar", "Próximo Turno", JOptionPane.INFORMATION_MESSAGE);
-    }
-
     public void iniciar()
     {
         jogador1.getDeck().embaralhar();

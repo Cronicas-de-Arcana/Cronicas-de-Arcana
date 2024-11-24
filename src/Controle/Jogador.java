@@ -9,6 +9,7 @@ import Cartas.Inventario;
 import Espaço.CampodeBatalha;
 import Espaço.Cemiterio;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -133,7 +134,7 @@ public class Jogador
         {
             this.mao.adicionarCartas(cartaComprada);
             this.getDeck().getCartas().remove(cartaComprada);
-            this.controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+            this.controladorJogo.getJanela().getTelaBatalha().atualizarMaos();
         }
         else
         {
@@ -330,6 +331,8 @@ public class Jogador
     public void adicionarMana()
     {
         manaAtual++;
+        JOptionPane.showMessageDialog(null, "+1 de Mana!");
+        controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
     }
 
     public void utilizarMana(int custoMana)

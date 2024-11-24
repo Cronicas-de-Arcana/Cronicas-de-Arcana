@@ -2,6 +2,7 @@
 
 package Controle;
 
+import Cartas.Carta;
 import Cartas.Inventario;
 import Controle.View.Janela;
 import Controle.View.TelaInicial;
@@ -77,10 +78,16 @@ public class ControladorJogo {
         this.janela.setTelaAtual(telaInventario);
     }
 
+    public void mudarJogadorAtual(){
+        jogadorAtual = (jogadorAtual == jogador1) ? jogador2 : jogador1;
+        JOptionPane.showMessageDialog(null, jogadorAtual.getNome() + " deve jogar", "Próximo Turno", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public void iniciarPartida(){
         Jogador jogadorAtual = new Random().nextBoolean() ? jogador1 : jogador2;
         JOptionPane.showMessageDialog(null, jogadorAtual.getNome() + " deve jogar", "Informação", JOptionPane.INFORMATION_MESSAGE);
 
+        executarTurno(jogadorAtual);
     }
 
     public void inicializacaoMaos(){
@@ -89,7 +96,7 @@ public class ControladorJogo {
         jogador2.getDeck().embaralhar();
 
         //Compra inicial das 5 cartas pelos jogadores
-        for (int i=0; i<5; i++){
+        for (int i=0; i<4; i++){
             jogador1.comprarCartas();
             jogador2.comprarCartas();
         }
@@ -97,4 +104,39 @@ public class ControladorJogo {
         //inicio de partida
         iniciarPartida();
     }
+
+    public void executarTurno(Jogador jogadorAtual){
+        //Jogador deve comprar cartas - atualização de tela acontece
+        jogadorAtual.comprarCartas();
+        //Jogador recebe +1 de mana - atualização de tela acontece
+        jogadorAtual.adicionarMana();
+
+        //Aqui o jogador escolhe a carta, isso acontece direto pela interface e pelo botao da carta!
+    }
+
+    public void jogarCarta(Carta carta, Jogador jogador) {
+        if (jogador != jogadorAtual) {
+            JOptionPane.showMessageDialog(null, "Não é seu turno!", "Ação Inválida", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (carta.getCustoMana() > jogador.getManaAtual()) {
+            JOptionPane.showMessageDialog(null, "Mana insuficiente para jogar esta carta.", "Ação Inválida", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Jogar a carta no campo de batalha
+        jogador.getCampoDeBatalha().adicionarCarta(carta);
+        jogador.utilizarMana(carta.getCustoMana());
+        jogador.getMao().removerCarta(carta);
+
+        // Atualizar a interface
+        janela.getTelaBatalha().atualizarElementos();
+
+        /* Verificar se o turno continua ou passa para o próximo jogador
+        if (!verificarFimDeTurno(jogador)) {
+            mudarJogadorAtual();
+        }*/
+    }
+
 }

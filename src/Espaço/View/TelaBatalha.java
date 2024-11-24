@@ -85,78 +85,28 @@ public class TelaBatalha extends Tela
         this.add(painelLeste, BorderLayout.EAST);
     }
 
-    public void atualizarElementos() {
-        //Atualiza as mãos
-        getModeloMaoJogador1().atualizar();
-        getModeloMaoJogador2().atualizar();
-
-        //Atualiza os campos
-        getModeloCampoDeBatalhaJogador1().atualizar();
-        getModeloCampoDeBatalhaJogador2().atualizar();
-
-        //Atualiza os cemiterios
-        getModeloCemiterioJogador1().atualizar();
-        getModeloCemiterioJogador2().atualizar();
-
-        //Atualiza as informações
-        getModeloInfoJogador1().atualizar();
-        getModeloInfoJogador2().atualizar();
-    }
-
-    public void setModeloMaoJogador1(ModeloMaoJogador modeloMaoJogador1) {
-        this.modeloMaoJogador1 = modeloMaoJogador1;
-    }
-
-    public void setModeloMaoJogador2(ModeloMaoJogador modeloMaoJogador2) {
-        this.modeloMaoJogador2 = modeloMaoJogador2;
-    }
-
     public ModeloInfoJogador getModeloInfoJogador1() {
         return modeloInfoJogador1;
-    }
-
-    public void setModeloInfoJogador1(ModeloInfoJogador modeloInfoJogador1) {
-        this.modeloInfoJogador1 = modeloInfoJogador1;
     }
 
     public ModeloInfoJogador getModeloInfoJogador2() {
         return modeloInfoJogador2;
     }
 
-    public void setModeloInfoJogador2(ModeloInfoJogador modeloInfoJogador2) {
-        this.modeloInfoJogador2 = modeloInfoJogador2;
-    }
-
     public ModeloCemiterio getModeloCemiterioJogador1() {
         return modeloCemiterioJogador1;
-    }
-
-    public void setModeloCemiterioJogador1(ModeloCemiterio modeloCemiterioJogador1) {
-        this.modeloCemiterioJogador1 = modeloCemiterioJogador1;
     }
 
     public ModeloCemiterio getModeloCemiterioJogador2() {
         return modeloCemiterioJogador2;
     }
 
-    public void setModeloCemiterioJogador2(ModeloCemiterio modeloCemiterioJogador2) {
-        this.modeloCemiterioJogador2 = modeloCemiterioJogador2;
-    }
-
     public ModeloCampoDeBatalha getModeloCampoDeBatalhaJogador1() {
         return modeloCampoDeBatalhaJogador1;
     }
 
-    public void setModeloCampoDeBatalhaJogador1(ModeloCampoDeBatalha modeloCampoDeBatalhaJogador1) {
-        this.modeloCampoDeBatalhaJogador1 = modeloCampoDeBatalhaJogador1;
-    }
-
     public ModeloCampoDeBatalha getModeloCampoDeBatalhaJogador2() {
         return modeloCampoDeBatalhaJogador2;
-    }
-
-    public void setModeloCampoDeBatalhaJogador2(ModeloCampoDeBatalha modeloCampoDeBatalhaJogador2) {
-        this.modeloCampoDeBatalhaJogador2 = modeloCampoDeBatalhaJogador2;
     }
 
     public ModeloMaoJogador getModeloMaoJogador1() {
@@ -167,11 +117,42 @@ public class TelaBatalha extends Tela
         return modeloMaoJogador2;
     }
 
-    public void setControladorJogo(ControladorJogo controladorJogo) {
-        this.controladorJogo = controladorJogo;
-    }
-
     public ControladorJogo getControladorJogo() {
         return controladorJogo;
     }
+
+    public void atualizarElementos() {
+        //Atualiza as mãos
+        atualizarMaos();
+
+        //Atualiza os campos
+        atualizarCampos();
+
+        //Atualiza os cemiterios
+        atualizarCemiterios();
+
+        //Atualiza as informações
+        atualizarInformacoes();
+    }
+
+    public void atualizarMaos(){
+        getModeloMaoJogador1().atualizar();
+        getModeloMaoJogador2().atualizar();
+    }
+
+    public void atualizarCampos(){
+        getModeloCampoDeBatalhaJogador1().atualizar();
+        getModeloCampoDeBatalhaJogador2().atualizar();
+    }
+
+    public void atualizarCemiterios(){
+        getModeloCemiterioJogador1().atualizar();
+        getModeloCemiterioJogador2().atualizar();
+    }
+
+    public void atualizarInformacoes(){
+        getModeloInfoJogador1().atualizar();
+        getModeloInfoJogador2().atualizar();
+    }
+
 }
