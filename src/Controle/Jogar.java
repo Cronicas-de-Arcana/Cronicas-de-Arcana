@@ -74,7 +74,9 @@ public class Jogar
         }
     }
 
-    public void faseCompra(){
+    public void faseEscolha(){
+        controladorJogo.setFaseJogo("ESCOLHA");
+
         //Jogadores compram cartas
         jogador1.comprarCartas();
         jogador2.comprarCartas();
@@ -89,6 +91,10 @@ public class Jogar
         controladorJogo.setJogadorAtual(jogadorAtual);
         JOptionPane.showMessageDialog(null, "Inicio da fase de Escolha de Cartas!");
         JOptionPane.showMessageDialog(null, jogadorAtual.getNome() + " deve escolher sua Carta", "Informação", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void faseAtaque(){
+
     }
 
     private void executarTurno(Jogador jogador1, Jogador jogador2)

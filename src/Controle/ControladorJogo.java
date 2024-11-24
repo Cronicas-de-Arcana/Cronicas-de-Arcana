@@ -19,6 +19,7 @@ public class ControladorJogo {
     private Janela janela;
     private final Inventario inventario;
     private int controleDeEscolhas;
+    private String faseJogo;
 
     public ControladorJogo(Jogador jogador1, Jogador jogador2) {
         //Inicialização de atributos do controlador
@@ -32,9 +33,11 @@ public class ControladorJogo {
         this.jogar.setControladorJogo(this);
     }
 
-    public int getControleDeEscolhas() {
-        return controleDeEscolhas;
-    }
+    public String getFaseJogo() { return faseJogo; }
+
+    public void setFaseJogo(String faseJogo) { this.faseJogo = faseJogo; }
+
+    public int getControleDeEscolhas() { return controleDeEscolhas; }
 
     public void setControleDeEscolhas(int controleDeEscolhas) {
         this.controleDeEscolhas = controleDeEscolhas;
@@ -112,7 +115,7 @@ public class ControladorJogo {
             jogador2.comprarCartas();
         }
 
-        jogar.faseCompra();
+        jogar.faseEscolha();
     }
 
 }
