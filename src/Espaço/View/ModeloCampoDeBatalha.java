@@ -28,7 +28,7 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
 
     @Override
     public void definirEstilo() {
-        this.setLayout(new GridLayout(1, 0, 10, 10));
+        this.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
         this.setBackground(new Color(55, 51, 51));
         this.setBorder(new LineBorder(new Color(255, 255, 255)));
     }

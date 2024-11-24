@@ -25,16 +25,6 @@ public class ModeloCarta extends ComponenteVisual {
 
         botao = new JButton(texto);
         botao.setAlignmentX(CENTER_ALIGNMENT);
-        botao.addActionListener(e -> {
-            //Jogador Atual escolhe carta - incrementamos pra saber quantas decisões aconteceram - mudamos o jogador atual baseado na validação da carta lançada
-            controladorJogo.getJogadorAtual().jogarCartaCampo(carta, jogador);
-
-            if(controladorJogo.getControleDeEscolhas()==2){
-                JOptionPane.showMessageDialog(null, "Fim da fase de escolha");
-                controladorJogo.setControleDeEscolhas(0);
-            }
-
-        });
         this.add(botao);
     }
 

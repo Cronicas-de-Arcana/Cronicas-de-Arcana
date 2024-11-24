@@ -7,6 +7,7 @@ import Cartas.View.ModeloCarta;
 import Controle.ControladorJogo;
 import Visualização.ComponenteVisual;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -45,6 +46,14 @@ public class ModeloMaoJogador extends ComponenteVisual {
         for (Carta carta : mao.getCartas()) {
             ModeloCarta modelo = new ModeloCarta(carta, jogador, controladorJogo, "Jogar Carta");
             modelosCartas.add(modelo);
+            modelo.getBotao().addActionListener(e -> {
+                controladorJogo.getJogadorAtual().jogarCartaCampo(carta, jogador);
+
+                if(controladorJogo.getControleDeEscolhas()==2){
+                    JOptionPane.showMessageDialog(null, "Fim da fase de escolha");
+                    controladorJogo.setControleDeEscolhas(0);
+                }
+            });
             this.add(modelo);  // Adiciona o modelo visual da carta ao layout
         }
 

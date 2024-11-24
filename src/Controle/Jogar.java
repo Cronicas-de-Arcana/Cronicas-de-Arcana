@@ -74,7 +74,7 @@ public class Jogar
         }
     }
 
-    public void faseCompra(/*Jogador jogador1, Jogador jogador2*/){
+    public void faseCompra(){
         //Jogadores compram cartas
         jogador1.comprarCartas();
         jogador2.comprarCartas();
