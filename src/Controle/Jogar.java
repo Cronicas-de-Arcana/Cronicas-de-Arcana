@@ -59,11 +59,14 @@ public class Jogar
         jogador1.getDeck().embaralhar();
         jogador2.getDeck().embaralhar();
 
-        //Compra inicial das 5 cartas
+        //Compra inicial das 5 cartas pelos jogadores
         for (int i=0; i<5; i++){
             jogador1.comprarCartas();
             jogador2.comprarCartas();
         }
+
+        //inicio de partida
+        iniciarPartida();
     }
 
     public void iniciar()

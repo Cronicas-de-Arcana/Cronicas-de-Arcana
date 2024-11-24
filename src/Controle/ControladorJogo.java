@@ -67,7 +67,6 @@ public class ControladorJogo {
         TelaBatalha telaBatalha = new TelaBatalha(this.jogador1, this.jogador2, this);
         this.janela.setTelaBatalha(telaBatalha);
         this.janela.setTelaAtual(telaBatalha);
-        jogar.iniciarPartida();
     }
 
     public void mostrarTelaInventario(Jogador jogadorAtual){

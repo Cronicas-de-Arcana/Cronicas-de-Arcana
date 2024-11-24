@@ -2,6 +2,7 @@ package Baralhos;
 
 import Cartas.Carta;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class Mao
     {
         if (carta != null)
         {
+            JOptionPane.showMessageDialog(null, carta.getNome() + " foi comprada!");
             cartas.add(carta);
         }
         else

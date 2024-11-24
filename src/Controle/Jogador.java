@@ -133,6 +133,7 @@ public class Jogador
         {
             this.mao.adicionarCartas(cartaComprada);
             this.getDeck().getCartas().remove(cartaComprada);
+            this.controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
         }
         else
         {
