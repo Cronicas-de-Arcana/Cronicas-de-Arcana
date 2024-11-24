@@ -8,6 +8,9 @@ import Controle.View.TelaInicial;
 import Controle.View.TelaInventario;
 import Espaço.View.TelaBatalha;
 
+import javax.swing.*;
+import java.util.Random;
+
 public class ControladorJogo {
     private Jogar jogar;
     private Jogador jogador1;
@@ -72,5 +75,26 @@ public class ControladorJogo {
     public void mostrarTelaInventario(Jogador jogadorAtual){
         TelaInventario telaInventario = new TelaInventario(this, jogadorAtual);
         this.janela.setTelaAtual(telaInventario);
+    }
+
+    public void iniciarPartida(){
+        Jogador jogadorAtual = new Random().nextBoolean() ? jogador1 : jogador2;
+        JOptionPane.showMessageDialog(null, jogadorAtual.getNome() + " deve jogar", "Informação", JOptionPane.INFORMATION_MESSAGE);
+
+    }
+
+    public void inicializacaoMaos(){
+        //Embaralhar Decks
+        jogador1.getDeck().embaralhar();
+        jogador2.getDeck().embaralhar();
+
+        //Compra inicial das 5 cartas pelos jogadores
+        for (int i=0; i<5; i++){
+            jogador1.comprarCartas();
+            jogador2.comprarCartas();
+        }
+
+        //inicio de partida
+        iniciarPartida();
     }
 }

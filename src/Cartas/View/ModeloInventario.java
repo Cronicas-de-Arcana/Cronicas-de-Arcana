@@ -50,7 +50,7 @@ public class ModeloInventario extends ComponenteVisual {
             } else {
                 //Após jogador 2 escolher seu deck devemos iniciar as mãos, mostrar a tela de batalha e iniciar a partida!
                 controladorJogo.mostrarTelaBatalha();
-                controladorJogo.getJogar().inicializacaoMaos();
+                controladorJogo.inicializacaoMaos();
 
             }
         });
@@ -66,7 +66,7 @@ public class ModeloInventario extends ComponenteVisual {
                 controladorJogo.mostrarTelaInventario(controladorJogo.getJogador2());
             } else {
                 controladorJogo.mostrarTelaBatalha();
-                controladorJogo.getJogar().inicializacaoMaos();
+                controladorJogo.inicializacaoMaos();
             }
         });
 
@@ -82,7 +82,7 @@ public class ModeloInventario extends ComponenteVisual {
             } else {
                 //Após jogador 2 escolher seu deck devemos iniciar as mãos, mostrar a tela de batalha e iniciar a partida!
                 controladorJogo.mostrarTelaBatalha();
-                controladorJogo.getJogar().inicializacaoMaos();
+                controladorJogo.inicializacaoMaos();
 
             }
         });
@@ -99,7 +99,7 @@ public class ModeloInventario extends ComponenteVisual {
             } else {
                 //Após jogador 2 escolher seu deck devemos iniciar as mãos, mostrar a tela de batalha e iniciar a partida!
                 controladorJogo.mostrarTelaBatalha();
-                controladorJogo.getJogar().inicializacaoMaos();
+                controladorJogo.inicializacaoMaos();
 
             }
         });

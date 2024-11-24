@@ -49,26 +49,6 @@ public class Jogar
         JOptionPane.showMessageDialog(null, jogadorAtivo.getNome() + " deve jogar", "Próximo Turno", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void iniciarPartida(){
-        Jogador jogadorAtivo = new Random().nextBoolean() ? jogador1 : jogador2;
-        JOptionPane.showMessageDialog(null, jogadorAtivo.getNome() + " deve jogar", "Informação", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    public void inicializacaoMaos(){
-        //Embaralhar Decks
-        jogador1.getDeck().embaralhar();
-        jogador2.getDeck().embaralhar();
-
-        //Compra inicial das 5 cartas pelos jogadores
-        for (int i=0; i<5; i++){
-            jogador1.comprarCartas();
-            jogador2.comprarCartas();
-        }
-
-        //inicio de partida
-        iniciarPartida();
-    }
-
     public void iniciar()
     {
         jogador1.getDeck().embaralhar();
