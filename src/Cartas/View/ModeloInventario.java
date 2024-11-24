@@ -30,7 +30,8 @@ public class ModeloInventario extends ComponenteVisual {
 
     @Override
     public void definirEstilo() {
-        this.setLayout(new GridLayout(2, 2, 10, 10));
+        this.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        //this.setLayout(new GridLayout(2, 2, 10, 10));
         this.setBackground(new Color(68, 41, 170));
     }
 

@@ -33,13 +33,13 @@ public class ModeloCarta extends ComponenteVisual {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBackground(new Color(74, 117, 218));
         this.setBorder(new LineBorder(new Color(0, 0, 0)));
-        setPreferredSize(new Dimension(160, 140));
-        setMaximumSize(new Dimension(180, 140));
+        setPreferredSize(new Dimension(180, 160));
+        setMaximumSize(new Dimension(200, 160));
     }
 
     @Override
     public void renderizar(Carta carta) {
-        Font fontePadrao = new Font("Arial", Font.BOLD, 12);
+        Font fontePadrao = new Font("Arial", Font.BOLD, 15);
 
         // Estilo campo do nome
         JLabel nomeCarta = new JLabel(carta.getNome());
@@ -65,6 +65,7 @@ public class ModeloCarta extends ComponenteVisual {
                 JLabel hpLabel = new JLabel("HP: " + criatura.getHP());
                 JLabel poderLabel = new JLabel("Poder: " + criatura.getPoder());
                 JLabel resistenciaLabel = new JLabel("Resistência: " + criatura.getResistencia());
+                JLabel classeLabel = new JLabel("Criatura");
 
                 // Aplicando o estilo de centralização e fonte para cada atributo
                 hpLabel.setFont(fontePadrao);
@@ -79,14 +80,20 @@ public class ModeloCarta extends ComponenteVisual {
                 resistenciaLabel.setForeground(Color.WHITE);
                 resistenciaLabel.setAlignmentX(CENTER_ALIGNMENT);
 
+                classeLabel.setFont(fontePadrao);
+                classeLabel.setForeground(Color.WHITE);
+                classeLabel.setAlignmentX(CENTER_ALIGNMENT);
+
                 this.add(hpLabel);
                 this.add(poderLabel);
                 this.add(resistenciaLabel);
+                this.add(classeLabel);
             }
             case Feitico feitico -> {
                 JLabel danoLabel = new JLabel("Dano: " + feitico.getDano());
                 JLabel curaLabel = new JLabel("Cura: " + feitico.getCura());
-                JLabel modificadorDanoLabel = new JLabel("Modificador de Dano: " + feitico.getModificadorDano());
+                JLabel modificadorDanoLabel = new JLabel("Modif. de Dano: " + feitico.getModificadorDano());
+                JLabel classeLabel = new JLabel("Feitiço");
 
                 // Aplicando o estilo de centralização e fonte para cada atributo
                 danoLabel.setFont(fontePadrao);
@@ -101,13 +108,19 @@ public class ModeloCarta extends ComponenteVisual {
                 modificadorDanoLabel.setForeground(Color.WHITE);
                 modificadorDanoLabel.setAlignmentX(CENTER_ALIGNMENT);
 
+                classeLabel.setFont(fontePadrao);
+                classeLabel.setForeground(Color.WHITE);
+                classeLabel.setAlignmentX(CENTER_ALIGNMENT);
+
                 this.add(danoLabel);
                 this.add(curaLabel);
                 this.add(modificadorDanoLabel);
+                this.add(classeLabel);
             }
             case Encantamento encantamento -> {
                 JLabel quantidadeRodadasLabel = new JLabel("Duração: " + encantamento.getQuantidadeRodadas() + " rodadas");
-                JLabel modificadorDanoLabel = new JLabel("Modificador de Dano: " + encantamento.getModificadorDano());
+                JLabel modificadorDanoLabel = new JLabel("Modif. de Dano: " + encantamento.getModificadorDano());
+                JLabel classeLabel = new JLabel("Feitiço");
 
                 // Aplicando o estilo de centralização e fonte para cada atributo
                 quantidadeRodadasLabel.setFont(fontePadrao);
@@ -118,8 +131,13 @@ public class ModeloCarta extends ComponenteVisual {
                 modificadorDanoLabel.setForeground(Color.WHITE);
                 modificadorDanoLabel.setAlignmentX(CENTER_ALIGNMENT);
 
+                classeLabel.setFont(fontePadrao);
+                classeLabel.setForeground(Color.WHITE);
+                classeLabel.setAlignmentX(CENTER_ALIGNMENT);
+
                 this.add(quantidadeRodadasLabel);
                 this.add(modificadorDanoLabel);
+                this.add(classeLabel);
             }
             default -> {
             }
