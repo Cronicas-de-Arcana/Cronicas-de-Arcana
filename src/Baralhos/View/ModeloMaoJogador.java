@@ -57,6 +57,13 @@ public class ModeloMaoJogador extends ComponenteVisual {
             this.add(modelo);  // Adiciona o modelo visual da carta ao layout
         }
 
+        JButton botaoPassarRodada = new JButton("Passar");
+        botaoPassarRodada.setPreferredSize(new Dimension(180, 200));
+        botaoPassarRodada.addActionListener(e -> {
+            jogador.jogarCartaCampo(null, jogador);
+        });
+        this.add(botaoPassarRodada);
+
         // Atualiza o layout da mão do jogador para refletir as mudanças
         revalidate();
         repaint();

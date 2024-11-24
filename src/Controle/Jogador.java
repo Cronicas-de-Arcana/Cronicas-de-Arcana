@@ -144,6 +144,18 @@ public class Jogador
     }
 
     public void jogarCartaCampo(Carta carta, Jogador jogador) {
+        if (carta == null) { // Jogador escolheu passar a rodada
+            JOptionPane.showMessageDialog(null, jogador.getNome() + " passou a vez.", "Turno Finalizado", JOptionPane.INFORMATION_MESSAGE);
+            controladorJogo.incrementoControleDeEscolhas();
+            controladorJogo.mudarJogadorAtual();
+
+            // Finaliza a fase de escolhas se ambos os jogadores tiverem agido
+            if (controladorJogo.getControleDeEscolhas() == 2) {
+                JOptionPane.showMessageDialog(null, "Fim da fase de escolhas!");
+                controladorJogo.setControleDeEscolhas(0);
+            }
+            return;
+        }
         boolean jogadaValida = false; // Inicializamos como falsa para entrar no loop
 
         while (!jogadaValida) { // Continua no loop até que a jogada seja válida
