@@ -7,6 +7,7 @@ import Controle.Jogador;
 import Espaço.CampodeBatalha;
 import Visualização.ComponenteVisual;
 
+import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
@@ -41,11 +42,46 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
         for (Carta carta : campoBatalha.getCampo()) {
             ModeloCarta modelo = new ModeloCarta(carta, jogador, controladorJogo, "Atacar");
             modelosCartas.add(modelo);
+
+            modelo.getBotao().addActionListener(e -> {
+                if (controladorJogo.getFaseJogo().equals("ATAQUE")) {
+                    atribuirCarta(carta, jogador);
+                } else {
+                    controladorJogo.getJogadorAtual().jogarCartaCampo(carta, jogador);
+                }
+            });
+
             this.add(modelo);  // Adiciona o modelo visual da carta ao layout
         }
 
+        JButton botaoVazio = new JButton("Vazio");
+        botaoVazio.addActionListener(e -> {
+
+            //Se não for a fase de ataque, o botao "vazio" ira indicar que ainda nao esta na fase de ataque
+            if (!controladorJogo.getFaseJogo().equals("ATAQUE")) {
+                JOptionPane.showMessageDialog(null, "Ainda não é a fase de Ataque!");
+            }
+            else{
+                atribuirCarta(null, jogador);
+            }
+        });
+
+        this.add(botaoVazio);
+
         revalidate();
         repaint();
+    }
+
+    public void atribuirCarta(Carta carta, Jogador jogador) {
+        if (controladorJogo.getJogadorAtual().equals(jogador)) {
+            controladorJogo.getJogar().setCartaAtacante(carta);
+            JOptionPane.showMessageDialog(null, "Carta de ataque definida!");
+        } else {
+            if (carta == null && jogador.getCampoDeBatalha().getCampo().isEmpty()) {
+                controladorJogo.getJogar().setCartaAlvo(carta);
+                JOptionPane.showMessageDialog(null, "Carta alvo definida!");
+            }
+        }
     }
 }
 
