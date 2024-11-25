@@ -29,6 +29,7 @@ public class ControladorJogo {
         this.jogador2.setControladorJogo(this);
         this.jogadorAtual = jogador1;
         this.inventario = new Inventario();
+        this.faseJogo = "ESCOLHA";
         this.jogar = new Jogar(jogador1, jogador2, jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
         this.jogar.setControladorJogo(this);
     }
@@ -95,6 +96,7 @@ public class ControladorJogo {
 
     public void mudarJogadorAtual(){
         jogadorAtual = (jogadorAtual == jogador1) ? jogador2 : jogador1;
+        janela.getTelaBatalha().atualizarElementos();
         JOptionPane.showMessageDialog(null, jogadorAtual.getNome() + " deve jogar", "Próximo Turno", JOptionPane.INFORMATION_MESSAGE);
     }
 

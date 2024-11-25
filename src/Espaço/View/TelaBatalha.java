@@ -4,6 +4,7 @@ import Baralhos.View.ModeloMaoJogador;
 import Controle.ControladorJogo;
 import Controle.Jogador;
 import Controle.View.ModeloInfoJogador;
+import Controle.View.ModeloInfoJogo;
 import Visualização.Tela;
 
 import javax.swing.*;
@@ -15,6 +16,7 @@ public class TelaBatalha extends Tela
     private ModeloMaoJogador modeloMaoJogador2;
     private ModeloInfoJogador modeloInfoJogador1;
     private ModeloInfoJogador modeloInfoJogador2;
+    private ModeloInfoJogo modeloInfoJogo;
     private ModeloCemiterio modeloCemiterioJogador1;
     private ModeloCemiterio modeloCemiterioJogador2;
     private ModeloCampoDeBatalha modeloCampoDeBatalhaJogador1;
@@ -32,6 +34,7 @@ public class TelaBatalha extends Tela
         this.modeloCampoDeBatalhaJogador2 = new ModeloCampoDeBatalha(jogador2.getCampoDeBatalha(), this.getControladorJogo().getJogador2(), this.getControladorJogo());
         this.modeloInfoJogador1 = new ModeloInfoJogador(jogador1);
         this.modeloInfoJogador2 = new ModeloInfoJogador(jogador2);
+        this.modeloInfoJogo = new ModeloInfoJogo(this.getControladorJogo());
         this.modeloCemiterioJogador1 = new ModeloCemiterio(jogador1.getCemiterio(), this.getControladorJogo().getJogador1(), this.getControladorJogo());
         this.modeloCemiterioJogador2 = new ModeloCemiterio(jogador2.getCemiterio(), this.getControladorJogo().getJogador2(), this.getControladorJogo());
 
@@ -70,16 +73,10 @@ public class TelaBatalha extends Tela
         //Provisório para mapear a tela - porção Leste
         JPanel painelLeste = new JPanel();
         painelLeste.setLayout(new GridLayout(3, 1));
-        painelLeste.setBackground(new Color(60, 43, 214));
         painelLeste.setPreferredSize(new Dimension(320, painelOeste.getPreferredSize().height));
 
-        JLabel contadorRodadas = new JLabel("Rodada nºX + Futuras informações adicinais!");
-        contadorRodadas.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        contadorRodadas.setHorizontalAlignment(SwingConstants.CENTER);
-        contadorRodadas.setForeground(Color.WHITE);
-
         painelLeste.add(modeloInfoJogador2);
-        painelLeste.add(contadorRodadas);
+        painelLeste.add(modeloInfoJogo);
         painelLeste.add(modeloInfoJogador1);
 
         this.add(painelLeste, BorderLayout.EAST);
@@ -91,6 +88,10 @@ public class TelaBatalha extends Tela
 
     public ModeloInfoJogador getModeloInfoJogador2() {
         return modeloInfoJogador2;
+    }
+
+    public ModeloInfoJogo getModeloInfoJogo() {
+        return modeloInfoJogo;
     }
 
     public ModeloCemiterio getModeloCemiterioJogador1() {
@@ -153,6 +154,7 @@ public class TelaBatalha extends Tela
     public void atualizarInformacoes(){
         getModeloInfoJogador1().atualizar();
         getModeloInfoJogador2().atualizar();
+        getModeloInfoJogo().atualizar();
     }
 
 }

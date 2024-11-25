@@ -52,6 +52,7 @@ public class ModeloMaoJogador extends ComponenteVisual {
                 if(controladorJogo.getControleDeEscolhas()==2){
                     JOptionPane.showMessageDialog(null, "Fim da fase de escolha");
                     controladorJogo.setFaseJogo("ATAQUE");
+                    controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
                     controladorJogo.setControleDeEscolhas(0);
                 }
             });
