@@ -17,7 +17,7 @@ public class ModeloInfoJogo extends ComponenteVisual {
     }
 
     public void definirEstilo() {
-        this.setLayout(new GridLayout(1, 2)); // 1 linha duas colunas
+        this.setLayout(new GridLayout(2, 1)); // 1 linha duas colunas
         this.setBorder(new LineBorder(Color.WHITE, 1)); // Borda branca
     }
 
