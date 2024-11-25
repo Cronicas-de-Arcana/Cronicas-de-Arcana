@@ -51,7 +51,6 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
                     } else {
                         atribuirCarta(carta, jogador);
                         JOptionPane.showMessageDialog(null, "Começar ataque!");
-                        //IMPLEMENTAR ATAQUE
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Ainda não é a fase de Ataque!");

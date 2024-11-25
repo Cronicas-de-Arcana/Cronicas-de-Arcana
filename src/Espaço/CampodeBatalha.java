@@ -41,7 +41,6 @@ public class CampodeBatalha extends Espaco
     public void removerCarta(Carta criatura)
     {
         if (cartas.remove(criatura)) {
-            cemiterio.adicionarCarta(criatura);
             System.out.println(criatura.getNome() + " foi removida do campo de batalha e enviada ao cemitério.");
         } else {
             System.out.println(criatura.getNome() + " não está no campo de batalha.");

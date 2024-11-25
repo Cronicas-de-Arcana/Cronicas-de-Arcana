@@ -84,7 +84,8 @@ public class Jogar
                 controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
 
                 if (alvo.getHP() <= 0) {
-                    campoOponente.removerCarta(cartaAlvo); // Remove a carta do campo do oponente
+                    jogadorOponente.getCampoDeBatalha().removerCarta(cartaAlvo);// Remove a carta do campo do oponente
+                    jogadorOponente.getCemiterio().adicionarCarta(cartaAlvo); //Adiciona carta no cemitério do oponente
                     JOptionPane.showMessageDialog(null, alvo.getNome() + " foi destruído!");
                 }
 
