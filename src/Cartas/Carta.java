@@ -25,10 +25,4 @@ public abstract class Carta
     public String getHabilidadeEspecial() {
         return habilidadeEspecial;
     }
-
-    public void mostrarCaracteristicas()
-    {
-        System.out.println("Nome: " + nome);
-        System.out.println("Custo Mana: " + custoMana);
-    }
 }

@@ -62,7 +62,8 @@ public class Jogar
         this.cartaAlvo = cartaAlvo;
     }
 
-    public void executarAtaque() {
+    public void executarAtaque()
+    {
         if (cartaAtacante == null && cartaAlvo == null) {
             JOptionPane.showMessageDialog(null, "Certifique-se de que um atacante e um alvo foram selecionados antes de iniciar o ataque!");
             return;
@@ -146,7 +147,8 @@ public class Jogar
         }
     }
 
-    public void faseEscolha(){
+    public void faseEscolha()
+    {
         controladorJogo.setFaseJogo("ESCOLHA");
 
         //Jogadores compram cartas

@@ -10,7 +10,6 @@ public class Criatura extends Carta
     protected int hp;
     protected int resistencia;
     protected int poder;
-    protected double forca;
     protected boolean voa;
 
     public Criatura(int hp, String nome, int custoMana, int poder, int resistencia, String habilidadeEspecial, boolean voa)
@@ -20,7 +19,6 @@ public class Criatura extends Carta
         this.resistencia = resistencia;
         this.habilidadeEspecial = habilidadeEspecial;
         this.poder = poder;
-        this.forca = forca;
         this.voa = voa;
     }
 
@@ -49,19 +47,9 @@ public class Criatura extends Carta
 
     }
 
-    public double getForca()
-    {
-        return forca;
-    }
-
     public boolean Voa()
     {
         return voa;
-    }
-
-    public void setVoa(boolean voa)
-    {
-        this.voa = voa;
     }
 
     public void receberDano(int dano)
@@ -119,12 +107,4 @@ public class Criatura extends Carta
         this.hp += cura;
         System.out.println(getNome() + " se curou em " + cura + " pontos de vida. Vida atual: " + this.hp);
     }
-
-    //Decidir se devemos manter esse metodo
-    public void efeito()
-    {
-        System.out.println("Habilidade especial de " + getNome() + ": " + habilidadeEspecial);
-    }
-
-
 }

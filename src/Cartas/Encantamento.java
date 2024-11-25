@@ -91,6 +91,10 @@ public class Encantamento extends Carta
                 System.out.println(getNome() + " curou " + cura + " pontos de vida de " + alvo.getNome() + " por " + quantidadeRodadas + " rodadas.");
                 alvo.receberCura(cura);
             }
+            else
+            {
+                System.out.println("O efeito não pode ser aplicado.");
+            }
             reduzirRodadas();
         }
     }
@@ -101,7 +105,8 @@ public class Encantamento extends Carta
         {
             Criatura criaturaAlvo = (Criatura) alvo;
             this.lancarEncantamentoCriatura(criaturaAlvo);
-        } else if (alvo instanceof Jogador)
+        }
+        else if (alvo instanceof Jogador)
         {
             Jogador jogadorAlvo = (Jogador) alvo;
             this.lancarEncantamentoJogador(jogadorAlvo);

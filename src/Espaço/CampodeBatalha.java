@@ -47,19 +47,6 @@ public class CampodeBatalha extends Espaco
         }
     }
 
-    public void comprarCarta()
-    {
-        if (!deck.verificarDeckVazio())
-        {
-            Carta cartaComprada = deck.comprarCarta();
-            mao.adicionarCartas(cartaComprada);
-        }
-        else
-        {
-            System.out.println("Não existem mais cartas no deck");
-        }
-    }
-
     public void mostrarCartas()
     {
         if (cartas.isEmpty())
@@ -75,17 +62,5 @@ public class CampodeBatalha extends Espaco
             }
             System.out.println();
         }
-    }
-
-    public List<Criatura> getCriaturasNoCampo(Jogador jogador)
-    {
-        List<Criatura> criaturasNoCampo = new ArrayList<>();
-        for (Carta carta : cartas) {
-            if (carta instanceof Criatura)
-            {
-                criaturasNoCampo.add((Criatura) carta);
-            }
-        }
-        return criaturasNoCampo;
     }
 }

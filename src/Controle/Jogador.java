@@ -351,12 +351,6 @@ public class Jogador
         encantamentosAtivos.add(encantamento);
     }
 
-    public void enviarAoCemiterio(Carta carta)
-    {
-        cemiterio.adicionarCarta(carta);
-        System.out.println(carta.getNome() + " foi enviada ao cemitério.");
-    }
-
     public CampodeBatalha getCampoDeBatalha()
     {
         return this.campoDeBatalha;
@@ -409,6 +403,7 @@ public class Jogador
                 this.setNivel(i + 1);
                 break;
             }
+            adicionarCartasProgresso();
         }
     }
 
