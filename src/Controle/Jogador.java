@@ -307,7 +307,7 @@ public class Jogador
         return this.campoDeBatalha;
     }
 
-    public void receberDano(int dano)
+    public void receberDano(double dano)
     {
         this.hp -= dano;
         if (this.hp <= 0)
@@ -361,7 +361,8 @@ public class Jogador
         int nivelAtual = this.getNivel();
         Carta[] cartasParaAdicionar = inventario.getCartasProgresso()[nivelAtual-1];
 
-        for (Carta carta: cartasParaAdicionar){
+        for (Carta carta: cartasParaAdicionar)
+        {
             this.inventario.getCartasInventario().add(carta);
         }
     }

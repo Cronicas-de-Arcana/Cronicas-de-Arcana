@@ -86,7 +86,7 @@ public class Jogar
             jogador2.comprarCartas();
         }
 
-        while (true)
+        while(true)
         {
             executarTurno(jogador1, jogador2);
             if (verificarVitoria(jogador1, jogador2) || verificarVitoria(jogador2, jogador1))
@@ -178,10 +178,12 @@ public class Jogar
 
             if (cartaAtacante != null)
             {
+                double dano = (((Criatura) cartaAtacante).getPoder() - ((Criatura) cartaDefensora).getHP());
                 ((Criatura) cartaAtacante).atacarCriatura((Criatura)cartaDefensora);
                 if (((Criatura)cartaDefensora).getHP() <= 0)
                 {
                     campoDeBatalha.removerCarta(cartaAtacante);
+                    jogadorAlvo.receberDano(dano);
                 }
             }
             else
@@ -193,18 +195,23 @@ public class Jogar
             {
                 if (cartaAtacante2 instanceof Feitico)
                 {
+                    double dano = (((Feitico) cartaAtacante2).getDano() - ((Criatura) cartaDefensora).getHP());
                     ((Feitico) cartaAtacante2).lancarFeiticoCriatura((Criatura)cartaDefensora);
                     if (((Criatura)cartaDefensora).getHP() <= 0)
                     {
                         campoDeBatalha.removerCarta(cartaAtacante);
+                        jogadorAlvo.receberDano(dano);
+
                     }
                 }
                 else if (cartaAtacante2 instanceof Encantamento)
                 {
+                    double dano = (((Feitico) cartaAtacante2).getDano() - ((Criatura) cartaDefensora).getHP());
                     ((Encantamento) cartaAtacante2).lancarEncantamentoCriatura((Criatura)cartaDefensora);
                     if (((Criatura)cartaDefensora).getHP() <= 0)
                     {
                         campoDeBatalha.removerCarta(cartaAtacante);
+                        jogadorAlvo.receberDano(dano);
                     }
                 }
             }

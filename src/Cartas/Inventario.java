@@ -13,7 +13,6 @@ public class Inventario
         inicializadorCartasJ1();
         inicializadorCartasJ2();
         inicializadorCartasJ3();
-        inicializadorCartasJ4();
         inicializarCartasProgresso();
     }
 
@@ -82,6 +81,7 @@ public class Inventario
         deckPadraoJ1.add(new Criatura(14, "Dragão de Lava", 6, 8, 5, "Dragão adaptado para vulcões.", true));
         deckPadraoJ1.add(new Criatura(11, "Orc Berserker", 2, 6, 2, "Um orc saiu de controle e agora quer enfrentar todo mundo.", false));
         deckPadraoJ1.add(new Criatura(9, "Sátiro Ilusório", 3, 5, 2, "Tome cuidado com suas ilusões.", false));
+        deckPadraoJ1.add(new Criatura(12, "Cavalo Alado", 4, 6, 3, "Velocidade impressionante com ataques aéreos.", true));
         deckPadraoJ1.add(new Criatura(16, "Manticora Assassina", 5, 8, 4, "Criada para matar.", true));
         deckPadraoJ1.add(new Criatura(11, "Guardião das Sombras", 4, 7, 3, "Antigo rival do espectro da noite.", true));
         deckPadraoJ1.add(new Criatura(10, "Leopardo Alado", 3, 6, 2, "Não basta ser rápido por terra, agora querem dominar o ar.", true));
@@ -110,28 +110,30 @@ public class Inventario
         return deckPadraoJ1;
     }
 
-    public ArrayList<Carta> inicializadorCartasJ2() {
+    public ArrayList<Carta> inicializadorCartasJ2()
+    {
         ArrayList<Carta> deckPadraoJ2 = new ArrayList<>();
 
-        deckPadraoJ2.add(new Criatura(12, "Mago", 3, 70, 50, "Ataques de bola de fogo.", false));
-        deckPadraoJ2.add(new Criatura(9, "Arqueiro", 2, 60, 40, "Ataques à distância com alto dano.", false));
-        deckPadraoJ2.add(new Criatura(15, "Fênix Ardente", 5, 80, 60, "Ave flamejante.", true));
-        deckPadraoJ2.add(new Criatura(25, "Golem de Pedra", 7, 70, 120, "Criatura resistente esculpida na rocha.", false));
-        deckPadraoJ2.add(new Criatura(13, "Demônio das Sombras", 4, 70, 50, "Criatura sombria que assombra seus inimigos.", true));
-        deckPadraoJ2.add(new Criatura(7, "Fada Curandeira", 3, 0, 30, "Pequena fada mágica com poderes de cura.", true));
-        deckPadraoJ2.add(new Criatura(22, "Gigante da Montanha", 6, 100, 120, "Criatura colossal das montanhas.", false));
-        deckPadraoJ2.add(new Criatura(15, "Cavaleiro Espectral", 5, 90, 80, "Guerreiro sombrio em uma armadura assombrada.", false));
-        deckPadraoJ2.add(new Criatura(11, "Gárgula de Pedra", 4, 60, 50, "Estátua viva com força sobrenatural.", false));
-        deckPadraoJ2.add(new Criatura(18, "Serpente de Fogo", 5, 90, 70, "Serpente ardente que espalha destruição.", false));
-        deckPadraoJ2.add(new Criatura(13, "Bárbaro Enfurecido", 3, 75, 55, "Guerreiro selvagem que luta sem piedade.", false));
-        deckPadraoJ2.add(new Criatura(14, "Bruxa das Sombras", 4, 80, 40, "Mística das sombras que conjura feitiços.", false));
-        deckPadraoJ2.add(new Criatura(16, "Ciclope Selvagem", 6, 100, 80, "Gigante de um olho só, cheio de fúria.", false));
-        deckPadraoJ2.add(new Criatura(19, "Kraken do Abismo", 7, 90, 110, "Monstro marítimo vindo das profundezas.", false));
-        deckPadraoJ2.add(new Criatura(9, "Espectro Veloz", 2, 60, 30, "Espírito ágil e difícil de capturar.", false));
-        deckPadraoJ2.add(new Criatura(11, "Mestre de Espadas", 4, 85, 60, "Espadachim habilidoso com ataques precisos.", false));
-        deckPadraoJ2.add(new Criatura(9, "Lobo das Sombras", 3, 50, 40, "Predador noturno com olhos brilhantes.", false));
-        deckPadraoJ2.add(new Criatura(13, "Corvo Negro", 3, 55, 35, "Ave sombria que espreita seus alvos.", true));
-        deckPadraoJ2.add(new Criatura(20, "Titã das Rochas", 6, 70, 100, "Gigante feito de pedra e força pura.", false));
+        deckPadraoJ2.add(new Criatura(12, "Mago", 3, 7, 2, "Ataques de bola de fogo.", false));
+        deckPadraoJ2.add(new Criatura(9, "Arqueiro", 2, 6, 2, "Ataques à distância com alto dano.", false));
+        deckPadraoJ2.add(new Criatura(15, "Fênix Ardente", 5, 8, 3, "Ave flamejante.", true));
+        deckPadraoJ2.add(new Criatura(25, "Golem de Pedra", 7, 7, 6, "Criatura resistente esculpida na rocha.", false));
+        deckPadraoJ2.add(new Criatura(13, "Demônio das Sombras", 4, 7, 2, "Criatura sombria que assombra seus inimigos.", true));
+        deckPadraoJ2.add(new Criatura(7, "Fada Curandeira", 3, -3, 1, "Pequena fada mágica com poderes de cura.", true));
+        deckPadraoJ2.add(new Criatura(22, "Gigante da Montanha", 6, 10, 6, "Criatura colossal das montanhas.", false));
+        deckPadraoJ2.add(new Criatura(15, "Cavaleiro Espectral", 5, 9, 4, "Guerreiro sombrio em uma armadura assombrada.", false));
+        deckPadraoJ2.add(new Criatura(11, "Gárgula de Pedra", 4, 6, 2, "Estátua viva com força sobrenatural.", false));
+        deckPadraoJ2.add(new Criatura(18, "Serpente de Fogo", 5, 9, 3, "Serpente ardente que espalha destruição.", false));
+        deckPadraoJ2.add(new Criatura(13, "Bárbaro Enfurecido", 3, 7, 3, "Guerreiro selvagem que luta sem piedade.", false));
+        deckPadraoJ2.add(new Criatura(14, "Bruxa das Sombras", 4, 8, 2, "Mística das sombras que conjura feitiços.", false));
+        deckPadraoJ2.add(new Criatura(16, "Ciclope Selvagem", 6, 10, 4, "Gigante de um olho só, cheio de fúria.", false));
+        deckPadraoJ2.add(new Criatura(19, "Kraken do Abismo", 7, 9, 5, "Monstro marítimo vindo das profundezas.", false));
+        deckPadraoJ2.add(new Criatura(9, "Espectro Veloz", 2, 6, 2, "Espírito ágil e difícil de capturar.", false));
+        deckPadraoJ2.add(new Criatura(11, "Mestre de Espadas", 4, 8, 3, "Espadachim habilidoso com ataques precisos.", false));
+        deckPadraoJ2.add(new Criatura(9, "Lobo das Sombras", 3, 5, 2, "Predador noturno com olhos brilhantes.", false));
+        deckPadraoJ2.add(new Criatura(13, "Corvo Negro", 3, 5, 2, "Ave sombria que espreita seus alvos.", true));
+        deckPadraoJ2.add(new Criatura(10, "Troll da Montanha", 4, 5, 6, "Troll resistente que se regenera rapidamente.", false));
+        deckPadraoJ2.add(new Criatura(20, "Titã das Rochas", 6, 7, 5, "Gigante feito de pedra e força pura.", false));
 
         deckPadraoJ2.add(new Feitico("Bola de Fogo", 3, "Causa grande dano a uma única criatura inimiga.", 12, 0, 0));
         deckPadraoJ2.add(new Feitico("Tornado", 4, "Causa dano a todo tipo de criatura inimiga.", 8, 0, 0));
@@ -157,12 +159,44 @@ public class Inventario
     public ArrayList<Carta> inicializadorCartasJ3()
     {
         ArrayList<Carta> deckPadraoJ3 = new ArrayList<>();
-        return deckPadraoJ3;
-    }
 
-    public ArrayList<Carta> inicializadorCartasJ4()
-    {
-        ArrayList<Carta> deckPadraoJ4 = new ArrayList<>();
-        return deckPadraoJ4;
+
+        deckPadraoJ3.add(new Criatura(18, "Dragão de Gelo", 6, 9, 6, "Criatura lendária que controla o gelo.", true));
+        deckPadraoJ3.add(new Criatura(14, "Grifo Real", 5, 8, 6, "Majestoso grifo que protege reinos.", true));
+        deckPadraoJ3.add(new Criatura(20, "Wendigo", 7, 7, 5, "Criatura das florestas, faminta por carne.", false));
+        deckPadraoJ3.add(new Criatura(25, "Hidra Regenerativa", 8, 6, 6, "Cada cabeça que é cortada faz surgir outra.", false));
+        deckPadraoJ3.add(new Criatura(12, "Lich Imortal", 4, 6, 4, "Necromante que não conhece a morte.", false));
+        deckPadraoJ3.add(new Criatura(15, "Lobisomem Selvagem", 5, 8, 5, "Perigo nas noites de lua cheia.", false));
+        deckPadraoJ3.add(new Criatura(18, "Minotauro do Labirinto", 6, 9, 7, "Guardião de labirintos antigos.", false));
+        deckPadraoJ3.add(new Criatura(13, "Gárgula Assombrada", 4, 7, 4, "Estátua animada com fúria.", false));
+        deckPadraoJ3.add(new Criatura(10, "Fênix Imortal", 5, 8, 3, "Renova-se a cada vez que morre.", true));
+        deckPadraoJ3.add(new Criatura(20, "Gigante de Gelo", 7, 6, 8, "Criatura colossal da tundra.", false));
+        deckPadraoJ3.add(new Criatura(11, "Espectro Assassino", 3, 9, 3, "Espírito traiçoeiro e ágil.", false));
+        deckPadraoJ3.add(new Criatura(22, "Troll da Floresta", 6, 7, 10, "Criatura feroz que defende sua floresta.", false));
+        deckPadraoJ3.add(new Criatura(14, "Cavaleiro Sombrio", 5, 7, 6, "Guerreiro ressuscitado das sombras.", false));
+        deckPadraoJ3.add(new Criatura(18, "Dragão Negro", 7, 10, 6, "Dragão escuro que espalha terror.", true));
+        deckPadraoJ3.add(new Criatura(17, "Leão Celestial", 6, 8, 7, "Rei das feras com força divina.", false));
+        deckPadraoJ3.add(new Criatura(19, "Centauro Guerreiro", 6, 8, 5, "Híbrido de homem e cavalo, feroz em batalha.", false));
+        deckPadraoJ3.add(new Criatura(16, "Manticora Vingativa", 6, 7, 6, "Criatura com cauda de escorpião, pronta para atacar.", true));
+        deckPadraoJ3.add(new Criatura(12, "Basilisco de Pedra", 4, 9, 4, "Olhos que transformam em pedra.", false));
+        deckPadraoJ3.add(new Criatura(13, "Lança-sombras", 5, 8, 5, "Lança ataques sombrios que confundem os inimigos.", false));
+        deckPadraoJ3.add(new Criatura(21, "Quimera Feral", 7, 8, 6, "Cabeças de leão, cabra e serpente, atacam simultaneamente.", true));
+
+            // Encantamentos e Feitiços (8)
+        deckPadraoJ3.add(new Feitico("Tempestade Gélida", 4, "Causa dano a todas as criaturas inimigas.", 10, 0, 0));
+        deckPadraoJ3.add(new Feitico("Explosão Arcana", 3, "Dano mágico de origem desconhecida.", 10, 0, 0));
+        deckPadraoJ3.add(new Feitico("Raio Celestial", 5, "Golpe poderoso que afeta uma criatura.", 13, 0, 0));
+        deckPadraoJ3.add(new Feitico("Bola de Fogo", 3, "Causa grande dano a uma única criatura inimiga.", 12, 0, 0));
+
+        deckPadraoJ3.add(new Encantamento("Ferro Cortante", 4, "Aumenta o ataque de uma criatura aliada em 4 pontos.", 3, 4, 0, 0));
+        deckPadraoJ3.add(new Encantamento("Escudo Protetor", 4, "Diminui o dano recebido de todas as fontes em 5 pontos.", 2, 0, 0, -5));
+        deckPadraoJ3.add(new Encantamento("Vingança Sombria", 3, "Quando uma criatura morre, causa dano ao inimigo.", 2, 8, 0, 0));
+        deckPadraoJ3.add(new Encantamento("Explosão Magma", 5, "Quando a criatura morrer, causa grande dano a todos os inimigos.", 1, 15, 0, 0));
+        deckPadraoJ3.add(new Encantamento("Escudo de Gelo", 3, "Cria um escudo de gelo que bloqueia 4 de dano físico.", 2, 0, 0, -4));
+        deckPadraoJ3.add(new Encantamento("Aura do Vingador", 3, "Causa dano ao inimigo que atacar suas criaturas.", 2, 6, 0, 0));
+        deckPadraoJ3.add(new Encantamento("Benção dos Deuses", 5, "Aumenta a resistência de todas as suas criaturas.", 3, 0, 0, 3));
+        deckPadraoJ3.add(new Encantamento("Chama Eterna", 4, "Causa dano contínuo a todas as criaturas inimigas.", 3, 5, 0, 0));
+
+        return deckPadraoJ3;
     }
 }
