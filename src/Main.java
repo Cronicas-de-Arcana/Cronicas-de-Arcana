@@ -22,8 +22,8 @@ public class Main
         Deck deckJ1 = new Deck(inventarioGeral.inicializadorCartasJ1());
         Deck deckJ2 = new Deck(inventarioGeral.inicializadorCartasJ2());
 
-        Jogador jogador1 = new Jogador(nomeJogador1, deckJ1, 100, 10, 2, scanner);
-        Jogador jogador2 = new Jogador(nomeJogador2, deckJ2, 100, 10, 2, scanner);
+        Jogador jogador1 = new Jogador(nomeJogador1, deckJ1, 100, 10, 3, scanner);
+        Jogador jogador2 = new Jogador(nomeJogador2, deckJ2, 100, 10, 3, scanner);
 
         Jogar jogar = new Jogar(jogador1, jogador2, jogador1.getCampoDeBatalha(), jogador2.getCampoDeBatalha());
         jogar.iniciar();
