@@ -133,23 +133,23 @@ public class Inventario
         deckPadraoJ2.add(new Criatura(13, "Corvo Negro", 3, 55, 35, "Ave sombria que espreita seus alvos.", true));
         deckPadraoJ2.add(new Criatura(20, "Titã das Rochas", 6, 70, 100, "Gigante feito de pedra e força pura.", false));
 
-        deckPadraoJ2.add(new Feitico("Bola de Fogo", 3, "Causa grande dano a uma única criatura inimiga.", 15, 0, 0));
-        deckPadraoJ2.add(new Feitico("Tornado", 4, "Causa dano a todas as criaturas inimigas.", 10, 0, 0));
+        deckPadraoJ2.add(new Feitico("Bola de Fogo", 3, "Causa grande dano a uma única criatura inimiga.", 12, 0, 0));
+        deckPadraoJ2.add(new Feitico("Tornado", 4, "Causa dano a todo tipo de criatura inimiga.", 8, 0, 0));
         deckPadraoJ2.add(new Feitico("Smite", 2, "Feitiço que fere diretamente uma criatura.", 8, 0, 0));
-        deckPadraoJ2.add(new Feitico("Impacto de Lava", 4, "Explosão de lava que atinge várias criaturas.", 12, 0, 0));
-        deckPadraoJ2.add(new Feitico("Raio Celestial", 5, "Golpe poderoso que afeta uma criatura.", 18, 0, 0));
-        deckPadraoJ2.add(new Feitico("Cura Sagrada", 3, "Recupera vida de uma criatura.", 0, 10, 0));
-        deckPadraoJ2.add(new Feitico("Relâmpago Veloz", 3, "Golpe direto em uma criatura ou jogador.", 12, 0, 0));
-        deckPadraoJ2.add(new Feitico("Dilúvio Arcano", 5, "Ataque mágico que afeta várias criaturas.", 15, 0, 0));
+        deckPadraoJ2.add(new Feitico("Impacto de Lava", 4, "Explosão de lava que atinge várias criaturas.", 7, 0, 0));
+        deckPadraoJ2.add(new Feitico("Raio Celestial", 5, "Golpe poderoso que afeta uma criatura.", 13, 0, 0));
+        deckPadraoJ2.add(new Feitico("Cura Sagrada", 3, "Recupera vida de uma criatura.", 0, 7, 0));
+        deckPadraoJ2.add(new Feitico("Relâmpago Veloz", 3, "Golpe direto em uma criatura ou jogador.", 10, 0, 0));
+        deckPadraoJ2.add(new Feitico("Dilúvio Arcano", 5, "Ataque mágico que afeta várias criaturas.", 12, 0, 0));
 
-        deckPadraoJ2.add(new Encantamento("Campo de Força", 4, "Aumenta a resistência de uma criatura.", 3, 0, 0, 0));
-        deckPadraoJ2.add(new Encantamento("Maldição da Fraqueza", 3, "Enfraquece o ataque de uma criatura inimiga.", 2, 0, 0, 0));
-        deckPadraoJ2.add(new Encantamento("Ignite", 3, "Causa dano contínuo ao alvo.", 2, 8, 0, 0));
-        deckPadraoJ2.add(new Encantamento("Escudo de Chamas", 3, "Protege contra dano físico.", 3, 0, 0, 0));
-        deckPadraoJ2.add(new Encantamento("Aura de Vida", 2, "Recupera vida de uma criatura em cada rodada.", 2, 0, 8, 0));
-        deckPadraoJ2.add(new Encantamento("Proteção Divina", 3, "Reduz o dano recebido por uma criatura.", 2, 0, 0, 0));
-        deckPadraoJ2.add(new Encantamento("Armadura de Luz", 5, "Fortalece a defesa de uma criatura.", 3, 0, 0, 0));
-        deckPadraoJ2.add(new Encantamento("Essência Sombria", 4, "Causa dano ao atacante em represália.", 3, 5, 0, 0));
+        deckPadraoJ2.add(new Encantamento("Campo de Força", 4, "Aumenta a resistência de uma criatura ao enfraquecer.", 3, 0, 0, -2));
+        deckPadraoJ2.add(new Encantamento("Maldição da Fraqueza", 3, "Enfraquece o ataque de uma criatura inimiga.", 2, 0, 0, -2));
+        deckPadraoJ2.add(new Encantamento("Ignite", 3, "Causa dano contínuo ao alvo.", 2, 7, 0, 0));
+        deckPadraoJ2.add(new Encantamento("Escudo de Chamas", 3, "Protege contra dano físico.", 3, 0, 0, -3));
+        deckPadraoJ2.add(new Encantamento("Aura de Vida", 2, "Recupera vida de uma criatura em cada rodada.", 2, 0, 5, 0));
+        deckPadraoJ2.add(new Encantamento("Proteção Divina", 3, "Reduz o dano recebido por uma criatura.", 2, 0, 0, -2));
+        deckPadraoJ2.add(new Encantamento("Armadura de Luz", 5, "Fortalece a defesa de uma criatura.", 3, 0, 0, -2));
+        deckPadraoJ2.add(new Encantamento("Essência Sombria", 4, "Causa dano ao atacante em represália.", 3, 6, 0, 0));
 
         return deckPadraoJ2;
     }
