@@ -3,6 +3,8 @@ import Controle.Jogador;
 import Espaço.Cemiterio;
 import Espaço.CampodeBatalha;
 
+import javax.swing.*;
+
 public class Criatura extends Carta
 {
     protected int hp;
@@ -66,7 +68,7 @@ public class Criatura extends Carta
     {
         int danoAbsorvido = Math.min(dano, resistencia);
         resistencia -= danoAbsorvido;
-        System.out.println(getNome() + " recebeu " + dano + " de dano. Dano absorvido pela resistência: " + danoAbsorvido + ". Resistência atual: " + resistencia);
+        JOptionPane.showMessageDialog(null, getNome() + " recebeu " + dano + " de dano. Dano absorvido pela resistência: " + danoAbsorvido + ". Resistência atual: " + resistencia);
 
         if (resistencia <= 0)
         {
@@ -75,11 +77,11 @@ public class Criatura extends Carta
 
             if (hp <= 0)
             {
-                System.out.println(getNome() + " foi abatido!");
+                JOptionPane.showMessageDialog(null, getNome() + " foi abatido!");
             }
             else
             {
-                System.out.println(getNome() + " recebeu " + danoRestante + " de dano. HP atual: " + hp);
+                JOptionPane.showMessageDialog(null, getNome() + " recebeu " + danoRestante + " de dano. HP atual: " + hp);
             }
         }
     }
@@ -89,11 +91,12 @@ public class Criatura extends Carta
     {
         if (this.voa)
         {
-            System.out.println(getNome() + " ataca " + criaturaAlvo.getNome() + " pelo ar causando " + poder + " de dano.");
+            JOptionPane.showMessageDialog(null, getNome() + " ataca " + criaturaAlvo.getNome() + " pelo ar causando " + poder + " de dano.", "Ataque Aéreo", JOptionPane.INFORMATION_MESSAGE);
         }
         else
         {
-            System.out.println(getNome() + " ataca diretamente " + criaturaAlvo.getNome() + ", causando " + poder + " de dano.");
+            JOptionPane.showMessageDialog(null, getNome() + " ataca diretamente " + criaturaAlvo.getNome() + ", causando " + poder + " de dano.", "Ataque Direto", JOptionPane.INFORMATION_MESSAGE);
+
         }
         criaturaAlvo.receberDano((int) (poder));
     }
@@ -108,7 +111,7 @@ public class Criatura extends Carta
         {
             System.out.println(getNome() + " ataca diretamente o jogador " + jogadorAlvo.getNome() + ", causando " + poder + " de dano.");
         }
-        jogadorAlvo.receberDano((int) (poder));
+        jogadorAlvo.receberDano(poder);
     }
 
     public void receberCura(int cura)
@@ -121,13 +124,6 @@ public class Criatura extends Carta
     public void efeito()
     {
         System.out.println("Habilidade especial de " + getNome() + ": " + habilidadeEspecial);
-    }
-
-    public void criaturasPadrao()
-    {
-        Criatura goblin = new Criatura(120, "Goblin", 2, 9, 90, "Ataques sucessivos",false);
-        Criatura mago = new Criatura(150, "Mago", 3, 13, 100, "Ataques de bola de fogo",false);
-        Criatura arqueiro = new Criatura (95, "Arqueiro", 2, 20, 80, "Ataques a longa distância com dano e penetração altos.",false);
     }
 
 

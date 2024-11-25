@@ -18,7 +18,6 @@ public class MainInterface {
         Jogador jogador2 = new Jogador("Renan", deckJ2, 50, 10, 3, scanner);
 
         // Inicializa o controlador, que deve abrir a tela inicial
-        // 'Iniciar Partida' vai mostrar as maos dos jogadores (comparar mão com saida no terminal)
         ControladorJogo controladorJogo = new ControladorJogo(jogador1, jogador2);
         controladorJogo.inicializacaoJanela();
     }

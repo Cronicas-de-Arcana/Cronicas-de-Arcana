@@ -63,7 +63,7 @@ public class Jogar
     }
 
     public void executarAtaque() {
-        if (cartaAtacante == null || cartaAlvo == null) {
+        if (cartaAtacante == null && cartaAlvo == null) {
             JOptionPane.showMessageDialog(null, "Certifique-se de que um atacante e um alvo foram selecionados antes de iniciar o ataque!");
             return;
         }

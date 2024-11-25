@@ -44,7 +44,7 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
             modelosCartas.add(modelo);
 
             modelo.getBotao().addActionListener(e -> {
-
+                //Verificador fase de ataque
                 if (controladorJogo.getFaseJogo().equals("ATAQUE")) {
                     if (controladorJogo.getControleDeEscolhas() != 1) {
                         atribuirCarta(carta, jogador);
