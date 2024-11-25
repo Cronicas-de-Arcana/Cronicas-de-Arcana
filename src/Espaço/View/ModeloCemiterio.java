@@ -38,6 +38,7 @@ public class ModeloCemiterio extends ComponenteVisual {
 
         for (Carta carta : cemiterio.getCartas()) {
             ModeloCarta modeloCarta = new ModeloCarta(carta, jogador, controladorJogo, "Carta morta");
+            modeloCarta.setBackground(new Color(34, 34, 34));
             modelosCartasCemiterio.add(modeloCarta);
             this.add(modeloCarta);
         }
