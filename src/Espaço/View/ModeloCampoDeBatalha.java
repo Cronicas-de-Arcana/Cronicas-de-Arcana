@@ -44,10 +44,17 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
             modelosCartas.add(modelo);
 
             modelo.getBotao().addActionListener(e -> {
+
                 if (controladorJogo.getFaseJogo().equals("ATAQUE")) {
-                    atribuirCarta(carta, jogador);
+                    if (controladorJogo.getControleDeEscolhas() != 1) {
+                        atribuirCarta(carta, jogador);
+                    } else {
+                        atribuirCarta(carta, jogador);
+                        JOptionPane.showMessageDialog(null, "Começar ataque!");
+                        //IMPLEMENTAR ATAQUE
+                    }
                 } else {
-                    controladorJogo.getJogadorAtual().jogarCartaCampo(carta, jogador);
+                    JOptionPane.showMessageDialog(null, "Ainda não é a fase de Ataque!");
                 }
             });
 
@@ -75,12 +82,15 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
     public void atribuirCarta(Carta carta, Jogador jogador) {
         if (controladorJogo.getJogadorAtual().equals(jogador)) {
             controladorJogo.getJogar().setCartaAtacante(carta);
-            JOptionPane.showMessageDialog(null, "Carta de ataque definida!");
+            JOptionPane.showMessageDialog(null, "Carta atacante definida!");
         } else {
-            if (carta == null && jogador.getCampoDeBatalha().getCampo().isEmpty()) {
-                controladorJogo.getJogar().setCartaAlvo(carta);
-                JOptionPane.showMessageDialog(null, "Carta alvo definida!");
-            }
+            controladorJogo.getJogar().setCartaAlvo(carta);
+            JOptionPane.showMessageDialog(null, "Carta alvo definida!");
+        }
+
+        // Se ambas as cartas estão definidas, execute o ataque
+        if (controladorJogo.getJogar().getCartaAtacante() != null && controladorJogo.getJogar().getCartaAlvo() != null) {
+            controladorJogo.getJogar().executarAtaque();
         }
     }
 }

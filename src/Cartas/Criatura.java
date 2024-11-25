@@ -7,11 +7,11 @@ public class Criatura extends Carta
 {
     protected int hp;
     protected int resistencia;
-    protected double poder;
+    protected int poder;
     protected double forca;
     protected boolean voa;
 
-    public Criatura(int hp, String nome, int custoMana, double poder, int resistencia, String habilidadeEspecial, boolean voa)
+    public Criatura(int hp, String nome, int custoMana, int poder, int resistencia, String habilidadeEspecial, boolean voa)
     {
         super(nome, custoMana);
         this.hp = hp;
@@ -37,7 +37,7 @@ public class Criatura extends Carta
         return habilidadeEspecial;
     }
 
-    public double getPoder()
+    public int getPoder()
     {
         return poder;
     }

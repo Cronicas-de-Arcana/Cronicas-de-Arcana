@@ -62,6 +62,59 @@ public class Jogar
         this.cartaAlvo = cartaAlvo;
     }
 
+    public void executarAtaque() {
+        if (cartaAtacante == null || cartaAlvo == null) {
+            JOptionPane.showMessageDialog(null, "Certifique-se de que um atacante e um alvo foram selecionados antes de iniciar o ataque!");
+            return;
+        }
+
+        Jogador jogadorAtual = controladorJogo.getJogadorAtual();
+        Jogador jogadorOponente = (jogadorAtual == controladorJogo.getJogador1())
+                ? controladorJogo.getJogador2()
+                : controladorJogo.getJogador1();
+
+        CampodeBatalha campoOponente = jogadorOponente.getCampoDeBatalha();
+        CampodeBatalha campoAtual = jogadorAtual.getCampoDeBatalha();
+
+        // Verifica se a carta atacante é uma criatura
+        if (cartaAtacante instanceof Criatura atacante) {
+            if (cartaAlvo instanceof Criatura alvo) {
+                // Combate entre criaturas
+                atacante.atacarCriatura(alvo);
+                controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+
+                if (alvo.getHP() <= 0) {
+                    campoOponente.removerCarta(cartaAlvo); // Remove a carta do campo do oponente
+                    JOptionPane.showMessageDialog(null, alvo.getNome() + " foi destruído!");
+                }
+
+                if (atacante.getHP() <= 0) {
+                    campoAtual.removerCarta(cartaAtacante); // Remove a carta do campo do jogador atual
+                    JOptionPane.showMessageDialog(null, atacante.getNome() + " foi destruído!");
+                }
+            } else if (cartaAlvo == null) {
+                // Ataque direto ao jogador
+                jogadorOponente.receberDano(atacante.getPoder());
+                JOptionPane.showMessageDialog(null, jogadorOponente.getNome() + " recebeu " + atacante.getPoder() + " de dano direto!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "A carta atacante precisa ser uma criatura!");
+        }
+
+        controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+        // Após o ataque, reseta as cartas e avança para o próximo turno
+        cartaAtacante = null;
+        cartaAlvo = null;
+
+        // Verifica se o jogo acabou
+        if (jogadorOponente.getHp() <= 0) {
+            JOptionPane.showMessageDialog(null, jogadorAtual.getNome() + " venceu o jogo!");
+            return; // Encerra o jogo
+        }
+
+        controladorJogo.mudarJogadorAtual(); // Passa para o próximo jogador
+    }
+
     public void iniciar()
     {
         jogador1.getDeck().embaralhar();
