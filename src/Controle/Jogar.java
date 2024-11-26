@@ -62,7 +62,7 @@ public class Jogar
         this.cartaAlvo = cartaAlvo;
     }
 
-    public void validarCampoOponente(){
+    public void validarCampoOponente() {
         Jogador jogadorAtual = controladorJogo.getJogadorAtual();
         Jogador jogadorOponente = (jogadorAtual == controladorJogo.getJogador1())
                 ? controladorJogo.getJogador2()
@@ -70,8 +70,10 @@ public class Jogar
 
         CampodeBatalha campoOponente = jogadorOponente.getCampoDeBatalha();
 
-        if (campoOponente.getCampo().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campo de " + jogadorOponente.getNome() + " está vazio!\n Jogador rececebe ataque direto!");
+        if (campoOponente.getCampo().isEmpty() ||
+                campoOponente.getCampo().stream().allMatch(carta -> carta instanceof Feitico || carta instanceof Encantamento)) {
+            JOptionPane.showMessageDialog(null, "Campo de " + jogadorOponente.getNome() + " está vazio! Ataque direto permitido!");
+
             if (cartaAtacante instanceof Criatura atacante) {
                 jogadorOponente.receberDano(atacante.getPoder());
                 JOptionPane.showMessageDialog(null, jogadorOponente.getNome() + " recebeu " + atacante.getPoder() + " de dano direto!");
@@ -80,10 +82,16 @@ public class Jogar
                 jogadorAtual.getCemiterio().adicionarCarta(feitico);
                 JOptionPane.showMessageDialog(null, jogadorOponente.getNome() + " recebeu " + feitico.getDano() + " de dano direto!");
             }
-            cartaAtacante = null;
+
+            // Incrementa o controle apenas uma vez
+            controladorJogo.incrementoControleDeEscolhas();
+            controladorJogo.incrementoControleDeEscolhas();
+
+            cartaAtacante = null; // Reseta o atacante após ataque direto
+            controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
         }
-        controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
     }
+
 
     public void executarAtaque()
     {

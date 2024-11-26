@@ -77,26 +77,28 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
         if (controladorJogo.getJogadorAtual().equals(jogador)) {
             controladorJogo.getJogar().setCartaAtacante(carta);
             JOptionPane.showMessageDialog(null, "Carta atacante definida!");
+            controladorJogo.getJogar().validarCampoOponente(); // Validar oponente aqui
         } else {
             controladorJogo.getJogar().setCartaAlvo(carta);
             JOptionPane.showMessageDialog(null, "Carta alvo definida!");
         }
 
-        // Incrementa o contador de ações ao clicar em uma carta
+        // Incrementa o contador de ações
         controladorJogo.incrementoControleDeEscolhas();
 
-        // Se ambas as cartas estão definidas, execute o ataque
+        // Verifica se o ataque pode ser executado
         if (controladorJogo.getJogar().getCartaAtacante() != null && controladorJogo.getJogar().getCartaAlvo() != null) {
             controladorJogo.getJogar().executarAtaque();
 
-            // Verifica se todas as ações da fase de ataque foram realizadas
-            if (controladorJogo.getControleDeEscolhas() == 4) {
-                JOptionPane.showMessageDialog(null, "Fim da fase de ataque. Voltando para a fase de escolhas!");
-                controladorJogo.setControleDeEscolhas(0); // Reinicia o contador de ações
-                controladorJogo.setFaseJogo("ESCOLHA"); // Define a fase de escolhas
+            // Verifica se todas as ações foram concluídas
+            if (controladorJogo.getControleDeEscolhas() >= 4) {
+                controladorJogo.setControleDeEscolhas(0); // Reinicia o contador
+                controladorJogo.setFaseJogo("ESCOLHA"); // Define a fase de escolha
                 controladorJogo.getJanela().getTelaBatalha().atualizarElementos(); // Atualiza a interface
+                controladorJogo.getJogar().faseEscolha();
             }
         }
     }
+
 }
 
