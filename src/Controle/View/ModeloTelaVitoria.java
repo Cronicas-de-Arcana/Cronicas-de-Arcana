@@ -20,7 +20,9 @@ public class ModeloTelaVitoria extends Tela {
     public ModeloTelaVitoria(Jogador jogadorGanhador, ControladorJogo controladorJogo) {
         this.jogadorGanhador = jogadorGanhador;
         this.controladorJogo = controladorJogo;
-        this.modelosCartasGanhas = new ArrayList<>(); // Inicializa a lista de modelos
+        this.cartasGanhas = new ArrayList<Carta>(); // Inicializa a lista de modelos
+        this.modelosCartasGanhas = new ArrayList<ModeloCarta>();
+        cartasGanhas = controladorJogo.getInventario().sorteioRecompensa();
 
         definirEstilo();
         renderizar();
