@@ -70,8 +70,9 @@ public class Jogar
 
         CampodeBatalha campoOponente = jogadorOponente.getCampoDeBatalha();
 
-        if (campoOponente.getCampo().isEmpty() || campoOponente.getCampo().stream().allMatch(carta -> carta instanceof Feitico || carta instanceof Encantamento)) {
-            JOptionPane.showMessageDialog(null, "Campo de " + jogadorOponente.getNome() + " está vazio ou não possui Criaturas! Ataque direto permitido!");
+        // Verifica se o campo do oponente está vazio
+        if (campoOponente.getCampo().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo de " + jogadorOponente.getNome() + " está vazio! Ataque direto permitido!");
 
             if (cartaAtacante instanceof Criatura atacante) {
                 jogadorOponente.receberDano(atacante.getPoder());
@@ -82,13 +83,31 @@ public class Jogar
                 JOptionPane.showMessageDialog(null, jogadorOponente.getNome() + " recebeu " + feitico.getDano() + " de dano direto!");
             }
 
-            jogadorAtual.setJogou(true);
-            jogadorOponente.setJogou(true);
+            cartaAtacante = null; // Reseta a carta atacante após o ataque
+            controladorJogo.mudarJogadorAtual(); // Passa para o próximo jogador
+            controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+            return; // Sai do metodo após validar o campo vazio
+        }
 
-            cartaAtacante = null; // Reseta o atacante após ataque direto
+        // Verifica se o campo do oponente não possui criaturas
+        if (campoOponente.getCampo().stream().allMatch(carta -> carta instanceof Feitico || carta instanceof Encantamento)) {
+            JOptionPane.showMessageDialog(null, "Campo de " + jogadorOponente.getNome() + " não possui criaturas! Ataque direto permitido!");
+
+            if (cartaAtacante instanceof Criatura atacante) {
+                jogadorOponente.receberDano(atacante.getPoder());
+                JOptionPane.showMessageDialog(null, jogadorOponente.getNome() + " recebeu " + atacante.getPoder() + " de dano direto!");
+            } else if (cartaAtacante instanceof Feitico feitico) {
+                jogadorOponente.receberDano(feitico.getDano());
+                jogadorAtual.getCemiterio().adicionarCarta(feitico);
+                JOptionPane.showMessageDialog(null, jogadorOponente.getNome() + " recebeu " + feitico.getDano() + " de dano direto!");
+            }
+
+            cartaAtacante = null; // Reseta a carta atacante após o ataque
+            controladorJogo.mudarJogadorAtual(); // Passa para o próximo jogador
             controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
         }
     }
+
 
     public void executarAtaque() {
         if (cartaAtacante == null && cartaAlvo == null) {
