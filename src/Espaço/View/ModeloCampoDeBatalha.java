@@ -46,24 +46,45 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
             modelo.getBotao().addActionListener(e -> {
                 //Verificador fase de ataque
                 if (controladorJogo.getFaseJogo().equals("ATAQUE")) {
-                    atribuirCarta(carta, jogador);
+                    //Validação player dono da carta ser o player ativo
+                    if (controladorJogo.getJogadorAtual().equals(jogador)) {
+                        atribuirCarta(carta, jogador);
+                    } else {
+                        atribuirCarta(carta, jogador);
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Ainda não é a fase de Ataque!");
                 }
+                if(controladorJogo.verificarJogadoresJogaram()){
+                    JOptionPane.showMessageDialog(null, "Fim da fase de ataque!");
+                    controladorJogo.setFaseJogo("ESCOLHA");
+                    controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+                    controladorJogo.getJogar().faseEscolha();
+                }
             });
-
             this.add(modelo);  // Adiciona o modelo visual da carta ao layout
         }
 
-        JButton botaoVazio = new JButton("Vazio");
+        JButton botaoVazio = new JButton("Passar Ataque");
         botaoVazio.addActionListener(e -> {
 
-            //Se não for a fase de ataque, o botao "vazio" ira indicar que ainda nao esta na fase de ataque
+            //Se não for a fase de ataque, o botao "Passar ataque" ira indicar que ainda nao esta na fase de ataque
             if (!controladorJogo.getFaseJogo().equals("ATAQUE")) {
                 JOptionPane.showMessageDialog(null, "Ainda não é a fase de Ataque!");
             }
             else{
-                atribuirCarta(null, jogador);
+                if (controladorJogo.getJogadorAtual().equals(jogador)) {
+                    controladorJogo.registrarJogada(controladorJogo.getJogadorAtual());
+                    if (controladorJogo.verificarJogadoresJogaram()) {
+                        JOptionPane.showMessageDialog(null, "Fim da fase de ataque!");
+                        controladorJogo.setFaseJogo("ESCOLHA");
+                        controladorJogo.getJogar().faseEscolha();
+                        controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+                    } else {
+                        controladorJogo.mudarJogadorAtual();
+                    }
+                }
+
             }
         });
 
@@ -86,6 +107,7 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
         // Verifica se o ataque pode ser executado
         if (controladorJogo.getJogar().getCartaAtacante() != null && controladorJogo.getJogar().getCartaAlvo() != null) {
             controladorJogo.getJogar().executarAtaque();
+            controladorJogo.registrarJogada(controladorJogo.getJogadorAtual());
 
             // Verifica se todas as ações foram concluídas
             if (controladorJogo.verificarJogadoresJogaram()) {
