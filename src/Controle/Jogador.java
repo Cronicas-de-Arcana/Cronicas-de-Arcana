@@ -387,19 +387,6 @@ public class Jogador
                 this.setNivel(i + 1);
                 break;
             }
-            adicionarCartasProgresso();
         }
-    }
-
-    public ArrayList adicionarCartasProgresso()
-    {
-        int nivelAtual = this.getNivel();
-        Carta[] cartasParaAdicionar = controladorJogo.getInventario().getCartasProgresso()[nivelAtual-1];
-
-        for (Carta carta: cartasParaAdicionar)
-        {
-            this.inventario.getCartasInventario().add(carta);
-        }
-        return this.inventario.getCartasInventario();
     }
 }

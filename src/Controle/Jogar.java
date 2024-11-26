@@ -182,12 +182,12 @@ public class Jogar
         // Após o ataque, reseta as cartas e verifica o estado do jogo
         cartaAtacante = null;
         cartaAlvo = null;
-
-        // Verifica se o jogo acabou
+        verificarVitoria(jogador1, jogador2);
+        /* Verifica se o jogo acabou
         if (jogadorOponente.getHp() <= 0) {
             JOptionPane.showMessageDialog(null, jogadorAtual.getNome() + " venceu o jogo!");
             return; // Encerra o jogo
-        }
+        }*/
         controladorJogo.mudarJogadorAtual(); // Passa para o próximo jogador
     }
 
