@@ -83,16 +83,12 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
             JOptionPane.showMessageDialog(null, "Carta alvo definida!");
         }
 
-        // Incrementa o contador de ações
-        controladorJogo.incrementoControleDeEscolhas();
-
         // Verifica se o ataque pode ser executado
         if (controladorJogo.getJogar().getCartaAtacante() != null && controladorJogo.getJogar().getCartaAlvo() != null) {
             controladorJogo.getJogar().executarAtaque();
 
             // Verifica se todas as ações foram concluídas
-            if (controladorJogo.getControleDeEscolhas() >= 4) {
-                controladorJogo.setControleDeEscolhas(0); // Reinicia o contador
+            if (controladorJogo.getJogar().verificarJogadoresJogaram()) {
                 controladorJogo.setFaseJogo("ESCOLHA"); // Define a fase de escolha
                 controladorJogo.getJanela().getTelaBatalha().atualizarElementos(); // Atualiza a interface
                 controladorJogo.getJogar().faseEscolha();

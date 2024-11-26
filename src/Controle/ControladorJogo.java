@@ -18,7 +18,6 @@ public class ControladorJogo {
     private Jogador jogadorAtual;
     private Janela janela;
     private final Inventario inventario;
-    private int controleDeEscolhas;
     private String faseJogo;
 
     public ControladorJogo(Jogador jogador1, Jogador jogador2) {
@@ -37,16 +36,6 @@ public class ControladorJogo {
     public String getFaseJogo() { return faseJogo; }
 
     public void setFaseJogo(String faseJogo) { this.faseJogo = faseJogo; }
-
-    public int getControleDeEscolhas() { return controleDeEscolhas; }
-
-    public void setControleDeEscolhas(int controleDeEscolhas) {
-        this.controleDeEscolhas = controleDeEscolhas;
-    }
-
-    public void incrementoControleDeEscolhas(){
-        this.controleDeEscolhas++;
-    }
 
     public Jogador getJogador1() {
         return jogador1;

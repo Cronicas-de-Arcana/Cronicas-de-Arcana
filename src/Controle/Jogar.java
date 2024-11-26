@@ -82,9 +82,8 @@ public class Jogar
                 JOptionPane.showMessageDialog(null, jogadorOponente.getNome() + " recebeu " + feitico.getDano() + " de dano direto!");
             }
 
-            // Incrementa o controle apenas uma vez
-            controladorJogo.incrementoControleDeEscolhas();
-            controladorJogo.incrementoControleDeEscolhas();
+            jogadorAtual.setJogou(true);
+            jogadorOponente.setJogou(true);
 
             cartaAtacante = null; // Reseta o atacante após ataque direto
             controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
@@ -122,13 +121,11 @@ public class Jogar
                 if (alvo.getHP() <= 0) {
                     jogadorOponente.getCampoDeBatalha().removerCarta(cartaAlvo); // Remove a carta do campo do oponente
                     jogadorOponente.getCemiterio().adicionarCarta(cartaAlvo); // Adiciona carta ao cemitério do oponente
-                    JOptionPane.showMessageDialog(null, alvo.getNome() + " foi destruído!");
                 }
 
                 if (atacante.getHP() <= 0) {
                     campoAtual.removerCarta(cartaAtacante); // Remove a carta do campo do jogador atual
                     jogadorAtual.getCemiterio().adicionarCarta(cartaAtacante);
-                    JOptionPane.showMessageDialog(null, atacante.getNome() + " foi destruído!");
                 }
             } else if (cartaAlvo == null) {
                 // Ataque direto ao jogador
@@ -145,7 +142,6 @@ public class Jogar
                 if (alvo.getHP() <= 0) {
                     jogadorOponente.getCampoDeBatalha().removerCarta(cartaAlvo);
                     jogadorOponente.getCemiterio().adicionarCarta(cartaAlvo);
-                    JOptionPane.showMessageDialog(null, alvo.getNome() + " foi destruído!");
                 }
                 jogadorAtual.getCampoDeBatalha().removerCarta(cartaAtacante);
                 jogadorAtual.getCemiterio().adicionarCarta(feitico);
@@ -159,6 +155,7 @@ public class Jogar
 
         // Atualiza elementos da interface após o ataque
         controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+        controladorJogo.getJogadorAtual().setJogou(true); //Jogador responsavel pelo ataque atacou
 
         // Após o ataque, reseta as cartas e verifica o estado do jogo
         cartaAtacante = null;
@@ -169,7 +166,6 @@ public class Jogar
             JOptionPane.showMessageDialog(null, jogadorAtual.getNome() + " venceu o jogo!");
             return; // Encerra o jogo
         }
-
         controladorJogo.mudarJogadorAtual(); // Passa para o próximo jogador
     }
 
@@ -216,7 +212,6 @@ public class Jogar
         jogador1.adicionarMana();
         jogador2.adicionarMana();
 
-        controladorJogo.setControleDeEscolhas(0);
         Jogador jogadorAtual = new Random().nextBoolean() ? jogador1 : jogador2;
         controladorJogo.setJogadorAtual(jogadorAtual);
         JOptionPane.showMessageDialog(null, "Inicio da fase de Escolha de Cartas!");
@@ -377,10 +372,13 @@ public class Jogar
     }
 
     public boolean verificarJogadoresJogaram(){
-        if (jogador1.getJogou() && jogador2.getJogou()){
+        //Validação para saber se ambos jogaram
+        if (jogador1.getJogou() && jogador2.getJogou()) {
             jogador1.setJogou(false);
             jogador2.setJogou(false);
             return true;
+        } else {
+            return false;
         }
     }
 }

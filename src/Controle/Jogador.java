@@ -155,19 +155,18 @@ public class Jogador
     public void jogarCartaCampo(Carta carta, Jogador jogador) {
         if (carta == null) { // Jogador escolheu passar a rodada
             JOptionPane.showMessageDialog(null, jogador.getNome() + " passou a vez.", "Turno Finalizado", JOptionPane.INFORMATION_MESSAGE);
-            controladorJogo.incrementoControleDeEscolhas();
             controladorJogo.mudarJogadorAtual();
 
             // Finaliza a fase de escolhas se ambos os jogadores tiverem agido
-            if (controladorJogo.getControleDeEscolhas() == 2) {
+            if (controladorJogo.getJogar().verificarJogadoresJogaram()) {
                 JOptionPane.showMessageDialog(null, "Fim da fase de escolhas!");
-                controladorJogo.setControleDeEscolhas(0);
             }
             return;
         }
         boolean jogadaValida = false; // Inicializamos como falsa para entrar no loop
 
-        while (!jogadaValida) { // Continua no loop até que a jogada seja válida
+        // Continua no loop até que a jogada seja válida
+        while (!jogadaValida) {
             if (jogador != controladorJogo.getJogadorAtual()) {
                 JOptionPane.showMessageDialog(null, "Não é seu turno!", "Ação Inválida", JOptionPane.WARNING_MESSAGE);
                 return; // Sai do metodo porque o jogador errado está tentando jogar
@@ -192,7 +191,6 @@ public class Jogador
             jogadaValida = true; // Marca como válida para sair do loop
         }
         controladorJogo.mudarJogadorAtual();
-        controladorJogo.incrementoControleDeEscolhas();
     }
 
     public void escolherCartaMao() {

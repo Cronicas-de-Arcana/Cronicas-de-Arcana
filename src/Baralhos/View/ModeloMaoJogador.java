@@ -47,13 +47,14 @@ public class ModeloMaoJogador extends ComponenteVisual {
             ModeloCarta modelo = new ModeloCarta(carta, jogador, controladorJogo, "Jogar Carta");
             modelosCartas.add(modelo);
             modelo.getBotao().addActionListener(e -> {
-                controladorJogo.getJogadorAtual().jogarCartaCampo(carta, jogador);
 
-                if(controladorJogo.getControleDeEscolhas()==2){
+                controladorJogo.getJogadorAtual().jogarCartaCampo(carta, jogador);
+                controladorJogo.getJogadorAtual().setJogou(true);
+
+                if(controladorJogo.getJogar().verificarJogadoresJogaram()){
                     JOptionPane.showMessageDialog(null, "Fim da fase de escolha");
                     controladorJogo.setFaseJogo("ATAQUE");
                     controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
-                    controladorJogo.setControleDeEscolhas(0);
                 }
             });
             this.add(modelo);  // Adiciona o modelo visual da carta ao layout
@@ -64,17 +65,16 @@ public class ModeloMaoJogador extends ComponenteVisual {
         botaoPassarRodada.addActionListener(e -> {
 
             if (controladorJogo.getJogadorAtual().equals(jogador)){
+                controladorJogo.getJogadorAtual().setJogou(true);
                 controladorJogo.mudarJogadorAtual();
-                controladorJogo.incrementoControleDeEscolhas();
             } else{
                 JOptionPane.showMessageDialog(null, "Não é sua vez!");
             }
 
-            if(controladorJogo.getControleDeEscolhas()==2){
+            if(controladorJogo.getJogar().verificarJogadoresJogaram()){
                 JOptionPane.showMessageDialog(null, "Fim da fase de escolha");
                 controladorJogo.setFaseJogo("ATAQUE");
                 controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
-                controladorJogo.setControleDeEscolhas(0);
             }
 
         });
