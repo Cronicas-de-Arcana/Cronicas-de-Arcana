@@ -110,4 +110,27 @@ public class Encantamento extends Carta
             this.lancarEncantamentoJogador(jogadorAlvo);
         }
     }
+
+    public void aplicarEfeitoAoCampo(Jogador adversario) {
+        // Itera pelas criaturas no campo do adversário
+        for (Carta carta : adversario.getCampoDeBatalha().getCampo()) {
+            if (carta instanceof Criatura criatura) {
+                // Aplica os efeitos de dano, cura ou modificador de dano
+                if (dano > 0) {
+                    criatura.receberDano(dano);
+                    System.out.println(getNome() + " causou " + dano + " de dano a " + criatura.getNome());
+                }
+                if (cura > 0) {
+                    criatura.receberCura(cura);
+                    System.out.println(getNome() + " curou " + cura + " pontos de vida de " + criatura.getNome());
+                }
+                if (modificadorDano != 0) {
+                    criatura.setPoder(criatura.getPoder() + modificadorDano);
+                    String tipo = (modificadorDano > 0) ? "aumentou" : "reduziu";
+                    System.out.println(getNome() + " " + tipo + " o poder de " + criatura.getNome() + " em " + modificadorDano);
+                }
+            }
+        }
+    }
+
 }

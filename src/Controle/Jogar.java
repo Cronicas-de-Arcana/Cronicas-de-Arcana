@@ -7,6 +7,7 @@ import Cartas.Feitico;
 import Espaço.CampodeBatalha;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -83,6 +84,7 @@ public class Jogar
                 JOptionPane.showMessageDialog(null, jogadorOponente.getNome() + " recebeu " + feitico.getDano() + " de dano direto!");
             }
 
+            controladorJogo.registrarJogada(controladorJogo.getJogadorAtual());
             cartaAtacante = null; // Reseta a carta atacante após o ataque
             controladorJogo.mudarJogadorAtual(); // Passa para o próximo jogador
             controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
@@ -102,12 +104,12 @@ public class Jogar
                 JOptionPane.showMessageDialog(null, jogadorOponente.getNome() + " recebeu " + feitico.getDano() + " de dano direto!");
             }
 
+            controladorJogo.registrarJogada(controladorJogo.getJogadorAtual());
             cartaAtacante = null; // Reseta a carta atacante após o ataque
             controladorJogo.mudarJogadorAtual(); // Passa para o próximo jogador
             controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
         }
     }
-
 
     public void executarAtaque() {
         if (cartaAtacante == null && cartaAlvo == null) {
@@ -187,7 +189,7 @@ public class Jogar
         controladorJogo.mudarJogadorAtual(); // Passa para o próximo jogador
     }
 
-    public void iniciar()
+    /*public void iniciar()
     {
         jogador1.getDeck().embaralhar();
         System.out.println("\nCartas do Deck de " + jogador1.getNome() + " embaralhadas!");
@@ -215,7 +217,7 @@ public class Jogar
                 break;
             }
         }
-    }
+    }*/
 
     public void faseEscolha()
     {
@@ -237,7 +239,7 @@ public class Jogar
         controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
     }
 
-    private void executarTurno(Jogador jogador1, Jogador jogador2)
+    /*private void executarTurno(Jogador jogador1, Jogador jogador2)
     {
         System.out.println("\nFase de Compra");
         System.out.println("\nCarta que " + jogador1.getNome() + " comprou:");
@@ -262,7 +264,7 @@ public class Jogar
         jogador2.processarEncantamentos();
 
         System.out.println("Terminou o turno.");
-    }
+    }*/
 
     private void combate(Jogador jogador, Jogador jogadorAlvo)
     {
@@ -387,6 +389,50 @@ public class Jogar
 
         vencedor.atualizarNivel();
         perdedor.atualizarNivel();
+    }
+
+    public void processarEncantamentos() {
+        // Processa encantamentos do Jogador 1
+        processarEncantamentosJogador(jogador1);
+
+        // Processa encantamentos do Jogador 2
+        processarEncantamentosJogador(jogador2);
+    }
+
+    private void processarEncantamentosJogador(Jogador jogador) {
+        CampodeBatalha campo = jogador.getCampoDeBatalha();
+
+        // Valida se há cartas no campo de batalha do jogador
+        if (campo.getCampo().isEmpty()) {
+            JOptionPane.showMessageDialog(null, jogador.getNome() + " não possui cartas no campo de batalha.");
+            return; // Sai do metodo se o campo estiver vazio
+        }
+
+        Jogador adversario = (jogador == jogador1) ? jogador2 : jogador1;
+        ArrayList<Carta> encantamentosParaRemover = new ArrayList<>();
+
+        for (Carta carta : campo.getCampo()) {
+            if (carta instanceof Encantamento encantamento) {
+                // Aplica efeitos às criaturas no campo do adversário
+                encantamento.aplicarEfeitoAoCampo(adversario);
+
+                // Atualiza a interface com mensagens visuais
+                JOptionPane.showMessageDialog(null, encantamento.getNome() + " aplicou seus efeitos!");
+
+                // Reduz rodadas restantes e verifica se deve ser removido
+                encantamento.reduzirRodadas();
+                if (encantamento.getQuantidadeRodadas() <= 0) {
+                    encantamentosParaRemover.add(carta);
+                }
+            }
+        }
+
+        // Remove encantamentos expirados e atualiza a interface
+        for (Carta carta : encantamentosParaRemover) {
+            campo.removerCarta(carta);
+            jogador.getCemiterio().adicionarCarta(carta);
+            JOptionPane.showMessageDialog(null, "Encantamento " + carta.getNome() + " expirou e foi movido para o cemitério.");
+        }
     }
 
 }

@@ -128,4 +128,11 @@ public class ControladorJogo {
         return false; // Ainda aguardando
     }
 
+    public void processarEncantamentos() {
+        JOptionPane.showMessageDialog(null, "Processando efeitos de encantamentos no campo...");
+        jogar.processarEncantamentos(); // Chama o método central
+        janela.getTelaBatalha().atualizarElementos(); // Atualiza a interface
+    }
+
+
 }

@@ -57,9 +57,9 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
                 }
                 if(controladorJogo.verificarJogadoresJogaram()){
                     JOptionPane.showMessageDialog(null, "Fim da fase de ataque!");
-                    controladorJogo.setFaseJogo("ESCOLHA");
+                    controladorJogo.setFaseJogo("ENCANTAMENTOS");
+                    controladorJogo.getJogar().processarEncantamentos();
                     controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
-                    controladorJogo.getJogar().faseEscolha();
                 }
             });
             this.add(modelo);  // Adiciona o modelo visual da carta ao layout
@@ -75,12 +75,13 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
             else{
                 JOptionPane.showMessageDialog(null, controladorJogo.getJogadorAtual().getNome() + " passou a vez!");
                 controladorJogo.registrarJogada(controladorJogo.getJogadorAtual());
-                controladorJogo.mudarJogadorAtual();
                 if (controladorJogo.verificarJogadoresJogaram()) {
                     JOptionPane.showMessageDialog(null, "Fim da fase de ataque!");
-                    controladorJogo.setFaseJogo("ESCOLHA");
-                    controladorJogo.getJogar().faseEscolha();
+                    controladorJogo.setFaseJogo("ENCANTAMENTOS");
+                    controladorJogo.getJogar().processarEncantamentos();
                     controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+                } else{
+                    controladorJogo.mudarJogadorAtual();
                 }
             }
         });
