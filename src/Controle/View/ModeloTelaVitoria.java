@@ -4,7 +4,6 @@ import Cartas.Carta;
 import Cartas.View.ModeloCarta;
 import Controle.ControladorJogo;
 import Controle.Jogador;
-import Visualização.ComponenteVisual;
 import Visualização.Tela;
 
 import javax.swing.*;
