@@ -62,7 +62,21 @@ public class ModeloMaoJogador extends ComponenteVisual {
         JButton botaoPassarRodada = new JButton("Passar");
         botaoPassarRodada.setPreferredSize(new Dimension(180, 200));
         botaoPassarRodada.addActionListener(e -> {
-            jogador.jogarCartaCampo(null, jogador);
+
+            if (controladorJogo.getJogadorAtual().equals(jogador)){
+                controladorJogo.mudarJogadorAtual();
+                controladorJogo.incrementoControleDeEscolhas();
+            } else{
+                JOptionPane.showMessageDialog(null, "Não é sua vez!");
+            }
+
+            if(controladorJogo.getControleDeEscolhas()==2){
+                JOptionPane.showMessageDialog(null, "Fim da fase de escolha");
+                controladorJogo.setFaseJogo("ATAQUE");
+                controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+                controladorJogo.setControleDeEscolhas(0);
+            }
+
         });
         this.add(botaoPassarRodada);
 
