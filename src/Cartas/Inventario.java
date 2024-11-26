@@ -4,10 +4,14 @@ import java.util.ArrayList;
 
 public class Inventario
 {
-    protected ArrayList<Carta> cartasInventario = new ArrayList<>();
+    protected ArrayList<Carta> cartasInventario;
     //Array em que vai ficar as cartas que o player vai conquistando ao progredir os niveis
-    protected Carta[][] cartasProgresso = new Carta[10][10];
+    protected Carta[][] cartasProgresso;
 
+    public Inventario(){
+        cartasInventario = new ArrayList<>();
+        cartasProgresso = new Carta[10][10];
+    }
 
     public ArrayList<Carta> getCartasInventario() {
         return cartasInventario;
@@ -17,46 +21,57 @@ public class Inventario
         return cartasProgresso;
     }
 
-    public void inicializarCartasProgresso()
-    {
+    public ArrayList<ArrayList<Carta>> inicializarCartasProgresso() {
+        ArrayList<ArrayList<Carta>> cartasProgressoList = new ArrayList<>();
+
         // Nível 1 - Progresso inicial, criaturas levemente mais fortes que as básicas.
-        cartasProgresso[0][0] = new Criatura(21, "Gigante", 3, 3, 5, "Socos lentos mas fortes.", false);
-        cartasProgresso[0][1] = new Feitico("Explosão Arcana", 2, "Dano leve em uma criatura inimiga.", 15, 0, 0);
-        cartasProgresso[0][2] = new Criatura(15, "Lobisomem", 4, 3, 3, "Arranhões sucessivos.", false);
-        cartasProgresso[0][3] = new Encantamento("Escudo Elemental", 3, "Reduz dano recebido em 10 pontos por 3 turnos.", 3, 0, 0, -10);
-        cartasProgresso[0][4] = new Criatura(16, "Serpente do Pântano", 3, 3, 4, "Aterrorizante em águas rasas.", true);
-        cartasProgresso[0][5] = new Feitico("Chamas Rastejantes", 3, "Inflige dano contínuo por 3 rodadas.", 12, 0, 0);
-        cartasProgresso[0][6] = new Criatura(20, "Guerreiro Ancestral", 4, 4, 4, "Lutador com técnicas milenares.", false);
-        cartasProgresso[0][7] = new Encantamento("Aura de Regeneração", 3, "Recupera 5 de vida a cada turno por 3 turnos.", 3, 0, 5, 0);
-        cartasProgresso[0][8] = new Criatura(18, "Roc Implacável", 4, 4, 3, "Pássaro gigante de ataque feroz.", true);
-        cartasProgresso[0][9] = new Feitico("Lança de Gelo", 3, "Causa 20 de dano e reduz velocidade de ataque.", 20, 0, 0);
+        ArrayList<Carta> nivel1 = new ArrayList<>();
+        nivel1.add(new Criatura(21, "Gigante", 3, 3, 5, "Socos lentos mas fortes.", false));
+        nivel1.add(new Feitico("Explosão Arcana", 2, "Dano leve em uma criatura inimiga.", 15, 0, 0));
+        nivel1.add(new Criatura(15, "Lobisomem", 4, 3, 3, "Arranhões sucessivos.", false));
+        nivel1.add(new Encantamento("Escudo Elemental", 3, "Reduz dano recebido em 10 pontos por 3 turnos.", 3, 0, 0, -10));
+        nivel1.add(new Criatura(16, "Serpente do Pântano", 3, 3, 4, "Aterrorizante em águas rasas.", true));
+        nivel1.add(new Feitico("Chamas Rastejantes", 3, "Inflige dano contínuo por 3 rodadas.", 12, 0, 0));
+        nivel1.add(new Criatura(20, "Guerreiro Ancestral", 4, 4, 4, "Lutador com técnicas milenares.", false));
+        nivel1.add(new Encantamento("Aura de Regeneração", 3, "Recupera 5 de vida a cada turno por 3 turnos.", 3, 0, 5, 0));
+        nivel1.add(new Criatura(18, "Roc Implacável", 4, 4, 3, "Pássaro gigante de ataque feroz.", true));
+        nivel1.add(new Feitico("Lança de Gelo", 3, "Causa 20 de dano e reduz velocidade de ataque.", 20, 0, 0));
+
+        cartasProgressoList.add(nivel1);
 
         // Nível 2 - Criaturas mais estratégicas, com maior resistência e dano.
-        cartasProgresso[1][0] = new Criatura(25, "Elemental da Rocha", 5, 5, 6, "Resistente como as montanhas.", false);
-        cartasProgresso[1][1] = new Feitico("Impacto Glacial", 4, "Congela e causa dano a uma criatura.", 25, 0, 0);
-        cartasProgresso[1][2] = new Criatura(20, "Fera Etérea", 4, 4, 4, "Caminha entre dimensões.", true);
-        cartasProgresso[1][3] = new Encantamento("Barreira Arcana", 4, "Absorve até 20 de dano por 2 turnos.", 2, 0, 0, -20);
-        cartasProgresso[1][4] = new Criatura(19, "Treant Protetor Ancião", 5, 3, 5, "Defensor da floresta sagrada.", false);
-        cartasProgresso[1][5] = new Feitico("Torrente de Raios", 4, "Dano a todos os inimigos no campo.", 15, 0, 0);
-        cartasProgresso[1][6] = new Criatura(26, "Leviatã do Abismo", 6, 5, 6, "Comanda os oceanos profundos.", true);
-        cartasProgresso[1][7] = new Encantamento("Coroa da Tempestade", 4, "Aumenta o ataque de aliados em 10 por 2 turnos.", 2, 10, 0, 0);
-        cartasProgresso[1][8] = new Criatura(17, "Espectro de Sombras", 4, 4, 4, "Silencioso e letal.", true);
-        cartasProgresso[1][9] = new Feitico("Erosão Sombria", 4, "Inflige 20 de dano e reduz defesa do alvo.", 20, 0, 0);
+        ArrayList<Carta> nivel2 = new ArrayList<>();
+        nivel2.add(new Criatura(25, "Elemental da Rocha", 5, 5, 6, "Resistente como as montanhas.", false));
+        nivel2.add(new Feitico("Impacto Glacial", 4, "Congela e causa dano a uma criatura.", 25, 0, 0));
+        nivel2.add(new Criatura(20, "Fera Etérea", 4, 4, 4, "Caminha entre dimensões.", true));
+        nivel2.add(new Encantamento("Barreira Arcana", 4, "Absorve até 20 de dano por 2 turnos.", 2, 0, 0, -20));
+        nivel2.add(new Criatura(19, "Treant Protetor Ancião", 5, 3, 5, "Defensor da floresta sagrada.", false));
+        nivel2.add(new Feitico("Torrente de Raios", 4, "Dano a todos os inimigos no campo.", 15, 0, 0));
+        nivel2.add(new Criatura(26, "Leviatã do Abismo", 6, 5, 6, "Comanda os oceanos profundos.", true));
+        nivel2.add(new Encantamento("Coroa da Tempestade", 4, "Aumenta o ataque de aliados em 10 por 2 turnos.", 2, 10, 0, 0));
+        nivel2.add(new Criatura(17, "Espectro de Sombras", 4, 4, 4, "Silencioso e letal.", true));
+        nivel2.add(new Feitico("Erosão Sombria", 4, "Inflige 20 de dano e reduz defesa do alvo.", 20, 0, 0));
+
+        cartasProgressoList.add(nivel2);
 
         // Nível 3 - Criaturas de poder extremo para os níveis mais altos.
-        cartasProgresso[2][0] = new Criatura(30, "Dragão Ancião", 6, 4, 7, "Domina o céu com sua presença.", true);
-        cartasProgresso[2][1] = new Feitico("Inferno Ardente", 5, "Dano massivo em todas as criaturas inimigas.", 30, 0, 0);
-        cartasProgresso[2][2] = new Criatura(26, "Fenrir", 6, 5, 7, "Predador alfa lendário.", false);
-        cartasProgresso[2][3] = new Encantamento("Escudo de Chamas Eternas", 5, "Absorve até 30 de dano por 3 turnos.", 3, 0, 0, -30);
-        cartasProgresso[2][4] = new Criatura(24, "Besta Infernal", 5, 6, 5, "Criatura do submundo.", false);
-        cartasProgresso[2][5] = new Feitico("Ruptura Celestial", 5, "Dano verdadeiro em uma criatura e no oponente.", 40, 0, 0);
-        cartasProgresso[2][6] = new Criatura(28, "Cavaleiro Dragão", 6, 6, 7, "Fusão perfeita entre homem e dragão.", false);
-        cartasProgresso[2][7] = new Encantamento("Chama Divina", 5, "Causa 15 de dano ao oponente por turno por 2 turnos.", 2, 15, 0, 0);
-        cartasProgresso[2][8] = new Criatura(25, "Fênix de Gelo", 6, 5, 6, "Renasce das cinzas congeladas.", true);
-        cartasProgresso[2][9] = new Feitico("Colapso Temporal", 6, "Reduz o custo de mana das suas cartas por 2 turnos.", 0, 0, 0);
+        ArrayList<Carta> nivel3 = new ArrayList<>();
+        nivel3.add(new Criatura(30, "Dragão Ancião", 6, 4, 7, "Domina o céu com sua presença.", true));
+        nivel3.add(new Feitico("Inferno Ardente", 5, "Dano massivo em todas as criaturas inimigas.", 30, 0, 0));
+        nivel3.add(new Criatura(26, "Fenrir", 6, 5, 7, "Predador alfa lendário.", false));
+        nivel3.add(new Encantamento("Escudo de Chamas Eternas", 5, "Absorve até 30 de dano por 3 turnos.", 3, 0, 0, -30));
+        nivel3.add(new Criatura(24, "Besta Infernal", 5, 6, 5, "Criatura do submundo.", false));
+        nivel3.add(new Feitico("Ruptura Celestial", 5, "Dano verdadeiro em uma criatura e no oponente.", 40, 0, 0));
+        nivel3.add(new Criatura(28, "Cavaleiro Dragão", 6, 6, 7, "Fusão perfeita entre homem e dragão.", false));
+        nivel3.add(new Encantamento("Chama Divina", 5, "Causa 15 de dano ao oponente por turno por 2 turnos.", 2, 15, 0, 0));
+        nivel3.add(new Criatura(25, "Fênix de Gelo", 6, 5, 6, "Renasce das cinzas congeladas.", true));
+        nivel3.add(new Feitico("Colapso Temporal", 6, "Reduz o custo de mana das suas cartas por 2 turnos.", 0, 0, 0));
 
-        //Temos que criar mais cartas nesses Arrays
+        cartasProgressoList.add(nivel3);
+
+        return cartasProgressoList;
     }
+
 
     public ArrayList<Carta> inicializadorCartasJ1() {
         ArrayList<Carta> deckPadraoJ1 = new ArrayList<>();

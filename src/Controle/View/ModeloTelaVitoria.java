@@ -7,6 +7,7 @@ import Controle.Jogador;
 import Visualização.Tela;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -19,7 +20,8 @@ public class ModeloTelaVitoria extends Tela {
     public ModeloTelaVitoria(Jogador jogadorGanhador, ControladorJogo controladorJogo) {
         this.jogadorGanhador = jogadorGanhador;
         this.controladorJogo = controladorJogo;
-        this.cartasGanhas = jogadorGanhador.adicionarCartasProgresso();
+        this.modelosCartasGanhas = new ArrayList<>(); // Inicializa a lista de modelos
+
         definirEstilo();
         renderizar();
     }
@@ -34,42 +36,87 @@ public class ModeloTelaVitoria extends Tela {
 
     public void definirEstilo() {
         this.setLayout(new BorderLayout());
-        this.setBackground(Color.BLACK);
+        this.setBackground(new Color(30, 30, 30)); // Fundo escuro para maior contraste
     }
 
     @Override
     public void renderizar() {
         removeAll();
 
+        // Painel Superior
         JPanel painelSuperior = new JPanel();
-        JLabel titulo = new JLabel(jogadorGanhador.getNome() + "Você ganhou!\n\nAqui estão suas recompensas:");
-        titulo.setBackground(Color.WHITE);
-        titulo.setFont(new Font("Verdana", Font.BOLD, 20));
-        JLabel titulo2 = new JLabel(String.valueOf(jogadorGanhador.getExperiencia()));
-        titulo2.setBackground(Color.WHITE);
-        titulo2.setFont(new Font("Verdana", Font.BOLD, 20));
+        painelSuperior.setLayout(new BoxLayout(painelSuperior, BoxLayout.Y_AXIS));
+        painelSuperior.setBackground(new Color(45, 45, 45));
+        painelSuperior.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+        JLabel titulo = new JLabel("Parabéns, " + jogadorGanhador.getNome() + "!");
+        titulo.setForeground(new Color(255, 215, 0)); // Cor dourada para destaque
+        titulo.setFont(new Font("Serif", Font.BOLD, 36));
+        titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JLabel subtitulo = new JLabel("Você é o vencedor!");
+        subtitulo.setForeground(Color.WHITE);
+        subtitulo.setFont(new Font("Serif", Font.ITALIC, 20));
+        subtitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JLabel experiencia = new JLabel("Experiência Ganha: " + jogadorGanhador.getExperiencia());
+        experiencia.setForeground(Color.WHITE);
+        experiencia.setFont(new Font("Serif", Font.PLAIN, 18));
+        experiencia.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         painelSuperior.add(titulo);
-        painelSuperior.add(titulo2);
+        painelSuperior.add(Box.createRigidArea(new Dimension(0, 10))); // Espaço vertical
+        painelSuperior.add(subtitulo);
+        painelSuperior.add(Box.createRigidArea(new Dimension(0, 10))); // Espaço vertical
+        painelSuperior.add(experiencia);
 
+        // Painel Central - Placeholder para Cartas Ganhas
         JPanel painelCentral = new JPanel();
-        painelCentral.setLayout(new FlowLayout());
-        painelCentral.setBackground(Color.WHITE);
+        painelCentral.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 15));
+        painelCentral.setBackground(new Color(30, 30, 30));
+        painelCentral.setBorder(new EmptyBorder(20, 20, 20, 20));
 
-        for (Carta carta : cartasGanhas) {
-            ModeloCarta modelo = new ModeloCarta(carta, jogadorGanhador, controladorJogo, "Carta Ganha!");
-            modelosCartasGanhas.add(modelo);
+        if (cartasGanhas != null && !cartasGanhas.isEmpty()) {
+            for (Carta carta : cartasGanhas) {
+                ModeloCarta modelo = new ModeloCarta(carta, jogadorGanhador, controladorJogo, "Carta Ganha!");
+                modelosCartasGanhas.add(modelo);
 
-            // Adiciona ações específicas para os botões de cada carta, se necessário
-            modelo.getBotao().addActionListener(e -> {
-                // Adicione aqui a lógica para o que acontece ao clicar no botão "Jogar Carta"
-                JOptionPane.showMessageDialog(null, "Você ganhou a carta: " + carta.getNome());
-            });
+                modelo.getBotao().addActionListener(e -> {
+                    JOptionPane.showMessageDialog(null, "Você ganhou a carta: " + carta.getNome());
+                });
 
-            painelCentral.add(modelo); // Adiciona o componente visual ao layout
+                painelCentral.add(modelo);
+            }
+        } else {
+            JLabel mensagem = new JLabel("Nenhuma carta foi ganha nesta partida.");
+            mensagem.setForeground(Color.LIGHT_GRAY);
+            mensagem.setFont(new Font("Serif", Font.ITALIC, 16));
+            painelCentral.add(mensagem);
         }
 
+        // Painel Inferior - Botão de Continuar
+        JPanel painelInferior = new JPanel();
+        painelInferior.setBackground(new Color(45, 45, 45));
+        painelInferior.setBorder(new EmptyBorder(10, 10, 10, 10));
+        painelInferior.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        JButton botaoContinuar = new JButton("Continuar");
+        botaoContinuar.setPreferredSize(new Dimension(150, 40));
+        botaoContinuar.setFont(new Font("SansSerif", Font.BOLD, 18));
+        botaoContinuar.setForeground(Color.WHITE);
+        botaoContinuar.setBackground(new Color(70, 130, 180));
+        botaoContinuar.setFocusPainted(false);
+        botaoContinuar.addActionListener(e -> {
+            // Lógica para continuar o jogo ou ir para o menu principal
+            controladorJogo.getJanela().setTelaAtual(new TelaInicial(controladorJogo));
+        });
+
+        painelInferior.add(botaoContinuar);
+
+        // Adiciona os painéis à tela
         this.add(painelSuperior, BorderLayout.NORTH);
         this.add(painelCentral, BorderLayout.CENTER);
+        this.add(painelInferior, BorderLayout.SOUTH);
 
         this.revalidate();
         this.repaint();
