@@ -46,11 +46,7 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
             modelo.getBotao().addActionListener(e -> {
                 //Verificador fase de ataque
                 if (controladorJogo.getFaseJogo().equals("ATAQUE")) {
-                    if (controladorJogo.getControleDeEscolhas() != 1) {
-                        atribuirCarta(carta, jogador);
-                    } else {
-                        atribuirCarta(carta, jogador);
-                    }
+                    atribuirCarta(carta, jogador);
                 } else {
                     JOptionPane.showMessageDialog(null, "Ainda não é a fase de Ataque!");
                 }
@@ -81,15 +77,25 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
         if (controladorJogo.getJogadorAtual().equals(jogador)) {
             controladorJogo.getJogar().setCartaAtacante(carta);
             JOptionPane.showMessageDialog(null, "Carta atacante definida!");
-            controladorJogo.getJogar().validarCampoOponente();
         } else {
             controladorJogo.getJogar().setCartaAlvo(carta);
             JOptionPane.showMessageDialog(null, "Carta alvo definida!");
         }
 
+        // Incrementa o contador de ações ao clicar em uma carta
+        controladorJogo.incrementoControleDeEscolhas();
+
         // Se ambas as cartas estão definidas, execute o ataque
         if (controladorJogo.getJogar().getCartaAtacante() != null && controladorJogo.getJogar().getCartaAlvo() != null) {
             controladorJogo.getJogar().executarAtaque();
+
+            // Verifica se todas as ações da fase de ataque foram realizadas
+            if (controladorJogo.getControleDeEscolhas() == 4) {
+                JOptionPane.showMessageDialog(null, "Fim da fase de ataque. Voltando para a fase de escolhas!");
+                controladorJogo.setControleDeEscolhas(0); // Reinicia o contador de ações
+                controladorJogo.setFaseJogo("ESCOLHA"); // Define a fase de escolhas
+                controladorJogo.getJanela().getTelaBatalha().atualizarElementos(); // Atualiza a interface
+            }
         }
     }
 }
