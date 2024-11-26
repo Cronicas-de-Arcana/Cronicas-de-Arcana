@@ -37,7 +37,7 @@ public class Jogador
         this.mao = new Mao();
         this.cemiterio = new Cemiterio();
         this.campoDeBatalha = new CampodeBatalha();
-        this.hp = 1;
+        this.hp = 10;
         this.manaAtual = 10;
         this.nivel = 1;
         this.experiencia = 0;

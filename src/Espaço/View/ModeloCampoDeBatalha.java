@@ -99,13 +99,13 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
             controladorJogo.getJogar().validarCampoOponente(); // Validar oponente aqui
         } else {
             controladorJogo.getJogar().setCartaAlvo(carta);
+            controladorJogo.registrarJogada(controladorJogo.getJogadorAtual());
             JOptionPane.showMessageDialog(null, "Carta alvo definida!");
         }
 
         // Verifica se o ataque pode ser executado
         if (controladorJogo.getJogar().getCartaAtacante() != null && controladorJogo.getJogar().getCartaAlvo() != null) {
             controladorJogo.getJogar().executarAtaque();
-            controladorJogo.registrarJogada(controladorJogo.getJogadorAtual());
 
             // Verifica se todas as ações foram concluídas
             if (controladorJogo.verificarJogadoresJogaram()) {
