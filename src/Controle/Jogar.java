@@ -428,6 +428,11 @@ public class Jogar
             return; // Sai do metodo se o campo estiver vazio
         }
 
+        if (!possuiEncantamentos(jogador)) {
+            JOptionPane.showMessageDialog(null, jogador.getNome() + " não possui encantamentos no campo de batalha.");
+            return; // Sai do metodo se não houver encantamentos
+        }
+
         Jogador adversario = (jogador == jogador1) ? jogador2 : jogador1;
         ArrayList<Carta> encantamentosParaRemover = new ArrayList<>();
 
@@ -453,6 +458,19 @@ public class Jogar
             jogador.getCemiterio().adicionarCarta(carta);
             JOptionPane.showMessageDialog(null, "Encantamento " + carta.getNome() + " expirou e foi movido para o cemitério.");
         }
+    }
+
+    private boolean possuiEncantamentos(Jogador jogador) {
+        CampodeBatalha campo = jogador.getCampoDeBatalha();
+
+        // Verifica se o campo contém algum encantamento
+        for (Carta carta : campo.getCampo()) {
+            if (carta instanceof Encantamento) {
+                return true; // Retorna true se encontrar um encantamento
+            }
+        }
+
+        return false; // Retorna false se nenhum encantamento for encontrado
     }
 
 }

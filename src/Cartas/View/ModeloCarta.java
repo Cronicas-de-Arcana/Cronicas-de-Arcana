@@ -147,10 +147,6 @@ public class ModeloCarta extends ComponenteVisual {
         this.add(Box.createVerticalGlue());
     }
 
-    public void setHabilitar(boolean habilitar) {
-        botao.setEnabled(habilitar);
-    }
-
     public JButton getBotao() {
         return botao;
     }
