@@ -37,10 +37,11 @@ public class Jogador
         this.mao = new Mao();
         this.cemiterio = new Cemiterio();
         this.campoDeBatalha = new CampodeBatalha();
-        this.hp = 50;
+        this.hp = 1;
         this.manaAtual = 10;
         this.nivel = 1;
         this.experiencia = 0;
+        this.inventario = new Inventario();
         this.scanner = new Scanner(System.in);
     }
 
@@ -390,14 +391,15 @@ public class Jogador
         }
     }
 
-    public void adicionarCartasProgresso()
+    public ArrayList adicionarCartasProgresso()
     {
         int nivelAtual = this.getNivel();
-        Carta[] cartasParaAdicionar = inventario.getCartasProgresso()[nivelAtual-1];
+        Carta[] cartasParaAdicionar = controladorJogo.getInventario().getCartasProgresso()[nivelAtual-1];
 
         for (Carta carta: cartasParaAdicionar)
         {
             this.inventario.getCartasInventario().add(carta);
         }
+        return this.inventario.getCartasInventario();
     }
 }

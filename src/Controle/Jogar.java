@@ -4,6 +4,7 @@ import Cartas.Carta;
 import Cartas.Criatura;
 import Cartas.Encantamento;
 import Cartas.Feitico;
+import Controle.View.ModeloTelaVitoria;
 import Espaço.CampodeBatalha;
 
 import javax.swing.*;
@@ -109,6 +110,7 @@ public class Jogar
             controladorJogo.mudarJogadorAtual(); // Passa para o próximo jogador
             controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
         }
+        controladorJogo.getJogar().verificarVitoria(jogadorAtual, jogadorOponente);
     }
 
     public void executarAtaque() {
@@ -369,14 +371,20 @@ public class Jogar
     {
         if (jogador1.getHp() <= 0)
         {
-            System.out.println(jogador1.getNome() + " foi derrotado!");
+            JOptionPane.showMessageDialog(null, "O jogador foi derrotado!");
             adicionarExperiencia(jogador2, jogador1);
+            ModeloTelaVitoria telaVitoria = new ModeloTelaVitoria(jogador2, getControladorJogo());
+            controladorJogo.getJanela().setTelaVitoria(telaVitoria);
+            controladorJogo.getJanela().mudarTela(telaVitoria);
             return true;
         }
         else if (jogador2.getHp() <= 0)
         {
-            System.out.println(jogador2.getNome() + " foi derrotado!");
+            JOptionPane.showMessageDialog(null, "O jogador foi derrotado!");
             adicionarExperiencia(jogador1, jogador2);
+            ModeloTelaVitoria telaVitoria = new ModeloTelaVitoria(jogador1, getControladorJogo());
+            controladorJogo.getJanela().setTelaVitoria(telaVitoria);
+            controladorJogo.getJanela().mudarTela(telaVitoria);
             return true;
         }
         return false;
@@ -394,9 +402,21 @@ public class Jogar
     public void processarEncantamentos() {
         // Processa encantamentos do Jogador 1
         processarEncantamentosJogador(jogador1);
+        controladorJogo.registrarJogada(jogador1);
+        controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
 
         // Processa encantamentos do Jogador 2
         processarEncantamentosJogador(jogador2);
+        controladorJogo.registrarJogada(jogador2);
+        controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+
+        if (controladorJogo.verificarJogadoresJogaram()){
+            controladorJogo.setFaseJogo("ESCOLHA");
+            controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+            JOptionPane.showMessageDialog(null, "Fase de processamento de encantamento encerrada!");
+            controladorJogo.getJogar().faseEscolha();
+            controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+        }
     }
 
     private void processarEncantamentosJogador(Jogador jogador) {

@@ -11,6 +11,7 @@ public class Janela extends JFrame implements OuvinteMudancaTela {
     private TelaBatalha telaBatalha;
     private TelaInventario telaInventarioJogador1;
     private TelaInventario telaInventarioJogador2;
+    private ModeloTelaVitoria modeloTelaVitoria;
 
     //Construtor da Janela que rodará o jogo -> Inicia tela inicial que sera passada como argumento (main)
     public Janela(Tela telaInicial) {
@@ -43,6 +44,10 @@ public class Janela extends JFrame implements OuvinteMudancaTela {
 
     public void setTelaBatalha(TelaBatalha telaBatalha) {
         this.telaBatalha = telaBatalha;
+    }
+
+    public void setTelaVitoria(ModeloTelaVitoria modeloTelaVitoria) {
+        this.modeloTelaVitoria = modeloTelaVitoria;
     }
 
     public TelaBatalha getTelaBatalha() {
