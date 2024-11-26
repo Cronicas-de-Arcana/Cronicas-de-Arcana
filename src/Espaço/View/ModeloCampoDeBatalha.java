@@ -82,6 +82,7 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
         if (controladorJogo.getJogadorAtual().equals(jogador)) {
             controladorJogo.getJogar().setCartaAtacante(carta);
             JOptionPane.showMessageDialog(null, "Carta atacante definida!");
+            controladorJogo.getJogar().validarCampoOponente();
         } else {
             controladorJogo.getJogar().setCartaAlvo(carta);
             JOptionPane.showMessageDialog(null, "Carta alvo definida!");

@@ -62,6 +62,28 @@ public class Jogar
         this.cartaAlvo = cartaAlvo;
     }
 
+    public void validarCampoOponente(){
+        Jogador jogadorAtual = controladorJogo.getJogadorAtual();
+        Jogador jogadorOponente = (jogadorAtual == controladorJogo.getJogador1())
+                ? controladorJogo.getJogador2()
+                : controladorJogo.getJogador1();
+
+        CampodeBatalha campoOponente = jogadorOponente.getCampoDeBatalha();
+
+        if (campoOponente.getCampo().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo de " + jogadorOponente.getNome() + " está vazio!\n Jogador rececebe ataque direto!");
+            if (cartaAtacante instanceof Criatura atacante) {
+                jogadorOponente.receberDano(atacante.getPoder());
+                JOptionPane.showMessageDialog(null, jogadorOponente.getNome() + " recebeu " + atacante.getPoder() + " de dano direto!");
+            } else if (cartaAtacante instanceof Feitico feitico) {
+                jogadorOponente.receberDano(feitico.getDano());
+                jogadorAtual.getCemiterio().adicionarCarta(feitico);
+                JOptionPane.showMessageDialog(null, jogadorOponente.getNome() + " recebeu " + feitico.getDano() + " de dano direto!");
+            }
+            cartaAtacante = null;
+        }
+    }
+
     public void executarAtaque()
     {
         if (cartaAtacante == null && cartaAlvo == null) {
