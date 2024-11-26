@@ -66,20 +66,24 @@ public class ModeloMaoJogador extends ComponenteVisual {
         JButton botaoPassarRodada = new JButton("Passar");
         botaoPassarRodada.setPreferredSize(new Dimension(180, 200));
         botaoPassarRodada.addActionListener(e -> {
+            if (controladorJogo.getFaseJogo().equals("ESCOLHA")) {
+                //Se o jogador atual for o jogador que apertou o botao, a jogada e valida!
+                if (controladorJogo.getJogadorAtual().equals(jogador)){
+                    controladorJogo.registrarJogada(jogador);
+                    controladorJogo.mudarJogadorAtual();
+                } else{
+                    JOptionPane.showMessageDialog(null, "Não é sua vez!");
+                }
 
-            //Se o jogador atual for o jogador que apertou o botao, a jogada e valida!
-            if (controladorJogo.getJogadorAtual().equals(jogador)){
-                controladorJogo.registrarJogada(jogador);
-                controladorJogo.mudarJogadorAtual();
+                if(controladorJogo.verificarJogadoresJogaram()){
+                    JOptionPane.showMessageDialog(null, "Fim da fase de escolha");
+                    controladorJogo.setFaseJogo("ATAQUE");
+                    controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
+                }
             } else{
-                JOptionPane.showMessageDialog(null, "Não é sua vez!");
+                JOptionPane.showMessageDialog(null, "Não é a fase de escolha!");
             }
 
-            if(controladorJogo.verificarJogadoresJogaram()){
-                JOptionPane.showMessageDialog(null, "Fim da fase de escolha");
-                controladorJogo.setFaseJogo("ATAQUE");
-                controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
-            }
 
         });
         this.add(botaoPassarRodada);

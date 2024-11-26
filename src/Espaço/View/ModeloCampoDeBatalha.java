@@ -73,18 +73,15 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
                 JOptionPane.showMessageDialog(null, "Ainda não é a fase de Ataque!");
             }
             else{
-                if (controladorJogo.getJogadorAtual().equals(jogador)) {
-                    controladorJogo.registrarJogada(controladorJogo.getJogadorAtual());
-                    if (controladorJogo.verificarJogadoresJogaram()) {
-                        JOptionPane.showMessageDialog(null, "Fim da fase de ataque!");
-                        controladorJogo.setFaseJogo("ESCOLHA");
-                        controladorJogo.getJogar().faseEscolha();
-                        controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
-                    } else {
-                        controladorJogo.mudarJogadorAtual();
-                    }
+                JOptionPane.showMessageDialog(null, controladorJogo.getJogadorAtual().getNome() + " passou a vez!");
+                controladorJogo.registrarJogada(controladorJogo.getJogadorAtual());
+                controladorJogo.mudarJogadorAtual();
+                if (controladorJogo.verificarJogadoresJogaram()) {
+                    JOptionPane.showMessageDialog(null, "Fim da fase de ataque!");
+                    controladorJogo.setFaseJogo("ESCOLHA");
+                    controladorJogo.getJogar().faseEscolha();
+                    controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
                 }
-
             }
         });
 
