@@ -82,6 +82,7 @@ public class Jogar
             }
             cartaAtacante = null;
         }
+        controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
     }
 
     public void executarAtaque()
@@ -103,6 +104,7 @@ public class Jogar
         if (cartaAtacante instanceof Criatura atacante) {
             if (cartaAlvo instanceof Criatura alvo) {
                 // Combate entre criaturas
+                JOptionPane.showMessageDialog(null, "Começar ataque!");
                 atacante.atacarCriatura(alvo);
                 controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
 
