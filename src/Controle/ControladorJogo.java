@@ -109,4 +109,23 @@ public class ControladorJogo {
         jogar.faseEscolha();
     }
 
+    //Ações validas devem chamar esse metodo!!!
+    public void registrarJogada(Jogador jogador) {
+        if (jogador.equals(jogador1)) {
+            jogador1.setJogou(true);
+        } else if (jogador.equals(jogador2)) {
+            jogador2.setJogou(true);
+        }
+    }
+
+    //Metodo que deve validar mudança de estado do jogo!
+    public boolean verificarJogadoresJogaram() {
+        if (jogador1.getJogou() && jogador2.getJogou()) {
+            jogador1.setJogou(false);
+            jogador2.setJogou(false);
+            return true; // Ambos jogaram
+        }
+        return false; // Ainda aguardando
+    }
+
 }

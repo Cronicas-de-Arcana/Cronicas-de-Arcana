@@ -48,10 +48,13 @@ public class ModeloMaoJogador extends ComponenteVisual {
             modelosCartas.add(modelo);
             modelo.getBotao().addActionListener(e -> {
 
-                controladorJogo.getJogadorAtual().jogarCartaCampo(carta, jogador);
-                controladorJogo.getJogadorAtual().setJogou(true);
-
-                if(controladorJogo.getJogar().verificarJogadoresJogaram()){
+                if (controladorJogo.getJogadorAtual().equals(jogador)){
+                    controladorJogo.getJogadorAtual().jogarCartaCampo(carta, jogador);
+                    controladorJogo.registrarJogada(jogador);
+                } else{
+                    JOptionPane.showMessageDialog(null, "Não é sua vez!");
+                }
+                if(controladorJogo.verificarJogadoresJogaram()){
                     JOptionPane.showMessageDialog(null, "Fim da fase de escolha");
                     controladorJogo.setFaseJogo("ATAQUE");
                     controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
@@ -64,14 +67,15 @@ public class ModeloMaoJogador extends ComponenteVisual {
         botaoPassarRodada.setPreferredSize(new Dimension(180, 200));
         botaoPassarRodada.addActionListener(e -> {
 
+            //Se o jogador atual for o jogador que apertou o botao, a jogada e valida!
             if (controladorJogo.getJogadorAtual().equals(jogador)){
-                controladorJogo.getJogadorAtual().setJogou(true);
+                controladorJogo.registrarJogada(jogador);
                 controladorJogo.mudarJogadorAtual();
             } else{
                 JOptionPane.showMessageDialog(null, "Não é sua vez!");
             }
 
-            if(controladorJogo.getJogar().verificarJogadoresJogaram()){
+            if(controladorJogo.verificarJogadoresJogaram()){
                 JOptionPane.showMessageDialog(null, "Fim da fase de escolha");
                 controladorJogo.setFaseJogo("ATAQUE");
                 controladorJogo.getJanela().getTelaBatalha().atualizarElementos();

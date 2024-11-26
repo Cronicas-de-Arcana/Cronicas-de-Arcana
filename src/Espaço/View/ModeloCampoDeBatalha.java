@@ -88,7 +88,7 @@ public class ModeloCampoDeBatalha extends ComponenteVisual {
             controladorJogo.getJogar().executarAtaque();
 
             // Verifica se todas as ações foram concluídas
-            if (controladorJogo.getJogar().verificarJogadoresJogaram()) {
+            if (controladorJogo.verificarJogadoresJogaram()) {
                 controladorJogo.setFaseJogo("ESCOLHA"); // Define a fase de escolha
                 controladorJogo.getJanela().getTelaBatalha().atualizarElementos(); // Atualiza a interface
                 controladorJogo.getJogar().faseEscolha();

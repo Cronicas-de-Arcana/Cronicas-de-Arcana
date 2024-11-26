@@ -44,14 +44,13 @@ public class Jogador
         this.scanner = new Scanner(System.in);
     }
 
-    public boolean getJogou() {
+    public boolean getJogou(){
         return jogou;
     }
 
     public void setJogou(boolean jogou) {
         this.jogou = jogou;
     }
-
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual, Scanner scanner)
     {
         this.nome = nome;
@@ -158,7 +157,7 @@ public class Jogador
             controladorJogo.mudarJogadorAtual();
 
             // Finaliza a fase de escolhas se ambos os jogadores tiverem agido
-            if (controladorJogo.getJogar().verificarJogadoresJogaram()) {
+            if (controladorJogo.verificarJogadoresJogaram()) {
                 JOptionPane.showMessageDialog(null, "Fim da fase de escolhas!");
             }
             return;
@@ -184,6 +183,7 @@ public class Jogador
             jogador.getCampoDeBatalha().adicionarCarta(carta);
             jogador.utilizarMana(carta.getCustoMana());
             jogador.getMao().removerCarta(carta);
+            controladorJogo.registrarJogada(jogador);
 
             // Atualiza a interface para refletir a nova jogada
             controladorJogo.getJanela().getTelaBatalha().atualizarElementos();

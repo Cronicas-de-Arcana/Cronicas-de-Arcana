@@ -174,7 +174,6 @@ public class Jogar
 
         // Atualiza elementos da interface após o ataque
         controladorJogo.getJanela().getTelaBatalha().atualizarElementos();
-        controladorJogo.getJogadorAtual().setJogou(true); //Jogador responsavel pelo ataque atacou
 
         // Após o ataque, reseta as cartas e verifica o estado do jogo
         cartaAtacante = null;
@@ -390,14 +389,4 @@ public class Jogar
         perdedor.atualizarNivel();
     }
 
-    public boolean verificarJogadoresJogaram(){
-        //Validação para saber se ambos jogaram
-        if (jogador1.getJogou() && jogador2.getJogou()) {
-            jogador1.setJogou(false);
-            jogador2.setJogou(false);
-            return true;
-        } else {
-            return false;
-        }
-    }
 }
