@@ -30,6 +30,7 @@ public class Jogador
     private Scanner scanner;
     protected List<Encantamento> encantamentosAtivos = new ArrayList<>();
     private ControladorJogo controladorJogo;
+    private boolean jogou;
 
     public Jogador(String nome){
         this.nome = nome;
@@ -41,6 +42,14 @@ public class Jogador
         this.nivel = 1;
         this.experiencia = 0;
         this.scanner = new Scanner(System.in);
+    }
+
+    public boolean getJogou() {
+        return jogou;
+    }
+
+    public void setJogou(boolean jogou) {
+        this.jogou = jogou;
     }
 
     public Jogador(String nome, Deck deck, int hp, int mana, int manaAtual, Scanner scanner)

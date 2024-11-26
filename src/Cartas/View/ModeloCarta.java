@@ -120,7 +120,7 @@ public class ModeloCarta extends ComponenteVisual {
             case Encantamento encantamento -> {
                 JLabel quantidadeRodadasLabel = new JLabel("Duração: " + encantamento.getQuantidadeRodadas() + " rodadas");
                 JLabel modificadorDanoLabel = new JLabel("Modif. de Dano: " + encantamento.getModificadorDano());
-                JLabel classeLabel = new JLabel("Feitiço");
+                JLabel classeLabel = new JLabel("Encantamento");
 
                 // Aplicando o estilo de centralização e fonte para cada atributo
                 quantidadeRodadasLabel.setFont(fontePadrao);
