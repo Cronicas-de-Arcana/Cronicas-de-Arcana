@@ -59,15 +59,4 @@ public class Mao
             System.out.println("A carta " + carta.getNome() + " não está na mão.");
         }
     }
-
-    public boolean temCartasSuficientes(int quantidade)
-    {
-        return cartas.size() >= quantidade;
-    }
-
-
-    public boolean temCarta(Carta carta)
-    {
-        return cartas.contains(carta);
-    }
 }

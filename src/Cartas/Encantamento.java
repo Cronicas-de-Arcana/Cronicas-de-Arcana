@@ -72,7 +72,6 @@ public class Encantamento extends Carta
                 String tipo = modificadorDano > 0 ? "aumentou" : "reduziu";
                 System.out.println(getNome() + " " + tipo + " o poder de " + alvo.getNome() + " em " + modificadorDano + " por " + quantidadeRodadas + " rodadas.");
             }
-            reduzirRodadas();
         }
     }
 
@@ -95,7 +94,6 @@ public class Encantamento extends Carta
             {
                 System.out.println("O efeito não pode ser aplicado.");
             }
-            reduzirRodadas();
         }
     }
 

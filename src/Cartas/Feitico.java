@@ -44,7 +44,8 @@ public class Feitico extends Carta
         {
             System.out.println(getNome() + " foi lançado e curou " + cura + " pontos de vida de " + alvo.getNome());
             alvo.receberCura(cura);
-        } else if (modificadorDano != 0)
+        }
+        else if (modificadorDano != 0)
         {
             alvo.setPoder(alvo.getPoder() + modificadorDano);
             String tipo = modificadorDano > 0 ? "aumentou" : "reduziu";
